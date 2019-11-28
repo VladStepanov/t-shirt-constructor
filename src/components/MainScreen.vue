@@ -1,18 +1,29 @@
 <template>
-  <svg>
-    <rect :fill='head' x='0' width='50' height='50'></rect>
-    <rect :fill='body' x='50' width='50' height='50'></rect>
-    <rect :fill='sleeves' x='100' width='50' height='50'></rect>
+   <svg width="301" height="166" viewBox="0 0 301 166">
+    <path
+      v-for='(path, role, i) in filteredClothPaths'
+      :key='i'
+      :fill='activeColors[role]'
+      :d='path'
+    />
   </svg>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MainScreen',
   computed: {
-    ...mapState(['body', 'head', 'sleeves'])
+    ...mapGetters(['currentClothPaths']),
+    ...mapState(['activeColors']),
+    filteredClothPaths () {
+      const copy = { ...this.currentClothPaths }
+      Object.entries(this.currentClothPaths).forEach(([role, path]) => {
+        if (!path) delete copy[role]
+      })
+      return copy
+    }
   }
 }
 </script>

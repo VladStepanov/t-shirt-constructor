@@ -80,8 +80,17 @@ export default {
 .select {
   border: 1px solid #ccc;
   max-width: 300px;
+  position: relative;
 }
 .active {
   position: relative;
+}
+.options {
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 10px);
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 </style>
