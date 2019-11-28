@@ -7,9 +7,9 @@
       <slot
         name='active'
         v-if='$scopedSlots.active'
-        :active='value'
+        :active='findTitleByCode(value)'
       ></slot>
-      <figcaption v-else class="select-active">{{ value }}</figcaption>
+      <figcaption v-else class="select-active">{{ findTitleByCode(value) }}</figcaption>
       <div class="active-image">
         <slot name='append'></slot>
       </div>
@@ -41,7 +41,6 @@ export default {
   props: {
     value: {
       type: String,
-      default: '',
       required: true
     },
     options: {
@@ -50,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    this.$emit('input', this.options[0].title)
+    this.$emit('input', this.options[0].code)
     document.addEventListener('click', this.handleOutsideClick)
   },
   destroyed () {
@@ -63,11 +62,15 @@ export default {
   },
   methods: {
     selectOption (option) {
-      this.$emit('input', option.title)
+      this.$emit('input', option.code)
       this.isOpened = false
     },
     handleOutsideClick (e) {
       this.isOpened = false
+    },
+    findTitleByCode (code) {
+      const curOption = this.options.find(option => option.code === code)
+      return curOption && curOption.title
     }
   }
 }

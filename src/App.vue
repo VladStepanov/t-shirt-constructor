@@ -42,16 +42,16 @@ export default {
       option: '',
       options: [
         {
-          title: 'red',
-          value: 'firstcode'
+          title: 'that is red',
+          code: 'red'
         },
         {
-          title: 'blue',
-          value: 'secondcode'
+          title: 'that is blue',
+          code: 'blue'
         },
         {
-          title: 'green',
-          value: 'secondcode'
+          title: 'that is green',
+          code: 'green'
         }
       ]
     }
