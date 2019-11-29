@@ -2,7 +2,41 @@
   {
     "id": 1,
     "name": "T_Shirt_1",
-    "model": {
+    "price": 300,
+    "gender": "male",
+    "collection": "adidas",
+    "type": "t-shirt",
+    "paths": {
+      "front": "M89 165V1L157 42L225 1V165H89Z",
+      "back": "",
+      "leftSleeve": "M233 30V1L300 42V74L233 30Z",
+      "rightSleeve": "M81 1L1 42V74L81 30V1Z",
+      "neckLine": ""
+    }
+  },
+  {
+    "id": 2,
+    "name": "T_Shirt_2",
+    "price": 200,
+    "gender": "female",
+    "collection": "puma",
+    "type": "t-shirt",
+    "paths": {
+      "front": "M89 165V1L157 42L225 1V165H89Z",
+      "back": "",
+      "leftSleeve": "M233 30V1L300 42V74L233 30Z",
+      "rightSleeve": "M81 1L1 42V74L81 30V1Z",
+      "neckLine": ""
+    }
+  },
+  {
+    "id": 3,
+    "name": "T_Shirt_3",
+    "price": 300,
+    "gender": "children",
+    "collection": "adidas",
+    "type": "shirt",
+    "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",
       "back": "",
       "leftSleeve": "M233 30V1L300 42V74L233 30Z",
