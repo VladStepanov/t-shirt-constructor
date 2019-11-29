@@ -79,8 +79,11 @@ export default {
 <style scoped lang='scss'>
 .select {
   border: 1px solid #ccc;
-  max-width: 300px;
+  display: inline-block;
   position: relative;
+  padding: 5px 10px;
+  margin: 0;
+  cursor: pointer;
 }
 .active {
   position: relative;
@@ -89,8 +92,15 @@ export default {
   position: absolute;
   z-index: 1;
   top: calc(100% + 10px);
-  width: 100%;
+  left: 0;
+  width: auto;
   background-color: #fff;
   border: 1px solid #ccc;
+}
+.option {
+  padding: 5px 10px;
+  &:hover {
+    background-color: darken(#fff, 30%);
+  }
 }
 </style>
