@@ -1,0 +1,18 @@
+{
+  "pique": [
+    {
+      "title": "Красный",
+      "code": "red"
+    },
+    {
+      "title": "Зеленый",
+      "code": "green"
+    },
+    {
+      "title": "Синий",
+      "code": "blue"
+    }
+  ],
+  "ribana": [],
+  "cooler": []
+}
