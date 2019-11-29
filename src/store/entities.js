@@ -1,7 +1,7 @@
 import tShirts from '@/models/t_shirts.json'
 
 export const state = () => ({
-  paths: tShirts
+  entities: tShirts
 })
 
 export const mutations = {
@@ -13,7 +13,7 @@ export const mutations = {
 export const getters = {
   currentClothPaths (state) {
     // Now it 0, later it can be selected from right menu
-    return state.paths[0] && state.paths[0].paths
+    return state.entities[0] && state.entities[0].paths
   }
 }
 
