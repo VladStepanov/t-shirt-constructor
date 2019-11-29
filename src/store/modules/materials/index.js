@@ -6,6 +6,6 @@ export default {
     materials
   }),
   getters: {
-    colorSchema: (state) => state.materials[state.curMaterial]
+    colorSchema: state => state.materials[state.curMaterial]
   }
 }

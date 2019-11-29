@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import state from './state'
-import mutations from './mutations'
-import actions from './actions'
-import getters from './getters'
 import materials from './modules/materials'
 import activeColors from './modules/activeColors'
+import genders from './modules/genders'
+import { state, mutations, getters, actions } from './entities'
 
 Vue.use(Vuex)
 
@@ -16,6 +14,7 @@ export default new Vuex.Store({
   getters,
   modules: {
     materials,
-    activeColors
+    activeColors,
+    genders
   }
 })

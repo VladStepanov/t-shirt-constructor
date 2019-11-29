@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Женская",
+    "code": "female"
+  },
+  {
+    "title": "Мужская",
+    "code": "male"
+  },
+  {
+    "title": "Детсткая",
+    "code": "children"
+  }
+]

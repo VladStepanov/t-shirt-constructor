@@ -1,6 +1,10 @@
 <template>
   <div>
     <div>
+      Для кого
+      <BaseSelect v-model='gender' :options='genders' />
+    </div>
+    <div>
       Body
       <BaseSelect v-model='body' :options='colorSchema'></BaseSelect>
     </div>
@@ -17,15 +21,27 @@
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Menu',
   components: {
     BaseSelect
   },
+  mounted () {
+    console.log(this.$store.state)
+  },
   computed: {
     ...mapGetters(['colorSchema']),
+    ...mapState({
+      genders: state => state.genders.genders
+    }),
+    gender: {
+      get () { return this.$store.state.genders.curGender },
+      set (gender) {
+        this.$store.commit('SET_GENDER', gender)
+      }
+    },
     body: {
       get () { return this.$store.state.activeColors.front },
       set (val) {
