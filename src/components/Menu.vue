@@ -1,6 +1,10 @@
 <template>
   <div>
     <div>
+      Бренд
+      <BaseSelect v-model='collection' :options='collections' />
+    </div>
+    <div>
       Для кого
       <BaseSelect v-model='gender' :options='genders' />
     </div>
@@ -34,8 +38,15 @@ export default {
   computed: {
     ...mapGetters(['colorSchema']),
     ...mapState({
-      genders: state => state.genders.genders
+      genders: state => state.genders.genders,
+      collections: state => state.collections.collections
     }),
+    collection: {
+      get () { return this.$store.state.collections.curCollection },
+      set (collection) {
+        this.$store.commit('SET_COLLECTION', collection)
+      }
+    },
     gender: {
       get () { return this.$store.state.genders.curGender },
       set (gender) {
