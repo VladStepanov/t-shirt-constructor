@@ -6,6 +6,7 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
+    "material": "ribana",
     "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",
       "back": "",
@@ -21,6 +22,7 @@
     "gender": "female",
     "collection": "puma",
     "type": "t-shirt",
+    "material": "pique",
     "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",
       "back": "",
@@ -36,6 +38,7 @@
     "gender": "children",
     "collection": "adidas",
     "type": "shirt",
+    "material": "pique",
     "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",
       "back": "",

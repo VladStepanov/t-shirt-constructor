@@ -10,12 +10,12 @@ export default {
       return state.entities[0]
     },
     suitableModels (state, getters, rootState) {
-      console.log(getters)
+      console.log(rootState)
       return rootState.models.entities.filter(model => {
         return (
           model.collection === getters.curCollection &&
           model.gender === getters.curGender &&
-          true
+          model.material === getters.curMaterial
         )
       })
     }
