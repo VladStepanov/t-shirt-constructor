@@ -9,6 +9,7 @@ export default {
     SET_COLLECTION: (state, collection) => { state.curCollection = collection }
   },
   getters: {
-    collections: state => state.collections.collections
+    collections: state => state.collections,
+    curCollection: state => state.curCollection
   }
 }

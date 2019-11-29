@@ -5,6 +5,7 @@ import materials from './modules/materials'
 import activeColors from './modules/activeColors'
 import genders from './modules/genders'
 import collections from './modules/collections'
+import models from './modules/models'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     materials,
     activeColors,
     genders,
-    collections
+    collections,
+    models
   }
 })

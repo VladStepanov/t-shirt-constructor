@@ -9,6 +9,7 @@ export default {
     SET_GENDER: (state, gender) => { state.curGender = gender }
   },
   getters: {
-    genders: state => state.genders.genders
+    genders: state => state.genders,
+    curGender: state => state.curGender
   }
 }

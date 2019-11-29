@@ -20,6 +20,7 @@
       rightSleeve
       <BaseSelect v-model='rightSleeve' :options='colorSchema'></BaseSelect>
     </div>
+    {{ $store.getters.suitableModels }}
   </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
     BaseSelect
   },
   mounted () {
-    console.log(this.$store.state)
+    console.log(this.$store.getters.suitableModels)
   },
   computed: {
     ...mapGetters(['colorSchema']),
