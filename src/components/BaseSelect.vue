@@ -29,7 +29,7 @@
           name='option'
           v-if='$scopedSlots.option'
           :option='option'></slot>
-        <div v-else>{{ option.title }}</div>
+        <div v-else>{{ option[placeholderField] }}</div>
       </div>
     </div>
   </figure>
@@ -46,10 +46,20 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    // Describes what field in option object is placeholder for option
+    placeholderField: {
+      type: String,
+      default: 'title'
+    },
+    // Describes what field in option object is code value for option
+    fieldCode: {
+      type: String,
+      default: 'code'
     }
   },
   mounted () {
-    this.$emit('input', this.options[0].code)
+    this.$emit('input', this.options[0][this.fieldCode])
     document.addEventListener('click', this.handleOutsideClick)
   },
   destroyed () {
@@ -62,15 +72,15 @@ export default {
   },
   methods: {
     selectOption (option) {
-      this.$emit('input', option.code)
+      this.$emit('input', option[this.fieldCode])
       this.isOpened = false
     },
     handleOutsideClick (e) {
       this.isOpened = false
     },
     findTitleByCode (code) {
-      const curOption = this.options.find(option => option.code === code)
-      return curOption && curOption.title
+      const curOption = this.options.find(option => option[this.fieldCode] === code)
+      return curOption && curOption[this.placeholderField]
     }
   }
 }
