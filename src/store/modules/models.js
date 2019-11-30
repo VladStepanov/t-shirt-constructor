@@ -2,8 +2,12 @@ import tShirts from '@/models/t_shirts.json'
 
 export default {
   state: () => ({
+    curModel: '',
     entities: tShirts
   }),
+  mutations: {
+    SET_MODEL: (state, model) => { state.curModel = model }
+  },
   getters: {
     currentModel (state) {
       // Now it 0, later it can be selected from right menu

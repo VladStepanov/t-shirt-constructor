@@ -1,13 +1,6 @@
 <template>
   <div>
-    <div>
-      Бренд
-      <BaseSelect v-model='collection' :options='collections' />
-    </div>
-    <div>
-      Для кого
-      <BaseSelect v-model='gender' :options='genders' />
-    </div>
+    <Filters />
     <div>
       Body
       <BaseSelect v-model='body' :options='colorSchema'></BaseSelect>
@@ -26,34 +19,20 @@
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapGetters, mapState } from 'vuex'
+import Filters from '@/components/Filters'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Menu',
   components: {
-    BaseSelect
+    BaseSelect,
+    Filters
   },
   mounted () {
     console.log(this.$store.getters.suitableModels)
   },
   computed: {
     ...mapGetters(['colorSchema']),
-    ...mapState({
-      genders: state => state.genders.genders,
-      collections: state => state.collections.collections
-    }),
-    collection: {
-      get () { return this.$store.state.collections.curCollection },
-      set (collection) {
-        this.$store.commit('SET_COLLECTION', collection)
-      }
-    },
-    gender: {
-      get () { return this.$store.state.genders.curGender },
-      set (gender) {
-        this.$store.commit('SET_GENDER', gender)
-      }
-    },
     body: {
       get () { return this.$store.state.activeColors.front },
       set (val) {
