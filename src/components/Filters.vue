@@ -12,23 +12,13 @@
       Материал
       <BaseSelect v-model='material' :options='materialsList' />
     </div>
-    <div>
-      Доступные модели
-      <BaseSelect
-        v-if='haveModels'
-        v-model='models'
-        :options='suitableModels'
-        placeholderField='name'
-        codeField='id'
-      />
-      {{ $store.state.models.curModel }}
-    </div>
+    <button @click='showSuitableModels'>Show suitable models</button>
   </div>
 </template>
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Filters',
@@ -36,22 +26,11 @@ export default {
     BaseSelect
   },
   computed: {
-    ...mapGetters(['suitableModels']),
     ...mapState({
       genders: state => state.genders.genders,
       collections: state => state.collections.collections,
       materialsList: state => state.materials.materialsList
     }),
-    haveModels () {
-      return !!this.suitableModels.length
-    },
-    models: {
-      get () { return this.$store.state.models.curModel },
-      set (model) {
-        this.$store.commit('SET_MODEL', model)
-        console.log(this.$store.state.models.curModel)
-      }
-    },
     material: {
       get () { return this.$store.state.materials.curMaterial },
       set (material) {
@@ -69,6 +48,11 @@ export default {
       set (gender) {
         this.$store.commit('SET_GENDER', gender)
       }
+    }
+  },
+  methods: {
+    showSuitableModels () {
+      this.$modal.show('select-model')
     }
   }
 }

@@ -2,18 +2,21 @@
   <div id="app" :class='{ "dev": !isProduction }'>
     <MainScreen />
     <Menu />
+    <Modals />
   </div>
 </template>
 
 <script>
 import Menu from '@/components/Menu'
 import MainScreen from '@/components/MainScreen'
+import Modals from '@/components/Modals'
 
 export default {
   name: 'App',
   components: {
     Menu,
-    MainScreen
+    MainScreen,
+    Modals
   },
   computed: {
     isProduction () {
