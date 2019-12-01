@@ -13,8 +13,8 @@ export default {
       // Now it 0, later it can be selected from right menu
       return state.entities.find(entity => entity.id === state.curModel)
     },
-    suitableModels (state, getters, rootState) {
-      return rootState.models.entities.filter(model => {
+    suitableModels (state, getters) {
+      return state.entities.filter(model => {
         return (
           model.collection === getters.curCollection &&
           model.gender === getters.curGender &&
