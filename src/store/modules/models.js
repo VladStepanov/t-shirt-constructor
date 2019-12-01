@@ -2,7 +2,7 @@ import tShirts from '@/models/t_shirts.json'
 
 export default {
   state: () => ({
-    curModel: '',
+    curModel: null,
     entities: tShirts
   }),
   mutations: {
@@ -11,10 +11,9 @@ export default {
   getters: {
     currentModel (state) {
       // Now it 0, later it can be selected from right menu
-      return state.entities[0]
+      return state.entities.find(entity => entity.id === state.curModel)
     },
     suitableModels (state, getters, rootState) {
-      console.log(rootState)
       return rootState.models.entities.filter(model => {
         return (
           model.collection === getters.curCollection &&

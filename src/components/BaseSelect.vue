@@ -40,7 +40,6 @@ export default {
   name: 'BaseSelect',
   props: {
     value: {
-      type: String,
       required: true
     },
     options: {
@@ -53,13 +52,13 @@ export default {
       default: 'title'
     },
     // Describes what field in option object is code value for option
-    fieldCode: {
+    codeField: {
       type: String,
       default: 'code'
     }
   },
   mounted () {
-    this.$emit('input', this.options[0][this.fieldCode])
+    this.$emit('input', this.options[0][this.codeField])
     document.addEventListener('click', this.handleOutsideClick)
   },
   destroyed () {
@@ -72,14 +71,15 @@ export default {
   },
   methods: {
     selectOption (option) {
-      this.$emit('input', option[this.fieldCode])
+      console.log(`From select ${option[this.codeField]}`)
+      this.$emit('input', option[this.codeField])
       this.isOpened = false
     },
     handleOutsideClick (e) {
       this.isOpened = false
     },
     findTitleByCode (code) {
-      const curOption = this.options.find(option => option[this.fieldCode] === code)
+      const curOption = this.options.find(option => option[this.codeField] === code)
       return curOption && curOption[this.placeholderField]
     }
   }

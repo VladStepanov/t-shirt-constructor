@@ -29,7 +29,6 @@ export default {
     Filters
   },
   mounted () {
-    console.log(this.$store.getters.suitableModels)
   },
   computed: {
     ...mapGetters(['colorSchema']),

@@ -14,8 +14,14 @@
     </div>
     <div>
       Доступные модели
-      <BaseSelect v-if='haveModels' v-model='models' :options='suitableModels' placeholderField='name' placeholderCode='id' />
-      {{ models }}
+      <BaseSelect
+        v-if='haveModels'
+        v-model='models'
+        :options='suitableModels'
+        placeholderField='name'
+        codeField='id'
+      />
+      {{ $store.state.models.curModel }}
     </div>
   </div>
 </template>
@@ -43,6 +49,7 @@ export default {
       get () { return this.$store.state.models.curModel },
       set (model) {
         this.$store.commit('SET_MODEL', model)
+        console.log(this.$store.state.models.curModel)
       }
     },
     material: {

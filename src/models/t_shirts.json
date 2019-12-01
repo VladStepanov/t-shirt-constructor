@@ -6,7 +6,7 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
-    "material": "ribana",
+    "material": "pique",
     "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",
       "back": "",
@@ -35,7 +35,7 @@
     "id": 3,
     "name": "T_Shirt_3",
     "price": 300,
-    "gender": "children",
+    "gender": "male",
     "collection": "adidas",
     "type": "shirt",
     "material": "pique",
