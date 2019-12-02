@@ -45,5 +45,7 @@ export default {
   transform: translate(-50%, -50%);
   background-color: #fff;
   min-width: 700px;
+  padding: 24px 36px;
+  z-index: 1;
 }
 </style>

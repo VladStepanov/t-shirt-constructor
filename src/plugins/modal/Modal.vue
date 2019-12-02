@@ -1,13 +1,11 @@
+<template>
+  <div v-if='isVisible' class="overlay" @click.self='handleOutsideClick'>
+    <slot></slot>
+  </div>
+</template>
+
 <script>
 export default {
-  render (h) {
-    return this.isVisible && h(
-      'div',
-      {
-        class: 'overlay'
-      },
-      this.$slots.default)
-  },
   name: 'Modal',
   data () {
     return {
@@ -30,6 +28,9 @@ export default {
     hide () {
       this.isVisible = false
       this.$emit('hide')
+    },
+    handleOutsideClick (e) {
+      this.hide()
     }
   }
 }
@@ -43,7 +44,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
 }
