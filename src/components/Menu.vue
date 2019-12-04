@@ -1,59 +1,38 @@
 <template>
   <div>
-    <Filters />
-    <div>
-      Body
-      <BaseSelect v-model='body' :options='colorSchema'></BaseSelect>
+    <div class="menu">
+      <div class="menu__title">Футболка</div>
+      <MenuFilters />
+      <MenuColors />
     </div>
-    <div>
-      leftSleeve
-      <BaseSelect v-model='leftSleeve' :options='colorSchema'></BaseSelect>
-    </div>
-    <div>
-      rightSleeve
-      <BaseSelect v-model='rightSleeve' :options='colorSchema'></BaseSelect>
-    </div>
-    {{ $store.getters.suitableModels }}
   </div>
 </template>
 
 <script>
-import BaseSelect from '@/components/BaseSelect'
-import Filters from '@/components/Filters'
-import { mapGetters } from 'vuex'
+import MenuFilters from '@/components/MenuFilters'
+import MenuColors from '@/components/MenuColors'
 
 export default {
   name: 'Menu',
   components: {
-    BaseSelect,
-    Filters
-  },
-  mounted () {
-  },
-  computed: {
-    ...mapGetters(['colorSchema']),
-    body: {
-      get () { return this.$store.state.activeColors.front },
-      set (val) {
-        this.$store.commit('SET_BODY', val)
-      }
-    },
-    leftSleeve: {
-      get () { return this.$store.state.activeColors.leftSleeve },
-      set (val) {
-        this.$store.commit('SET_L_SLEEVE', val)
-      }
-    },
-    rightSleeve: {
-      get () { return this.$store.state.activeColors.rightSleeve },
-      set (val) {
-        this.$store.commit('SET_R_SLEEVE', val)
-      }
-    }
+    MenuFilters,
+    MenuColors
   }
 }
 </script>
 
-<style>
-
+<style lang='scss'>
+.menu {
+  border: 1px solid #ccc;
+  padding: 12px;
+  position: relative;
+  &__title {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 12px;
+  }
+}
 </style>

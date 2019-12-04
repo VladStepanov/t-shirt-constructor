@@ -1,17 +1,8 @@
 <template>
-  <div>
-    <div>
-      Бренд
-      <BaseSelect v-model='collection' :options='collections' />
-    </div>
-    <div>
-      Для кого
-      <BaseSelect v-model='gender' :options='genders' />
-    </div>
-    <div>
-      Материал
-      <BaseSelect v-model='material' :options='materialsList' />
-    </div>
+  <div class="filters">
+    <BaseSelect placeholder='Бренд' v-model='collection' :options='collections' />
+    <BaseSelect placeholder='Для кого' v-model='gender' :options='genders' />
+    <BaseSelect placeholder='Материал' v-model='material' :options='materialsList' />
     <button @click='showSuitableModels'>Show suitable models</button>
   </div>
 </template>
@@ -21,7 +12,7 @@ import BaseSelect from '@/components/BaseSelect'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'Filters',
+  name: 'MenuFilters',
   components: {
     BaseSelect
   },
@@ -59,5 +50,8 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-
+.filters {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
