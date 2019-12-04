@@ -2,12 +2,14 @@
   <figure class="base-select" v-click-outside="handleOutsideClick">
     <div class="base-select__active" @click='isOpened = !isOpened'>
       <figcaption class="base-select-active">
+        <span v-if='!value' class='base-select__placeholder'>
+          {{ placeholder }}
+        </span>
         <slot
-        name='active'
-        v-if='$scopedSlots.active'
-        :active='findTitleByCode(value)'
+          name='active'
+          v-else-if='$scopedSlots.active && value'
+          :active='findTitleByCode(value)'
         ></slot>
-
         <span class='base-select-active__placeholder' v-else>{{ findTitleByCode(value) }}</span>
       </figcaption>
       <div class="base-select-active">
@@ -51,6 +53,10 @@ export default {
       type: Array,
       required: true
     },
+    placeholder: {
+      type: String,
+      default: 'Default'
+    },
     // Describes what field in option object is placeholder for option
     placeholderField: {
       type: String,
@@ -63,7 +69,7 @@ export default {
     }
   },
   mounted () {
-    this.$emit('input', this.options[0][this.codeField])
+    // this.$emit('input', this.options[0][this.codeField])
     // document.addEventListener('click', this.handleOutsideClick)
   },
   // destroyed () {
@@ -109,6 +115,9 @@ export default {
     cursor: pointer;
     position: relative;
     display: flex;
+  }
+  &__placeholder {
+    padding: 5px 10px;
   }
   &-active {
     display: flex;
