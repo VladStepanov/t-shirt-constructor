@@ -3,7 +3,7 @@ import materialsList from '@/models/materials-list'
 
 export default {
   state: () => ({
-    curMaterial: 'pique',
+    curMaterial: '',
     materials,
     materialsList
   }),
