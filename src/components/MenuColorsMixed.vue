@@ -17,6 +17,18 @@
       <BaseSelect v-model='rightSleeve' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": rightSleeve }'></div>
+
+    <div class="colors-mixed__title">Горловина</div>
+    <div class="colors-mixed__options">
+      <BaseSelect v-model='neckLine' :options='colorSchema' />
+    </div>
+    <div class="colors-mixed__preview" :style='{ "background": neckLine }'></div>
+
+    <div class="colors-mixed__title">Спина</div>
+    <div class="colors-mixed__options">
+      <BaseSelect v-model='back' :options='colorSchema' />
+    </div>
+    <div class="colors-mixed__preview" :style='{ "background": back }'></div>
   </div>
 </template>
 
@@ -33,21 +45,23 @@ export default {
     ...mapGetters(['colorSchema']),
     body: {
       get () { return this.$store.state.activeColors.front },
-      set (val) {
-        this.$store.commit('SET_BODY', val)
-      }
+      set (body) { this.$store.commit('SET_BODY', body) }
     },
     leftSleeve: {
       get () { return this.$store.state.activeColors.leftSleeve },
-      set (val) {
-        this.$store.commit('SET_L_SLEEVE', val)
-      }
+      set (sleeve) { this.$store.commit('SET_L_SLEEVE', sleeve) }
     },
     rightSleeve: {
       get () { return this.$store.state.activeColors.rightSleeve },
-      set (val) {
-        this.$store.commit('SET_R_SLEEVE', val)
-      }
+      set (sleeve) { this.$store.commit('SET_R_SLEEVE', sleeve) }
+    },
+    neckLine: {
+      get () { return this.$store.state.activeColors.neckLine },
+      set (neckLine) { this.$store.commit('SET_NECKLINE', neckLine) }
+    },
+    back: {
+      get () { return this.$store.state.activeColors.back },
+      set (back) { this.$store.commit('SET_BACK', back) }
     }
   }
 }
@@ -56,8 +70,8 @@ export default {
 <style lang='scss'>
 .colors-mixed {
   display: grid;
-  align-items: center;
   gap: 12px;
+  align-items: center;
   grid-template-columns: repeat(3, max-content);
   &__title {
 
