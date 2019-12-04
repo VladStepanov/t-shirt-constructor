@@ -1,35 +1,43 @@
 <template>
-  <figure
-    class="select"
-    @click.stop='isOpened = !isOpened'
-  >
-    <div class="active">
-      <slot
+  <figure class="base-select">
+    <div class="base-select__overlay" @click.self='isOpened = false'></div>
+    <div class="base-select__active" @click='isOpened = !isOpened'>
+      <figcaption class="base-select-active">
+        <slot
         name='active'
         v-if='$scopedSlots.active'
         :active='findTitleByCode(value)'
-      ></slot>
-      <figcaption v-else class="select-active">{{ findTitleByCode(value) }}</figcaption>
-      <div class="active-image">
+        ></slot>
+
+        <span class='base-select-active__placeholder' v-else>{{ findTitleByCode(value) }}</span>
+      </figcaption>
+      <div class="base-select-active">
+        <img
+          class='base-select-active__image'
+          :class='{ "base-select-active__image--open": isOpened }'
+          src="@/assets/svg/down-chevron.svg"
+        >
         <slot name='append'></slot>
       </div>
     </div>
 
-    <div
-      v-if='isOpened'
-      class="options"
-    >
+    <div class="base-select-options__wrap">
       <div
-        v-for='(option, i) in options'
-        :key='i'
-        class="option"
-        @click.stop='selectOption(option)'
+        v-if='isOpened'
+        class="base-select-options"
       >
-        <slot
-          name='option'
-          v-if='$scopedSlots.option'
-          :option='option'></slot>
-        <div v-else>{{ option[placeholderField] }}</div>
+        <div
+          v-for='(option, i) in options'
+          :key='i'
+          class="base-select-options__item"
+          @click.stop='selectOption(option)'
+        >
+          <slot
+            name='option'
+            v-if='$scopedSlots.option'
+            :option='option'></slot>
+          <div v-else>{{ option[placeholderField] }}</div>
+        </div>
       </div>
     </div>
   </figure>
@@ -59,11 +67,11 @@ export default {
   },
   mounted () {
     this.$emit('input', this.options[0][this.codeField])
-    document.addEventListener('click', this.handleOutsideClick)
+    // document.addEventListener('click', this.handleOutsideClick)
   },
-  destroyed () {
-    document.removeEventListener('click', this.handleOutsideClick)
-  },
+  // destroyed () {
+  //   document.removeEventListener('click', this.handleOutsideClick)
+  // },
   data () {
     return {
       isOpened: false
@@ -86,31 +94,63 @@ export default {
 }
 </script>
 
-<style scoped lang='scss'>
-.select {
+<style lang='scss'>
+.base-select {
   border: 1px solid #ccc;
   display: inline-block;
-  position: relative;
-  padding: 5px 10px;
   margin: 0;
-  cursor: pointer;
-}
-.active {
-  position: relative;
-}
-.options {
-  position: absolute;
-  z-index: 1;
-  top: calc(100% + 10px);
-  left: 0;
-  width: auto;
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
-.option {
-  padding: 5px 10px;
-  &:hover {
-    background-color: darken(#fff, 30%);
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  &__active {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+  }
+  &-active {
+    display: flex;
+    &__placeholder {
+      padding: 5px 10px;
+    }
+    &__image {
+      padding: 0 10px;
+      width: 12px;
+      height: 100%;
+      border-left: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &--open {
+        transform: rotateZ(180deg);
+        border-left: none;
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+  &-options {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 10px);
+    left: 0;
+    width: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &__wrap {
+      position: relative;
+    }
+    &__item {
+      padding: 5px 10px;
+      &:hover {
+        background-color: darken(#fff, 30%);
+      }
+    }
   }
 }
+
 </style>
