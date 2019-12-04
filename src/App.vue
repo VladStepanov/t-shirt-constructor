@@ -1,5 +1,10 @@
 <template>
-  <div id="app" :class='{ "dev": !isProduction }'>
+  <div v-if='isProduction' class='t-shirt-constructor'>
+    <MainScreen />
+    <Menu />
+    <Modals />
+  </div>
+  <div v-else class="t-shirt-constructor--dev t-shirt-constructor">
     <MainScreen />
     <Menu />
     <Modals />
@@ -26,11 +31,14 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.dev {
+<style lang="scss">
+.t-shirt-constructor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+}
+.t-shirt-constructor--dev {
   max-width: 1180px;
   margin: 100px auto 0;
-  display: flex;
-  justify-content: space-around;
 }
 </style>
