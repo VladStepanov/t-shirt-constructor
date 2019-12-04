@@ -1,5 +1,5 @@
 <template>
-  <div v-if='currentModel' class="menu-colors">
+  <div class="menu-colors">
     <label v-for='(rule, i) in rules' :key='i' class='menu-colors__rules'>
       <input v-model='colorsRule' type="radio" :value='rule.component'>
       {{ rule.title }}
@@ -35,7 +35,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['colorSchema', 'currentModel']),
+    ...mapGetters(['colorSchema']),
     allParts () {
       return Object.keys(this.$store.state.activeColors)
     }

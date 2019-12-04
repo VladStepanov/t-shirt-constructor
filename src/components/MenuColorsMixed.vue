@@ -2,31 +2,31 @@
   <div class='colors-mixed'>
     <div class="colors-mixed__title">Перед</div>
     <div class="colors-mixed__options">
-      <BaseSelect v-model='body' :options='colorSchema' />
+      <BaseSelect v-model='body' :disabled='!haveCurModel' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": body }'></div>
 
     <div class="colors-mixed__title">Левый рукав</div>
     <div class="colors-mixed__options">
-      <BaseSelect v-model='leftSleeve' :options='colorSchema' />
+      <BaseSelect v-model='leftSleeve' :disabled='!haveCurModel' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": leftSleeve }'></div>
 
     <div class="colors-mixed__title">Правый рукав</div>
     <div class="colors-mixed__options">
-      <BaseSelect v-model='rightSleeve' :options='colorSchema' />
+      <BaseSelect v-model='rightSleeve' :disabled='!haveCurModel' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": rightSleeve }'></div>
 
     <div class="colors-mixed__title">Горловина</div>
     <div class="colors-mixed__options">
-      <BaseSelect v-model='neckLine' :options='colorSchema' />
+      <BaseSelect v-model='neckLine' :disabled='!haveCurModel' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": neckLine }'></div>
 
     <div class="colors-mixed__title">Спина</div>
     <div class="colors-mixed__options">
-      <BaseSelect v-model='back' :options='colorSchema' />
+      <BaseSelect v-model='back' :disabled='!haveCurModel' :options='colorSchema' />
     </div>
     <div class="colors-mixed__preview" :style='{ "background": back }'></div>
   </div>
@@ -42,7 +42,7 @@ export default {
     BaseSelect
   },
   computed: {
-    ...mapGetters(['colorSchema']),
+    ...mapGetters(['colorSchema', 'haveCurModel']),
     body: {
       get () { return this.$store.state.activeColors.front },
       set (body) { this.$store.commit('SET_BODY', body) }

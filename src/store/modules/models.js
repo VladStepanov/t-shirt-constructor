@@ -9,8 +9,11 @@ export default {
     SET_MODEL: (state, model) => { state.curModel = model }
   },
   getters: {
-    currentModel (state, getters) {
+    curModel (state, getters) {
       return getters.suitableModels.find(model => model.id === state.curModel)
+    },
+    haveCurModel (state, getters) {
+      return !!getters.curModel
     },
     suitableModels (state, getters) {
       return state.entities.filter(model => {
