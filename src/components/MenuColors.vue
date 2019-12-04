@@ -1,63 +1,53 @@
 <template>
   <div v-if='currentModel' class="menu-colors">
-    <label>
-      Однотонный
-      <input type="radio" value='Однотонный'>
+    <label v-for='(rule, i) in rules' :key='i' class='menu-colors__rules'>
+      <input v-model='colorsRule' type="radio" :value='rule.component'>
+      {{ rule.title }}
     </label>
-    <label>
-      Комбинированный
-      <input type="radio" value='Комбинированный'>
-
-    </label>
-    <div>
-      Body
-      <BaseSelect v-model='body' :options='colorSchema'></BaseSelect>
-    </div>
-    <div>
-      leftSleeve
-      <BaseSelect v-model='leftSleeve' :options='colorSchema'></BaseSelect>
-    </div>
-    <div>
-      rightSleeve
-      <BaseSelect v-model='rightSleeve' :options='colorSchema'></BaseSelect>
-    </div>
-    {{ $store.getters.suitableModels }}
+    <component :is='colorsRule' />
   </div>
 </template>
 
 <script>
-import BaseSelect from '@/components/BaseSelect'
+import MenuColorsSingle from '@/components/MenuColorsSingle'
+import MenuColorsMixed from '@/components/MenuColorsMixed'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuColors',
   components: {
-    BaseSelect
+    MenuColorsSingle,
+    MenuColorsMixed
+  },
+  data () {
+    return {
+      rules: [
+        {
+          title: 'Однотонный',
+          component: 'MenuColorsSingle'
+        },
+        {
+          title: 'Комбинированный',
+          component: 'MenuColorsMixed'
+        }
+      ],
+      colorsRule: 'MenuColorsSingle'
+    }
   },
   computed: {
     ...mapGetters(['colorSchema', 'currentModel']),
-    body: {
-      get () { return this.$store.state.activeColors.front },
-      set (val) {
-        this.$store.commit('SET_BODY', val)
-      }
-    },
-    leftSleeve: {
-      get () { return this.$store.state.activeColors.leftSleeve },
-      set (val) {
-        this.$store.commit('SET_L_SLEEVE', val)
-      }
-    },
-    rightSleeve: {
-      get () { return this.$store.state.activeColors.rightSleeve },
-      set (val) {
-        this.$store.commit('SET_R_SLEEVE', val)
-      }
+    allParts () {
+      return Object.keys(this.$store.state.activeColors)
     }
   }
 }
 </script>
 
 <style lang='scss'>
-
+.menu-colors {
+  &__rules {
+    display: inline-block;
+    margin: 12px 0;
+  }
+}
 </style>
