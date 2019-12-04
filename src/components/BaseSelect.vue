@@ -1,5 +1,9 @@
 <template>
-  <figure class="base-select" v-click-outside="handleOutsideClick">
+  <figure
+    class="base-select"
+    :class='classes'
+    v-click-outside="handleOutsideClick"
+  >
     <div class="base-select__active" @click='isOpened = !isOpened'>
       <figcaption class="base-select-active">
         <span v-if='!value' class='base-select__placeholder'>
@@ -50,8 +54,12 @@ export default {
       required: true
     },
     options: {
-      type: Array,
+      // type: Array,
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     placeholder: {
       type: String,
@@ -68,13 +76,13 @@ export default {
       default: 'code'
     }
   },
-  mounted () {
-    // this.$emit('input', this.options[0][this.codeField])
-    // document.addEventListener('click', this.handleOutsideClick)
+  computed: {
+    classes () {
+      return {
+        'base-select--disabled': this.disabled
+      }
+    }
   },
-  // destroyed () {
-  //   document.removeEventListener('click', this.handleOutsideClick)
-  // },
   data () {
     return {
       isOpened: false
@@ -103,6 +111,10 @@ export default {
   display: inline-block;
   margin: 0;
   position: relative;
+  &--disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
   &__overlay {
     position: absolute;
     top: 0;
