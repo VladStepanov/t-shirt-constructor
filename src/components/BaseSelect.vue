@@ -1,6 +1,5 @@
 <template>
-  <figure class="base-select">
-    <div class="base-select__overlay" @click.self='isOpened = false'></div>
+  <figure class="base-select" v-click-outside="handleOutsideClick">
     <div class="base-select__active" @click='isOpened = !isOpened'>
       <figcaption class="base-select-active">
         <slot
@@ -21,23 +20,21 @@
       </div>
     </div>
 
-    <div class="base-select-options__wrap">
+    <div
+      v-if='isOpened'
+      class="base-select-options"
+    >
       <div
-        v-if='isOpened'
-        class="base-select-options"
+        v-for='(option, i) in options'
+        :key='i'
+        class="base-select-options__item"
+        @click.stop='selectOption(option)'
       >
-        <div
-          v-for='(option, i) in options'
-          :key='i'
-          class="base-select-options__item"
-          @click.stop='selectOption(option)'
-        >
-          <slot
-            name='option'
-            v-if='$scopedSlots.option'
-            :option='option'></slot>
-          <div v-else>{{ option[placeholderField] }}</div>
-        </div>
+        <slot
+          name='option'
+          v-if='$scopedSlots.option'
+          :option='option'></slot>
+        <div v-else>{{ option[placeholderField] }}</div>
       </div>
     </div>
   </figure>
@@ -83,7 +80,7 @@ export default {
       this.$emit('input', option[this.codeField])
       this.isOpened = false
     },
-    handleOutsideClick (e) {
+    handleOutsideClick () {
       this.isOpened = false
     },
     findTitleByCode (code) {
@@ -99,6 +96,7 @@ export default {
   border: 1px solid #ccc;
   display: inline-block;
   margin: 0;
+  position: relative;
   &__overlay {
     position: absolute;
     top: 0;
@@ -141,9 +139,6 @@ export default {
     background-color: #fff;
     border: 1px solid #ccc;
     cursor: pointer;
-    &__wrap {
-      position: relative;
-    }
     &__item {
       padding: 5px 10px;
       &:hover {
