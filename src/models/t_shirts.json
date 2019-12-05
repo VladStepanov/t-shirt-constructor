@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "T_Shirt_1",
     "price": 300,
     "gender": "male",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "T_Shirt_2",
     "price": 200,
     "gender": "female",
@@ -32,12 +32,44 @@
     }
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "T_Shirt_3",
     "price": 300,
     "gender": "male",
     "collection": "adidas",
     "type": "shirt",
+    "material": "pique",
+    "paths": {
+      "front": "M89 165V1L157 42L225 1V165H89Z",
+      "back": "",
+      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+      "neckLine": ""
+    }
+  },
+  {
+    "id": "4",
+    "name": "T_Shirt_4",
+    "price": 300,
+    "gender": "male",
+    "collection": "adidas",
+    "type": "t-shirt",
+    "material": "pique",
+    "paths": {
+      "front": "M89 165V1L157 42L225 1V165H89Z",
+      "back": "",
+      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+      "neckLine": ""
+    }
+  },
+  {
+    "id": "5",
+    "name": "T_Shirt_5",
+    "price": 300,
+    "gender": "male",
+    "collection": "adidas",
+    "type": "t-shirt",
     "material": "pique",
     "paths": {
       "front": "M89 165V1L157 42L225 1V165H89Z",

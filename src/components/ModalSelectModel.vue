@@ -1,44 +1,49 @@
 <template>
   <Modal name='select-model'>
-    <div class="modal">
-      Choose 1 model
-      <BaseSelect
-        v-if='haveModels'
-        v-model='model'
-        :options='suitableModels'
-        placeholderField='name'
-        codeField='id'
-      />
+    <div class="select-model">
+      <div class="select-model__list">
+        <ModalSelectModelItem
+          v-for='(model, i) in suitableModels'
+          :key='i'
+          :paths='model.paths'
+          :name='model.name'
+          :id='model.id'
+          :activeId='curModel && curModel.id'
+          @click='selectModel'
+        />
+      </div>
     </div>
   </Modal>
 </template>
 
 <script>
-import BaseSelect from '@/components/BaseSelect'
+import ModalSelectModelItem from '@/components/ModalSelectModelItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'ModalSelectModel',
   components: {
-    BaseSelect
+    ModalSelectModelItem
   },
   computed: {
-    ...mapGetters(['suitableModels']),
+    ...mapGetters(['suitableModels', 'curModel']),
     model: {
       get () { return this.$store.state.models.curModel },
       set (model) {
         this.$store.commit('SET_MODEL', model)
       }
-    },
-    haveModels () {
-      return !!this.suitableModels.length
+    }
+  },
+  methods: {
+    selectModel (model) {
+      this.$store.commit('SET_MODEL', model)
     }
   }
 }
 </script>
 
-<style scoped lang='scss'>
-.modal {
+<style lang='scss'>
+.select-model {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,5 +52,10 @@ export default {
   min-width: 700px;
   padding: 24px 36px;
   z-index: 1;
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
 }
 </style>
