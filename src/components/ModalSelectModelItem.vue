@@ -4,16 +4,16 @@
       <path
         v-for='(path, role, i) in paths'
         :key='i'
-        :fill='activeColors[role]'
         :d='path'
       />
+        <!-- :fill='activeColors[role]' -->
     </svg>
     <div class="model-item__title">{{ name }}</div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
   name: 'ModalSelectModelItem',
@@ -36,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['activeColors']),
+    // ...mapState(['activeColors']),
     listeners () {
       return {
         ...this.$listeners,

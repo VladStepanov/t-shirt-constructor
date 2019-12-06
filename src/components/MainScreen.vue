@@ -3,7 +3,7 @@
     <div v-if='haveCurModel'>
       <svg width="301" height="166" viewBox="0 0 301 166">
         <path
-          v-for='(path, role, i) in filteredModelPaths'
+          v-for='(path, role, i) in curModelPaths'
           :key='i'
           :fill='activeColors[role]'
           :d='path'
@@ -20,15 +20,8 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'MainScreen',
   computed: {
-    ...mapGetters(['curModel', 'haveCurModel']),
-    ...mapState(['activeColors']),
-    filteredModelPaths () {
-      const copy = { ...this.curModel.paths }
-      Object.entries(this.curModel.paths).forEach(([role, path]) => {
-        if (!path) delete copy[role]
-      })
-      return copy
-    }
+    ...mapGetters(['curModel', 'curModelPaths', 'haveCurModel']),
+    ...mapState(['activeColors'])
   }
 }
 </script>
