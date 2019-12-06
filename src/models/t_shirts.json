@@ -78,5 +78,21 @@
       "leftSleeve": "M81 1L1 42V74L81 30V1Z",
       "neckLine": ""
     }
+  },
+  {
+    "id": "6",
+    "name": "T_Shirt_6",
+    "price": 300,
+    "gender": "male",
+    "collection": "adidas",
+    "type": "t-shirt",
+    "material": "pique",
+    "paths": {
+      "front": "",
+      "back": "M89 165V1L157 42L225 1V165H89Z",
+      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+      "neckLine": ""
+    }
   }
 ]

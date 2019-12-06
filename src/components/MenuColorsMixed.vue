@@ -1,49 +1,28 @@
 <template>
   <div class='colors-mixed'>
-    <div class="colors-mixed__title">Перед</div>
-    <div class="colors-mixed__options">
-      <BaseSelect v-model='body' :disabled='!haveCurModel' :options='colorSchema' />
-    </div>
-    <div class="colors-mixed__preview" :style='{ "background": body }'></div>
-
-    <div class="colors-mixed__title">Левый рукав</div>
-    <div class="colors-mixed__options">
-      <BaseSelect v-model='leftSleeve' :disabled='!haveCurModel' :options='colorSchema' />
-    </div>
-    <div class="colors-mixed__preview" :style='{ "background": leftSleeve }'></div>
-
-    <div class="colors-mixed__title">Правый рукав</div>
-    <div class="colors-mixed__options">
-      <BaseSelect v-model='rightSleeve' :disabled='!haveCurModel' :options='colorSchema' />
-    </div>
-    <div class="colors-mixed__preview" :style='{ "background": rightSleeve }'></div>
-
-    <div class="colors-mixed__title">Горловина</div>
-    <div class="colors-mixed__options">
-      <BaseSelect v-model='neckLine' :disabled='!haveCurModel' :options='colorSchema' />
-    </div>
-    <div class="colors-mixed__preview" :style='{ "background": neckLine }'></div>
-
-    <div class="colors-mixed__title">Спина</div>
-    <div class="colors-mixed__options">
-      <BaseSelect v-model='back' :disabled='!haveCurModel' :options='colorSchema' />
-    </div>
-    <div class="colors-mixed__preview" :style='{ "background": back }'></div>
+    <MenuColorsMixedItem
+      v-for='path in pathsViewForCurModel'
+      :key='path.title'
+      :title='path.title'
+      :pathCode='path.code'
+      :colorCode='determineColor(path.code)'
+      @input='controller'
+    />
   </div>
 </template>
 
 <script>
-import BaseSelect from '@/components/BaseSelect'
+import MenuColorsMixedItem from '@/components/MenuColorsMixedItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuColorsMixed',
   components: {
-    BaseSelect
+    MenuColorsMixedItem
   },
   computed: {
-    ...mapGetters(['colorSchema', 'haveCurModel']),
-    body: {
+    ...mapGetters(['colorSchema', 'haveCurModel', 'pathsViewForCurModel']),
+    front: {
       get () { return this.$store.state.activeColors.front },
       set (body) { this.$store.commit('SET_BODY', body) }
     },
@@ -63,25 +42,21 @@ export default {
       get () { return this.$store.state.activeColors.back },
       set (back) { this.$store.commit('SET_BACK', back) }
     }
+  },
+  methods: {
+    controller ({ from, value }) {
+      this.$store.dispatch('controller', { from, value })
+    },
+    determineColor (pathCode) {
+      // refs to computed
+      return this[pathCode]
+    }
   }
 }
 </script>
 
 <style lang='scss'>
 .colors-mixed {
-  display: grid;
-  gap: 12px;
-  align-items: center;
-  grid-template-columns: repeat(3, max-content);
-  &__title {
 
-  }
-  &__options {
-
-  }
-  &__preview {
-    width: 24px;
-    height: 24px;
-  }
 }
 </style>
