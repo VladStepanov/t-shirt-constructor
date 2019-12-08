@@ -4,6 +4,7 @@
       <div class="menu__title">Футболка</div>
       <MenuFilters />
       <MenuColors />
+      <span>Suitable models: {{ $store.getters['filters/suitableModels'].map(model => model.name) }}</span>
     </div>
   </div>
 </template>

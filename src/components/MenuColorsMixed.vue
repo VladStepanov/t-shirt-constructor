@@ -21,25 +21,25 @@ export default {
     MenuColorsMixedItem
   },
   computed: {
-    ...mapGetters(['colorSchema', 'haveCurModel', 'pathsViewForCurModel']),
+    ...mapGetters(['pathsViewForCurModel']),
     front: {
-      get () { return this.$store.state.activeColors.front },
+      get () { return this.$store.state.colors.front },
       set (body) { this.$store.commit('SET_BODY', body) }
     },
     leftSleeve: {
-      get () { return this.$store.state.activeColors.leftSleeve },
+      get () { return this.$store.state.colors.leftSleeve },
       set (sleeve) { this.$store.commit('SET_L_SLEEVE', sleeve) }
     },
     rightSleeve: {
-      get () { return this.$store.state.activeColors.rightSleeve },
+      get () { return this.$store.state.colors.rightSleeve },
       set (sleeve) { this.$store.commit('SET_R_SLEEVE', sleeve) }
     },
     neckLine: {
-      get () { return this.$store.state.activeColors.neckLine },
+      get () { return this.$store.state.colors.neckLine },
       set (neckLine) { this.$store.commit('SET_NECKLINE', neckLine) }
     },
     back: {
-      get () { return this.$store.state.activeColors.back },
+      get () { return this.$store.state.colors.back },
       set (back) { this.$store.commit('SET_BACK', back) }
     }
   },

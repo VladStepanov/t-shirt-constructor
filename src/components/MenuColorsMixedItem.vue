@@ -12,7 +12,7 @@
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuColorsMixedItem',
@@ -34,7 +34,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['colorSchema']),
+    // ...mapGetters(['colorSchema']),
+    colorSchema () {
+      console.log(this.$store.getters)
+      return this.$store.getters.colorSchema
+    },
     handleSelect: {
       get () { return this.colorCode },
       set (selectedColor) {

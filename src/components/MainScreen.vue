@@ -1,11 +1,11 @@
 <template>
   <div class='main-screen'>
-    <div v-if='haveCurModel'>
+    <div v-if='haveSelectedModel'>
       <svg width="301" height="166" viewBox="0 0 301 166">
         <path
           v-for='(path, role, i) in curModelPaths'
           :key='i'
-          :fill='activeColors[role]'
+          :fill='$store.state.colors[role]'
           :d='path'
         />
       </svg>
@@ -20,8 +20,11 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'MainScreen',
   computed: {
-    ...mapGetters(['curModel', 'curModelPaths', 'haveCurModel']),
-    ...mapState(['activeColors'])
+    ...mapGetters({
+      haveSelectedModel: 'haveSelectedModel'
+    }),
+    ...mapGetters(['curModelPaths', 'curModel']),
+    ...mapState(['colors'])
   }
 }
 </script>

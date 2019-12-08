@@ -26,11 +26,14 @@ export default {
     ModalSelectModelItem
   },
   computed: {
-    ...mapGetters(['suitableModels', 'curModel']),
+    ...mapGetters({
+      suitableModels: 'filters/suitableModels',
+      curModel: 'curModel'
+    }),
     model: {
       get () { return this.$store.state.models.curModel },
       set (model) {
-        this.$store.commit('SET_MODEL', model)
+        this.selectModel(model)
       }
     }
   },

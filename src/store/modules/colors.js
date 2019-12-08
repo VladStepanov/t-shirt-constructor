@@ -1,4 +1,4 @@
-import paths from '@/models/t_shirts-paths'
+import paths from '@/models/entities-paths'
 
 const mutationsState = {
   'front': 'SET_FRONT',
