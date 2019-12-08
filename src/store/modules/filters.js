@@ -8,9 +8,21 @@ export default {
     curType: '',
     curCollection: '',
     curGender: '',
-    types,
-    collections,
-    genders
+    types: [
+      {
+        title: 'Все',
+        code: ''
+      }, ...types],
+    collections: [
+      {
+        title: 'Все',
+        code: ''
+      }, ...collections],
+    genders: [
+      {
+        title: 'Все',
+        code: ''
+      }, ...genders]
   }),
   mutations: {
     SET_TYPE: (state, type) => { state.curType = type },
