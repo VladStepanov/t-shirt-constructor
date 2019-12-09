@@ -25,6 +25,11 @@
       v-model='material'
       :options='materialsList'
     />
+    <BaseSelect
+      placeholder='Размер'
+      v-model='size'
+      :options='sizes'
+    />
   </div>
 </template>
 
@@ -42,11 +47,18 @@ export default {
       collections: state => state.filters.collections,
       types: state => state.filters.types,
       genders: state => state.filters.genders,
-      materialsList: state => state.materials.materialsList
+      materialsList: state => state.materials.materialsList,
+      sizes: state => state.sizes.sizes
     }),
     ...mapGetters({
       haveSelectedModel: 'haveSelectedModel'
     }),
+    size: {
+      get () { return this.$store.state.sizes.curSize },
+      set (size) {
+        this.$store.commit('SET_SIZE', size)
+      }
+    },
     type: {
       get () { return this.$store.state.filters.curType },
       set (type) { this.$store.commit('filters/SET_TYPE', type) }
