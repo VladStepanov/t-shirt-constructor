@@ -11,17 +11,20 @@
       :options='genders'
     />
     <BaseSelect
+      placeholder='Тип'
+      v-model='type'
+      :options='types'
+    />
+    <button class='filters__reset' @click='resetFilters'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill='red' d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg>
+    </button>
+    <button @click='showSuitableModels'>Show suitable models</button>
+    <BaseSelect
       v-if='haveSelectedModel'
       placeholder='Материал'
       v-model='material'
       :options='materialsList'
     />
-    <BaseSelect
-      placeholder='Тип'
-      v-model='type'
-      :options='types'
-    />
-    <button @click='showSuitableModels'>Show suitable models</button>
   </div>
 </template>
 
@@ -70,15 +73,25 @@ export default {
   methods: {
     showSuitableModels () {
       this.$modal.show('select-model')
+    },
+    resetFilters () {
+      this.$store.dispatch('filters/resetFilters')
     }
   }
 }
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
 .filters {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: flex-start;
+  align-items: center;
+  gap: 12px;
+  &__reset {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
 </style>

@@ -29,6 +29,15 @@ export default {
     SET_COLLECTION: (state, collection) => { state.curCollection = collection },
     SET_GENDER: (state, gender) => { state.curGender = gender }
   },
+  actions: {
+    resetFilters ({ commit }) {
+      commit('SET_TYPE', '')
+      commit('SET_COLLECTION', '')
+      commit('SET_GENDER', '')
+      commit('SET_MODEL', '', { root: true })
+      commit('SET_MATERIAL', '', { root: true })
+    }
+  },
   getters: {
     suitableModels: (state, getters, rootState) => {
       return rootState.models.entities
