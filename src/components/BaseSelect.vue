@@ -90,7 +90,8 @@ export default {
   },
   methods: {
     selectOption (option) {
-      console.log(`From select ${option[this.codeField]}`)
+      if (this.disabled) return
+
       this.$emit('input', option[this.codeField])
       this.isOpened = false
     },
@@ -98,6 +99,8 @@ export default {
       this.isOpened = false
     },
     findTitleByCode (code) {
+      if (this.disabled) return
+
       const curOption = this.options.find(option => option[this.codeField] === code)
       return curOption && curOption[this.placeholderField]
     }
@@ -111,6 +114,7 @@ export default {
   display: inline-block;
   margin: 0;
   position: relative;
+  justify-self: flex-start;
   &--disabled {
     pointer-events: none;
     opacity: .5;

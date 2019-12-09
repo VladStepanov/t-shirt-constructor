@@ -4,6 +4,7 @@
     <BaseSelect
       class="colors-mixed-item__options"
       :options='colorSchema'
+      :disabled='!haveCurMaterial'
       v-model='handleSelect'
     />
     <div class="colors-mixed-item__preview" :style='{ "background": colorCode }'></div>
@@ -12,7 +13,7 @@
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuColorsMixedItem',
@@ -34,11 +35,7 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters(['colorSchema']),
-    colorSchema () {
-      console.log(this.$store.getters)
-      return this.$store.getters.colorSchema
-    },
+    ...mapGetters(['colorSchema', 'haveCurMaterial']),
     handleSelect: {
       get () { return this.colorCode },
       set (selectedColor) {
@@ -53,8 +50,9 @@ export default {
 .colors-mixed-item {
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
   &__title {
-
+    flex-basis: 130px;
   }
   &__options {
     margin: 0 20px;

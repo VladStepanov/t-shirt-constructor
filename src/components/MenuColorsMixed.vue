@@ -21,7 +21,7 @@ export default {
     MenuColorsMixedItem
   },
   computed: {
-    ...mapGetters(['pathsViewForCurModel']),
+    ...mapGetters(['pathsViewForCurModel', 'haveCurMaterial']),
     front: {
       get () { return this.$store.state.colors.front },
       set (body) { this.$store.commit('SET_BODY', body) }
@@ -57,6 +57,9 @@ export default {
 
 <style lang='scss'>
 .colors-mixed {
-
+  // display: grid;
+  // grid-template-columns: repeat(3, max-content);
+  // align-items: center;
+  // gap: 12px;
 }
 </style>
