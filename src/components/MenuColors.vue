@@ -5,6 +5,7 @@
       {{ rule.title }}
     </label>
     <component :is='determineComponent(ruleController)' />
+    <button @click='resetColors'>Reset colors</button>
   </div>
 </template>
 
@@ -37,6 +38,9 @@ export default {
   methods: {
     determineComponent (ruleCode) {
       return this.rules && this.rules.find(rule => rule.code === this.curRule).component
+    },
+    resetColors () {
+      this.$store.dispatch('resetColors')
     }
   }
 }

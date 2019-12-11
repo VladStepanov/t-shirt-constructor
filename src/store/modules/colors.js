@@ -44,7 +44,15 @@ export default {
     SET_L_SLEEVE: (state, sleevesColor) => { state[state.curRule].leftSleeve = sleevesColor },
     SET_BACK: (state, backColor) => { state[state.curRule].back = backColor },
     SET_NECKLINE: (state, neckLineColor) => { state[state.curRule].neckLine = neckLineColor },
-    SET_RULE: (state, rule) => { state.curRule = rule }
+    SET_RULE: (state, rule) => { state.curRule = rule },
+    RESET_ALL_COLORS: (state) => {
+      for (let part in state.mixed) {
+        state.mixed[part] = ''
+      }
+      for (let part in state.single) {
+        state.single[part] = ''
+      }
+    }
   },
   actions: {
     controller ({ commit }, { from, value }) {
@@ -56,6 +64,9 @@ export default {
       commit('SET_R_SLEEVE', color)
       commit('SET_L_SLEEVE', color)
       commit('SET_NECKLINE', color)
+    },
+    resetColors ({ commit, dispatch }) {
+      commit('RESET_ALL_COLORS')
     }
   },
   getters: {
