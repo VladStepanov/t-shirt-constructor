@@ -1,12 +1,19 @@
 <template>
-  <div>
-    single
+  <div class='colors-single'>
+    <MenuColorsSingleItem
+
+    />
   </div>
 </template>
 
 <script>
+import MenuColorsSingleItem from '@/components/MenuColorsSingleItem'
+
 export default {
-  name: 'MenuColorsSingle'
+  name: 'MenuColorsSingle',
+  components: {
+    MenuColorsSingleItem
+  }
 }
 </script>
 

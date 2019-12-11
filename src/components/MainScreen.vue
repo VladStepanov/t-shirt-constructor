@@ -5,7 +5,7 @@
         <path
           v-for='(path, role, i) in curModelPaths'
           :key='i'
-          :fill='$store.state.colors[role]'
+          :fill='colors[curRule][role]'
           :d='path'
         />
       </svg>
@@ -22,6 +22,9 @@ export default {
   computed: {
     ...mapGetters({
       haveSelectedModel: 'haveSelectedModel'
+    }),
+    ...mapState({
+      curRule: state => state.colors.curRule
     }),
     ...mapGetters(['curModelPaths', 'curModel']),
     ...mapState(['colors'])

@@ -1,17 +1,17 @@
 <template>
   <div class="menu-colors">
     <label v-for='(rule, i) in rules' :key='i' class='menu-colors__rules'>
-      <input v-model='colorsRule' type="radio" :value='rule.component'>
+      <input :value='rule.code' v-model='ruleController' type="radio">
       {{ rule.title }}
     </label>
-    <component :is='colorsRule' />
+    <component :is='determineComponent(ruleController)' />
   </div>
 </template>
 
 <script>
 import MenuColorsSingle from '@/components/MenuColorsSingle'
 import MenuColorsMixed from '@/components/MenuColorsMixed'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MenuColors',
@@ -19,25 +19,24 @@ export default {
     MenuColorsSingle,
     MenuColorsMixed
   },
-  data () {
-    return {
-      rules: [
-        {
-          title: 'Однотонный',
-          component: 'MenuColorsSingle'
-        },
-        {
-          title: 'Комбинированный',
-          component: 'MenuColorsMixed'
-        }
-      ],
-      colorsRule: 'MenuColorsSingle'
-    }
-  },
   computed: {
     ...mapGetters(['colorSchema']),
-    allParts () {
-      return Object.keys(this.$store.state.activeColors)
+    ...mapState({
+      rules: state => state.colors.rules,
+      curRule: state => state.colors.curRule
+    }),
+    ruleController: {
+      get () {
+        return this.curRule
+      },
+      set (rule) {
+        this.$store.commit('SET_RULE', rule)
+      }
+    }
+  },
+  methods: {
+    determineComponent (ruleCode) {
+      return this.rules && this.rules.find(rule => rule.code === this.curRule).component
     }
   }
 }

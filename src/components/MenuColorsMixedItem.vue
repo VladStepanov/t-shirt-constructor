@@ -1,6 +1,6 @@
 <template>
   <div class='colors-mixed-item'>
-    <div class="colors-mixed-item__title">{{ title }}</div>
+    <div v-if='title' class="colors-mixed-item__title">{{ title }}</div>
     <BaseSelect
       class="colors-mixed-item__options"
       :options='colorSchema'
@@ -53,11 +53,12 @@ export default {
   margin-bottom: 12px;
   &__title {
     flex-basis: 130px;
+    margin-right: 20px;
   }
   &__options {
-    margin: 0 20px;
   }
   &__preview {
+    margin-left: 20px;
     width: 24px;
     height: 24px;
   }

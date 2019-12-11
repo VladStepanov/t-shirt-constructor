@@ -13,7 +13,7 @@
 
 <script>
 import MenuColorsMixedItem from '@/components/MenuColorsMixedItem'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MenuColorsMixed',
@@ -22,24 +22,27 @@ export default {
   },
   computed: {
     ...mapGetters(['pathsViewForCurModel', 'haveCurMaterial']),
+    ...mapState({
+      curRule: state => state.colors.curRule
+    }),
     front: {
-      get () { return this.$store.state.colors.front },
+      get () { return this.$store.state.colors[this.curRule].front },
       set (body) { this.$store.commit('SET_BODY', body) }
     },
     leftSleeve: {
-      get () { return this.$store.state.colors.leftSleeve },
+      get () { return this.$store.state.colors[this.curRule].leftSleeve },
       set (sleeve) { this.$store.commit('SET_L_SLEEVE', sleeve) }
     },
     rightSleeve: {
-      get () { return this.$store.state.colors.rightSleeve },
+      get () { return this.$store.state.colors[this.curRule].rightSleeve },
       set (sleeve) { this.$store.commit('SET_R_SLEEVE', sleeve) }
     },
     neckLine: {
-      get () { return this.$store.state.colors.neckLine },
+      get () { return this.$store.state.colors[this.curRule].neckLine },
       set (neckLine) { this.$store.commit('SET_NECKLINE', neckLine) }
     },
     back: {
-      get () { return this.$store.state.colors.back },
+      get () { return this.$store.state.colors[this.curRule].back },
       set (back) { this.$store.commit('SET_BACK', back) }
     }
   },
