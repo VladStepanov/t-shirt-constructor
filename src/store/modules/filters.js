@@ -36,6 +36,7 @@ export default {
       commit('SET_GENDER', '')
       commit('SET_MODEL', '', { root: true })
       commit('SET_MATERIAL', '', { root: true })
+      commit('SET_SIZE', '', { root: true })
     }
   },
   getters: {
