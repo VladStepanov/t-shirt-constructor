@@ -1,33 +1,29 @@
 <template>
   <div class='main-screen'>
     <div v-if='haveSelectedModel'>
-      <svg width="301" height="166" viewBox="0 0 301 166">
-        <path
-          v-for='(path, role, i) in curModelPaths'
-          :key='i'
-          :fill='colors[curRule][role]'
-          :d='path'
-        />
-      </svg>
+      <ToggleView v-if='haveRearSide' />
+      <ShirtPreview :paths='curModelPathsWithView' colorized />
       <div class="main-screen__title">{{ curModel.name }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import ToggleView from '@/components/ToggleView'
+import ShirtPreview from '@/components/ShirtPreview'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MainScreen',
+  components: {
+    ToggleView,
+    ShirtPreview
+  },
   computed: {
-    ...mapGetters({
-      haveSelectedModel: 'haveSelectedModel'
-    }),
     ...mapState({
       curRule: state => state.colors.curRule
     }),
-    ...mapGetters(['curModelPaths', 'curModel']),
-    ...mapState(['colors'])
+    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveSelectedModel', 'haveRearSide'])
   }
 }
 </script>

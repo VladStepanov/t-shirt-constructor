@@ -65,7 +65,7 @@ export default {
       commit('SET_L_SLEEVE', color)
       commit('SET_NECKLINE', color)
     },
-    resetColors ({ commit, dispatch }) {
+    resetColors ({ commit }) {
       commit('RESET_ALL_COLORS')
     }
   },
@@ -73,7 +73,7 @@ export default {
     pathsViewForCurModel (state, getters) {
       if (!getters.curModel) return null
 
-      return Object.keys(getters.curModelPaths).map(path => ({
+      return Object.keys(getters.curModelPathsWithAllViews).map(path => ({
         title: paths[path],
         code: path
       }))

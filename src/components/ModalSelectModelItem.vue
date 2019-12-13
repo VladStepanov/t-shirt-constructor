@@ -1,22 +1,18 @@
 <template>
   <div class='model-item' :class='classes' v-bind='$attrs' v-on='listeners'>
-    <svg class='model-item__preview' viewBox="0 0 301 166">
-      <path
-        v-for='(path, role, i) in paths'
-        :key='i'
-        :d='path'
-      />
-        <!-- :fill='activeColors[role]' -->
-    </svg>
+    <ShirtPreview class='model-item__preview' :paths='paths.front' />
     <div class="model-item__title">{{ name }}</div>
   </div>
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import ShirtPreview from '@/components/ShirtPreview'
 
 export default {
   name: 'ModalSelectModelItem',
+  components: {
+    ShirtPreview
+  },
   props: {
     paths: {
       type: Object,
@@ -36,7 +32,6 @@ export default {
     }
   },
   computed: {
-    // ...mapState(['activeColors']),
     listeners () {
       return {
         ...this.$listeners,

@@ -6,6 +6,7 @@ import colors from './modules/colors'
 import filters from './modules/filters'
 import models from './modules/models'
 import sizes from './modules/sizes'
+import views from './modules/views'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     colors,
     filters,
     models,
-    sizes
+    sizes,
+    views
   }
 })

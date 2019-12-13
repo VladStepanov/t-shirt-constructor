@@ -8,11 +8,15 @@
     "type": "t-shirt",
     "material": "pique",
     "paths": {
-      "front": "M89 165V1L157 42L225 1V165H89Z",
-      "back": "",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      },
+      "rear": {
+        "back": "M1 1H142V192H1V1Z"
+      }
     }
   },
   {
@@ -24,11 +28,15 @@
     "type": "t-shirt",
     "material": "pique",
     "paths": {
-      "front": "M89 165V1L157 42L225 1V165H89Z",
-      "back": "",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      },
+      "rear": {
+        "back": "M1 1H142V192H1V1Z"
+      }
     }
   },
   {
@@ -40,11 +48,15 @@
     "type": "shirt",
     "material": "pique",
     "paths": {
-      "front": "M89 165V1L157 42L225 1V165H89Z",
-      "back": "",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      },
+      "rear": {
+        "back": "M1 1H142V192H1V1Z"
+      }
     }
   },
   {
@@ -56,11 +68,15 @@
     "type": "t-shirt",
     "material": "pique",
     "paths": {
-      "front": "M89 165V1L157 42L225 1V165H89Z",
-      "back": "",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      },
+      "rear": {
+        "back": "M1 1H142V192H1V1Z"
+      }
     }
   },
   {
@@ -72,11 +88,12 @@
     "type": "t-shirt",
     "material": "pique",
     "paths": {
-      "front": "M89 165V1L157 42L225 1V165H89Z",
-      "back": "",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      }
     }
   },
   {
@@ -88,11 +105,15 @@
     "type": "t-shirt",
     "material": "pique",
     "paths": {
-      "front": "",
-      "back": "M89 165V1L157 42L225 1V165H89Z",
-      "rightSleeve": "M233 30V1L300 42V74L233 30Z",
-      "leftSleeve": "M81 1L1 42V74L81 30V1Z",
-      "neckLine": ""
+      "front": {
+        "front": "M89 165V1L157 42L225 1V165H89Z",
+        "rightSleeve": "M233 30V1L300 42V74L233 30Z",
+        "leftSleeve": "M81 1L1 42V74L81 30V1Z",
+        "neckLine": ""
+      },
+      "rear": {
+        "back": "M1 1H142V192H1V1Z"
+      }
     }
   }
 ]

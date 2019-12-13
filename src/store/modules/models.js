@@ -1,4 +1,5 @@
 import entities from '@/models/entities.json'
+import _ from 'lodash'
 
 export default {
   state: () => ({
@@ -6,21 +7,33 @@ export default {
     entities
   }),
   mutations: {
-    SET_MODEL: (state, modelId) => { state.curModel = modelId }
+    SET_MODEL: (state, modelId) => { state.curModel = modelId },
+    SET_VIEW: (state, view) => { state.curView = view }
   },
   getters: {
     curModel: (state, getters) => {
       return getters['filters/suitableModels'].find(entity => entity.id === state.curModel)
     },
     curModelPaths: (state, getters) => {
-      const copy = { ...getters.curModel.paths }
+      const modelPaths = _.cloneDeep(getters.curModel.paths)
 
-      Object.entries(copy).forEach(([key, path]) => {
-        if (!path) delete copy[key]
-      })
+      for (let side in modelPaths) {
+        for (let part in modelPaths[side]) {
+          if (!modelPaths[side][part]) {
+            delete modelPaths[side][part]
+          }
+        }
+      }
 
-      return copy
+      return modelPaths
     },
-    haveSelectedModel: (state, getters) => !!getters.curModel
+    curModelPathsWithView: (state, getters) => {
+      return getters.curModelPaths[getters.curView]
+    },
+    curModelPathsWithAllViews: (state, getters) => {
+      return { ...getters.curModelPaths.front, ...getters.curModelPaths.rear }
+    },
+    haveSelectedModel: (state, getters) => !!getters.curModel,
+    haveRearSide: (state, getters) => !!getters.curModelPaths.rear
   }
 }
