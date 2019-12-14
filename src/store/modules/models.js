@@ -11,15 +11,24 @@ export default {
     SET_VIEW: (state, view) => { state.curView = view }
   },
   actions: {
-    setModel ({ commit, dispatch }, model) {
-      commit('SET_MATERIAL', '')
-      commit('SET_MODEL', model)
+    setModel ({ commit, dispatch, getters: { curMaterial, findModelById } }, model) {
+      const newModel = findModelById(model)
+
+      const haveNewModelOldMaterial = newModel.materials.some(({ code }) => code === curMaterial)
+      if (curMaterial && haveNewModelOldMaterial) {
+        commit('SET_MODEL', model)
+      } else {
+        commit('SET_MATERIAL', '')
+        dispatch('resetColors')
+        commit('SET_MODEL', model)
+      }
     }
   },
   getters: {
     curModel: (state, getters) => {
       return getters['filters/suitableModels'].find(entity => entity.id === state.curModel)
     },
+    findModelById: (state) => id => state.entities.find(entity => entity.id === id),
     curModelPaths: (state, getters) => {
       const modelPaths = _.cloneDeep(getters.curModel.paths)
 
