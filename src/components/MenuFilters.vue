@@ -78,7 +78,7 @@ export default {
     material: {
       get () { return this.$store.state.materials.curMaterial },
       set (material) {
-        this.$store.commit('SET_MATERIAL', material)
+        this.$store.dispatch('setMaterial', material)
       }
     }
   },

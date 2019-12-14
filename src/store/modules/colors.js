@@ -45,10 +45,12 @@ export default {
     SET_BACK: (state, backColor) => { state[state.curRule].back = backColor },
     SET_NECKLINE: (state, neckLineColor) => { state[state.curRule].neckLine = neckLineColor },
     SET_RULE: (state, rule) => { state.curRule = rule },
-    RESET_ALL_COLORS: (state) => {
+    RESET_MIXED_COLORS: (state) => {
       for (let part in state.mixed) {
         state.mixed[part] = ''
       }
+    },
+    RESET_SINGLE_COLORS: (state) => {
       for (let part in state.single) {
         state.single[part] = ''
       }
@@ -66,7 +68,8 @@ export default {
       commit('SET_NECKLINE', color)
     },
     resetColors ({ commit }) {
-      commit('RESET_ALL_COLORS')
+      commit('RESET_MIXED_COLORS')
+      commit('RESET_SINGLE_COLORS')
     }
   },
   getters: {

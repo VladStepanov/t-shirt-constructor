@@ -30,12 +30,12 @@ export default {
     SET_GENDER: (state, gender) => { state.curGender = gender }
   },
   actions: {
-    resetFilters ({ commit }) {
+    resetFilters ({ commit, dispatch }) {
       commit('SET_TYPE', '')
       commit('SET_COLLECTION', '')
       commit('SET_GENDER', '')
       commit('SET_MODEL', '', { root: true })
-      commit('SET_MATERIAL', '', { root: true })
+      dispatch('setMaterial', '', { root: true })
       commit('SET_SIZE', '', { root: true })
     }
   },
