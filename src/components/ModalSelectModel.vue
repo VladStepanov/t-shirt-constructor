@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     selectModel (model) {
-      this.$store.commit('SET_MODEL', model)
+      this.$store.dispatch('setModel', model)
     }
   }
 }

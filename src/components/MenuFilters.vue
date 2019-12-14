@@ -23,7 +23,7 @@
       v-if='haveSelectedModel'
       placeholder='Материал'
       v-model='material'
-      :options='materialsList'
+      :options='materialsListForCurModel'
     />
     <BaseSelect
       placeholder='Размер'
@@ -51,7 +51,8 @@ export default {
       sizes: state => state.sizes.sizes
     }),
     ...mapGetters({
-      haveSelectedModel: 'haveSelectedModel'
+      haveSelectedModel: 'haveSelectedModel',
+      materialsListForCurModel: 'materialsListForCurModel'
     }),
     size: {
       get () { return this.$store.state.sizes.curSize },

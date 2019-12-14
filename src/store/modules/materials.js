@@ -19,6 +19,9 @@ export default {
   getters: {
     colorSchema: state => state.materials[state.curMaterial],
     haveCurMaterial: state => !!state.curMaterial,
-    curMaterial: state => state.curMaterial
+    curMaterial: state => state.curMaterial,
+    materialsListForCurModel: (state, getters) => {
+      return getters.curModel.materials
+    }
   }
 }

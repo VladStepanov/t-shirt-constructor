@@ -6,7 +6,20 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Пике",
+        "code": "pique"
+      },
+      {
+        "title": "Рибана",
+        "code": "ribana"
+      },
+      {
+        "title": "Кулирка",
+        "code": "cooler"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",
@@ -26,7 +39,12 @@
     "gender": "female",
     "collection": "puma",
     "type": "t-shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Пике",
+        "code": "pique"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",
@@ -46,7 +64,12 @@
     "gender": "male",
     "collection": "adidas",
     "type": "shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Рибана",
+        "code": "ribana"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",
@@ -66,7 +89,20 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Пике",
+        "code": "pique"
+      },
+      {
+        "title": "Рибана",
+        "code": "ribana"
+      },
+      {
+        "title": "Кулирка",
+        "code": "cooler"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",
@@ -86,7 +122,20 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Пике",
+        "code": "pique"
+      },
+      {
+        "title": "Рибана",
+        "code": "ribana"
+      },
+      {
+        "title": "Кулирка",
+        "code": "cooler"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",
@@ -103,7 +152,20 @@
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
-    "material": "pique",
+    "materials": [
+      {
+        "title": "Пике",
+        "code": "pique"
+      },
+      {
+        "title": "Рибана",
+        "code": "ribana"
+      },
+      {
+        "title": "Кулирка",
+        "code": "cooler"
+      }
+    ],
     "paths": {
       "front": {
         "front": "M89 165V1L157 42L225 1V165H89Z",

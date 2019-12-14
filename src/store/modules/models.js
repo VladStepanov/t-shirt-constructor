@@ -10,6 +10,12 @@ export default {
     SET_MODEL: (state, modelId) => { state.curModel = modelId },
     SET_VIEW: (state, view) => { state.curView = view }
   },
+  actions: {
+    setModel ({ commit, dispatch }, model) {
+      commit('SET_MATERIAL', '')
+      commit('SET_MODEL', model)
+    }
+  },
   getters: {
     curModel: (state, getters) => {
       return getters['filters/suitableModels'].find(entity => entity.id === state.curModel)
