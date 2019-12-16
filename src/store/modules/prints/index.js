@@ -1,4 +1,4 @@
-import color from './color'
+import color from '@/store/modules/prints/color'
 import categories from '@/store/modules/prints/categories'
 import prints from '@/models/prints'
 
