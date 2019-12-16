@@ -9,7 +9,7 @@ export default {
     prints
   }),
   mutations: {
-    SET_PRINT: (state, print) => { state.print = print }
+    SET_PRINT: (state, print) => { state.curPrint = print }
   },
   actions: {
     setPrint ({ commit }, print) {

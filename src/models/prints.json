@@ -7,8 +7,8 @@
     "price": 80,
     "category": "inscription",
     "position": {
-      "x": "0",
-      "y": "0"
+      "x": 50,
+      "y": 80
     },
     "paths": [
       "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
@@ -21,6 +21,31 @@
       {
         "title": "Желтый",
         "code": "yellow"
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "title": "Print_2",
+    "side": "front",
+    "type": "print",
+    "price": 100,
+    "category": "animals",
+    "position": {
+      "x": 30,
+      "y": 30
+    },
+    "paths": [
+      "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
+    ],
+    "colors": [
+      {
+        "title": "Зеленый",
+        "code": "green"
+      },
+      {
+        "title": "Томатный",
+        "code": "tomato"
       }
     ]
   }
