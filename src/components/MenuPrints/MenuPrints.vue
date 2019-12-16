@@ -1,18 +1,18 @@
 <template>
   <BaseMenu title="Принты">
-    <div>
-      Some content
-    </div>
+    <MenuPrintsFirstLine />
   </BaseMenu>
 </template>
 
 <script>
 import BaseMenu from '@/components/BaseMenu'
+import MenuPrintsFirstLine from '@/components/MenuPrints/MenuPrintsFirstLine'
 
 export default {
   name: 'MenuPrints',
   components: {
-    BaseMenu
+    BaseMenu,
+    MenuPrintsFirstLine
   }
 }
 </script>

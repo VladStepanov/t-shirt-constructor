@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Надписи",
+    "code": "inscription"
+  },
+  {
+    "title": "Животные",
+    "code": "animals"
+  },
+  {
+    "title": "Геометрия",
+    "code": "geometry"
+  }
+]

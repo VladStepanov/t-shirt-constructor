@@ -7,6 +7,7 @@ import filters from './modules/filters'
 import models from './modules/models'
 import sizes from './modules/sizes'
 import views from './modules/views'
+import prints from './modules/prints'
 
 Vue.use(Vuex)
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     filters,
     models,
     sizes,
-    views
+    views,
+    prints
   }
 })
