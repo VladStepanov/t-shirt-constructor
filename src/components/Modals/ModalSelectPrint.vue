@@ -4,7 +4,7 @@
       <BaseSelect v-model="category" :options="categories" />
       <div class="print-preview">
         <ModalSelectPrintItem
-          v-for="print in prints"
+          v-for="print in suitablePrints"
           :key="print.id"
           :paths="print.paths"
           :title="print.title"
@@ -21,7 +21,7 @@
 import BaseModal from '@/components/BaseModal'
 import BaseSelect from '@/components/BaseSelect'
 import ModalSelectPrintItem from '@/components/Modals/ModalSelectPrintItem'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'ModalSelectPrint',
@@ -32,15 +32,17 @@ export default {
   },
   computed: {
     ...mapState({
-      categories: state => state.prints.categories.categories,
-      curCategory: state => state.prints.categories.curCategory,
-      prints: state => state.prints.prints,
+      categories: state => state.prints.filters.categories,
+      curCategory: state => state.prints.filters.curCategory,
       curPrint: state => state.prints.curPrint
+    }),
+    ...mapGetters({
+      suitablePrints: 'prints/filters/suitablePrints'
     }),
     category: {
       get () { return this.curCategory },
       set (category) {
-        this.$store.dispatch('prints/setCategory', category)
+        this.$store.dispatch('prints/filters/setCategory', category)
       }
     }
   },

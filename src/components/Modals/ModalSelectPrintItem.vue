@@ -41,7 +41,6 @@ export default {
       }
     },
     listeners () {
-      console.log(this.$listeners)
       return { ...this.$listeners, click: this.handleClick }
     }
   },
