@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import MenuColorsSingleItem from '@/components/MenuColorsSingleItem'
+import MenuColorsSingleItem from '@/components/MenuShirts/MenuColorsSingleItem'
 
 export default {
   name: 'MenuColorsSingle',

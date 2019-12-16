@@ -1,39 +1,27 @@
 <template>
-  <div>
-    <div class="menu">
-      <div class="menu__title">Футболка</div>
-      <MenuFilters />
-      <MenuColors />
-      <span>Suitable models: {{ $store.getters['filters/suitableModels'].map(model => model.name) }}</span>
-    </div>
+  <div class="menu">
+    <MenuShirts />
+    <MenuPrints />
   </div>
 </template>
 
 <script>
-import MenuFilters from '@/components/MenuFilters'
-import MenuColors from '@/components/MenuColors'
+import MenuShirts from '@/components/MenuShirts/MenuShirts'
+import MenuPrints from '@/components/MenuPrints/MenuPrints'
 
 export default {
   name: 'Menu',
   components: {
-    MenuFilters,
-    MenuColors
+    MenuShirts,
+    MenuPrints
   }
 }
 </script>
 
-<style lang='scss'>
+<style scoped lang="scss">
 .menu {
-  border: 1px solid #ccc;
-  padding: 12px;
-  position: relative;
-  &__title {
-    position: absolute;
-    left: 12px;
-    top: 0;
-    transform: translateY(-50%);
-    background-color: #fff;
-    padding: 12px;
+  & > *:not(:last-child) {
+    margin-bottom: 24px;
   }
 }
 </style>

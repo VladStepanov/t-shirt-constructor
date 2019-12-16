@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import MenuColorsSingle from '@/components/MenuColorsSingle'
-import MenuColorsMixed from '@/components/MenuColorsMixed'
+import MenuColorsSingle from '@/components/MenuShirts/MenuColorsSingle'
+import MenuColorsMixed from '@/components/MenuShirts/MenuColorsMixed'
 import { mapGetters, mapState } from 'vuex'
 
 export default {

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import MenuColorsMixedItem from '@/components/MenuColorsMixedItem'
+import MenuColorsMixedItem from '@/components/MenuShirts/MenuColorsMixedItem'
 import { mapGetters, mapState } from 'vuex'
 
 export default {

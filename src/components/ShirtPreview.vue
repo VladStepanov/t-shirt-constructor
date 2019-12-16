@@ -6,6 +6,7 @@
       :fill='colorized && colors[curRule][role]'
       :d='path'
     />
+    <slot name='print'></slot>
   </svg>
 </template>
 

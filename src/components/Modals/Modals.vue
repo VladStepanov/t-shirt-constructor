@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ModalSelectModel from '@/components/ModalSelectModel'
+import ModalSelectModel from '@/components/Modals/ModalSelectModel'
 
 export default {
   name: 'Modals',

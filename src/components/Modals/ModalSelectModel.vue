@@ -1,6 +1,6 @@
 <template>
   <Modal name='select-model'>
-    <div class="select-model">
+    <BaseModal>
       <div class="select-model__list">
         <ModalSelectModelItem
           v-for='(model, i) in suitableModels'
@@ -12,17 +12,19 @@
           @click='selectModel'
         />
       </div>
-    </div>
+    </BaseModal>
   </Modal>
 </template>
 
 <script>
-import ModalSelectModelItem from '@/components/ModalSelectModelItem'
+import BaseModal from '@/components/BaseModal'
+import ModalSelectModelItem from '@/components/Modals/ModalSelectModelItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'ModalSelectModel',
   components: {
+    BaseModal,
     ModalSelectModelItem
   },
   computed: {
@@ -45,16 +47,8 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style scoped lang='scss'>
 .select-model {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  min-width: 700px;
-  padding: 24px 36px;
-  z-index: 1;
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
