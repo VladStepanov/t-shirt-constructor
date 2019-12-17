@@ -1,12 +1,22 @@
 <template>
   <div class='main-screen'>
     <div v-if='haveSelectedModel'>
-      <ToggleView v-if='haveRearSide' />
       <ShirtPreview :paths='curModelPathsWithView' colorized>
-        <template #print>
-          <path d="M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8" stroke='black' />
+        <template
+          v-if="havePrintsToRender"
+          #print
+        >
+          <template v-for="print in printsToRender">
+            <path
+              v-for="(path, i) in print.paths"
+              :key="`${i}-path`"
+              :d="path"
+            />
+          </template>
         </template>
       </ShirtPreview>
+      {{ printsToRender }}
+      <ToggleView v-if="haveRearSide" />
       <div class="main-screen__title">{{ curModel.name }}</div>
     </div>
   </div>
@@ -23,14 +33,17 @@ export default {
     ToggleView,
     ShirtPreview
   },
-  mounted () {
-    console.log(this.$store.getters)
-  },
   computed: {
     ...mapState({
-      curRule: state => state.colors.curRule
+      curRule: state => state.colors.curRule,
+      selected: state => state.prints.selected
     }),
-    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveSelectedModel', 'haveRearSide'])
+    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveSelectedModel', 'haveRearSide']),
+    ...mapGetters({
+      curPrint: 'prints/curPrint',
+      printsToRender: 'prints/printsToRender',
+      havePrintsToRender: 'prints/havePrintsToRender'
+    })
   }
 }
 </script>

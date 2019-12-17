@@ -2,9 +2,10 @@
   <div>
     <div>
       Название
-      <span>{{ curPrint.title }}</span>
+      <span v-if="curPrint">{{ curPrint.title }}</span>
     </div>
     <button @click="showModal">Выбрать</button>
+    <button @click="selectPrint">Добавить</button>
   </div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
   methods: {
     showModal () {
       this.$modal.show('select-print')
+    },
+    selectPrint () {
+      if (!this.curPrint) return
+
+      this.$store.dispatch('prints/selectPrint', this.curPrint.id)
     }
   }
 }

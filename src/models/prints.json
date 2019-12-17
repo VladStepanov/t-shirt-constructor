@@ -2,7 +2,6 @@
   {
     "id": "0",
     "title": "Print_1",
-    "side": "front",
     "type": "vinyl",
     "price": 80,
     "category": "inscription",
@@ -27,7 +26,6 @@
   {
     "id": "1",
     "title": "Print_2",
-    "side": "front",
     "type": "print",
     "price": 100,
     "category": "animals",
