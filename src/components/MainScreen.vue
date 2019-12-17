@@ -6,13 +6,16 @@
           v-if="havePrintsToRender"
           #print
         >
-          <template v-for="print in printsToRender">
+          <g
+            v-for="print in printsToRender"
+            :key="`${print.id}-print`"
+          >
             <path
               v-for="(path, i) in print.paths"
               :key="`${i}-path`"
               :d="path"
             />
-          </template>
+          </g>
         </template>
       </ShirtPreview>
       {{ printsToRender }}
