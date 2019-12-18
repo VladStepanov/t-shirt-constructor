@@ -38,8 +38,7 @@ export default {
   },
   computed: {
     ...mapState({
-      curRule: state => state.colors.curRule,
-      selected: state => state.prints.selected
+      curRule: state => state.colors.curRule
     }),
     ...mapGetters(['curModelPathsWithView', 'curModel', 'haveSelectedModel', 'haveRearSide']),
     ...mapGetters({
