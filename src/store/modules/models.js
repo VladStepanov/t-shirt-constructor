@@ -48,7 +48,7 @@ export default {
     curModelPathsWithAllViews: (state, getters) => {
       return { ...getters.curModelPaths.front, ...getters.curModelPaths.rear }
     },
-    haveSelectedModel: (state, getters) => !!getters.curModel,
+    haveCurModel: (state, getters) => !!getters.curModel,
     haveRearSide: (state, getters) => !!getters.curModelPaths.rear
   }
 }

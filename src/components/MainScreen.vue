@@ -1,6 +1,6 @@
 <template>
   <div class='main-screen'>
-    <div v-if='haveSelectedModel'>
+    <div v-if='haveCurModel'>
       <ShirtPreview :paths='curModelPathsWithView' colorized>
         <template
           v-if="havePrintsToRender"
@@ -40,7 +40,7 @@ export default {
     ...mapState({
       curRule: state => state.colors.curRule
     }),
-    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveSelectedModel', 'haveRearSide']),
+    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveCurModel', 'haveRearSide']),
     ...mapGetters({
       curPrint: 'prints/curPrint',
       printsToRender: 'prints/printsToRender',

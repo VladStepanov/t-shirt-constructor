@@ -20,7 +20,7 @@
     </button>
     <button @click='showSuitableModels'>Show suitable models</button>
     <BaseSelect
-      v-if='haveSelectedModel'
+      v-if='haveCurModel'
       placeholder='Материал'
       v-model='material'
       :options='materialsListForCurModel'
@@ -51,7 +51,7 @@ export default {
       sizes: state => state.sizes.sizes
     }),
     ...mapGetters({
-      haveSelectedModel: 'haveSelectedModel',
+      haveCurModel: 'haveCurModel',
       materialsListForCurModel: 'materialsListForCurModel'
     }),
     size: {
