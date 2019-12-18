@@ -24,11 +24,13 @@ export default {
     }
   },
   actions: {
-    setPrint ({ commit, state, getters, rootGetters, rootState }, printId) {
+    setPrint ({ commit, dispatch, rootGetters }, printId) {
       const isAlreadySelected = rootGetters['prints/isSelectedById'](printId)
-      // const isAlreadySelected = rootState
+
       if (isAlreadySelected) return
+
       commit('SET_PRINT', printId)
+      dispatch('setSide', rootGetters.curView)
     },
     setSide ({ commit }, side) {
       commit('SET_SIDE', side)
