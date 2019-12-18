@@ -21,6 +21,10 @@ export default {
     SET_SIDE: (state, { side, printId }) => {
       const print = state.prints.find(print => print.id === printId)
       print.side = side
+    },
+    SET_COLOR: (state, { color, printId }) => {
+      const print = state.prints.find(print => print.id === printId)
+      print.color = color
     }
   },
   actions: {
@@ -34,6 +38,9 @@ export default {
     },
     setSide ({ commit, state }, { side, printId = state.curPrint }) {
       commit('SET_SIDE', { side, printId })
+    },
+    setColor ({ commit, state }, { color, printId = state.curPrint }) {
+      commit('SET_COLOR', { color, printId })
     }
   },
   getters: {
@@ -48,6 +55,8 @@ export default {
     havePrintsToRender: (state, { printsToRender }) => {
       return !!printsToRender.length
     },
-    sideForCurPrint: (state, { curPrint }) => (curPrint && curPrint.side)
+    sideForCurPrint: (state, { curPrint }) => (curPrint && curPrint.side),
+    curPrintColor: (state, { curPrint }) => (curPrint && curPrint.color),
+    curPrintColors: (state, { curPrint }) => (curPrint && curPrint.colors)
   }
 }

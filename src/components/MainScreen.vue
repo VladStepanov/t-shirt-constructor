@@ -14,6 +14,7 @@
               v-for="(path, i) in print.paths"
               :key="`${i}-path`"
               :d="path"
+              :fill="print.color"
             />
           </g>
         </template>
