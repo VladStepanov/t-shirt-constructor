@@ -2,42 +2,33 @@ import prints from '@/models/prints'
 import color from '@/store/modules/prints/color'
 import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
+import selection from '@/store/modules/prints/selection'
 
 export default {
   namespaced: true,
   modules: {
     color,
-    filters
+    filters,
+    selection
   },
   state: () => ({
     curPrint: '',
     prints: [...prints.map(print => ({ ...print, side: '', color: '' }))],
-    selected: [],
     sides
   }),
   mutations: {
     SET_PRINT: (state, print) => { state.curPrint = print },
-    SELECT_PRINT: (state, print) => { state.selected.push(print) },
-    SELECT_RESET: (state) => { state.selected = [] },
     SET_SIDE: (state, side) => {
       const print = state.prints.find(print => print.id === state.curPrint)
       print.side = side
     }
   },
   actions: {
-    setPrint ({ commit, state }, printId) {
-      const isAlreadySelected = state.selected.some(({ id }) => id === printId)
+    setPrint ({ commit, state, getters, rootGetters, rootState }, printId) {
+      const isAlreadySelected = rootGetters['prints/isSelectedById'](printId)
+      // const isAlreadySelected = rootState
       if (isAlreadySelected) return
       commit('SET_PRINT', printId)
-    },
-    selectPrint ({ commit, dispatch, getters }, printId) {
-      if (!printId) return
-      const print = getters.printById(printId)
-      dispatch('setPrint', '')
-      commit('SELECT_PRINT', print)
-    },
-    selectedReset ({ commit }) {
-      commit('SELECT_RESET')
     },
     setSide ({ commit }, side) {
       commit('SET_SIDE', side)
@@ -46,9 +37,8 @@ export default {
   getters: {
     curPrint: ({ prints, curPrint }) => prints.find(print => print.id === curPrint),
     printById: ({ prints }) => id => prints.find(print => print.id === id),
-    haveSelected: (state) => !!state.selected.length,
-    printsToRender: ({ selected }, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
-      const prints = [...selected]
+    printsToRender: (state, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
+      const prints = [...rootState.prints.selection.selected]
       if (curPrint && rootGetters.curView === sideForCurPrint) prints.push(curPrint)
 
       return prints

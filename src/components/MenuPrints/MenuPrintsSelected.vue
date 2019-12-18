@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     ...mapState({
-      selectedPrints: state => state.prints.selected
+      selectedPrints: state => state.prints.selection.selected
     })
   },
   methods: {
