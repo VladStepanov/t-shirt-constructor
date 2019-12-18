@@ -1,6 +1,7 @@
 <template>
   <BaseMenu title="Принты">
     <MenuPrintsFirstLine />
+    <button @click="selectPrint">Добавить</button>
     <MenuPrintsSelected v-if="haveSelected" />
   </BaseMenu>
 </template>
@@ -20,8 +21,16 @@ export default {
   },
   computed: {
     ...mapGetters({
-      haveSelected: 'prints/haveSelected'
+      haveSelected: 'prints/haveSelected',
+      curPrint: 'prints/curPrint'
     })
+  },
+  methods: {
+    selectPrint () {
+      if (!this.curPrint) return
+
+      this.$store.dispatch('prints/selectPrint', this.curPrint.id)
+    }
   }
 }
 </script>
