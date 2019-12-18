@@ -33,7 +33,7 @@ export default {
     side: {
       get () { return this.$store.getters['prints/sideForCurPrint'] },
       set (side) {
-        this.$store.dispatch('prints/setSide', side)
+        this.$store.dispatch('prints/setSide', { side })
       }
     }
   },

@@ -18,8 +18,8 @@ export default {
   }),
   mutations: {
     SET_PRINT: (state, print) => { state.curPrint = print },
-    SET_SIDE: (state, side) => {
-      const print = state.prints.find(print => print.id === state.curPrint)
+    SET_SIDE: (state, { side, printId }) => {
+      const print = state.prints.find(print => print.id === printId)
       print.side = side
     }
   },
@@ -30,10 +30,10 @@ export default {
       if (isAlreadySelected) return
 
       commit('SET_PRINT', printId)
-      dispatch('setSide', rootGetters.curView)
+      if (printId) dispatch('setSide', { side: rootGetters.curView })
     },
-    setSide ({ commit }, side) {
-      commit('SET_SIDE', side)
+    setSide ({ commit, state }, { side, printId = state.curPrint }) {
+      commit('SET_SIDE', { side, printId })
     }
   },
   getters: {

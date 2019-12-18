@@ -11,8 +11,8 @@ export default {
       if (!printId) return
 
       const print = getters.printById(printId)
-      dispatch('prints/setPrint', '', { root: true })
       commit('SELECT_PRINT', print)
+      dispatch('prints/setPrint', '', { root: true })
     },
     selectedReset ({ commit }) {
       commit('SELECT_RESET')
