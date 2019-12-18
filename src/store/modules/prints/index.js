@@ -44,7 +44,9 @@ export default {
     }
   },
   getters: {
-    curPrint: ({ prints, curPrint }) => prints.find(print => print.id === curPrint),
+    curPrint: ({ prints, curPrint }, getters) => {
+      return getters['filters/suitablePrints'].find(print => print.id === curPrint)
+    },
     printById: ({ prints }) => id => prints.find(print => print.id === id),
     printsToRender: (state, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
       const prints = [...rootState.prints.selection.selected]
