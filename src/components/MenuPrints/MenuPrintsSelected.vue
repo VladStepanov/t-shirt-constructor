@@ -14,7 +14,7 @@
 
 <script>
 import MenuPrintsSelectedItem from '@/components/MenuPrints/MenuPrintsSelectedItem'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuPrintsSelected',
@@ -22,8 +22,8 @@ export default {
     MenuPrintsSelectedItem
   },
   computed: {
-    ...mapState({
-      selectedPrints: state => state.prints.selection.selected
+    ...mapGetters({
+      selectedPrints: 'prints/selectedPrints'
     })
   },
   methods: {

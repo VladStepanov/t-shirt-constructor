@@ -1,9 +1,12 @@
 export default {
   state: () => ({
-    selected: []
+    selected: {
+      front: [],
+      rear: []
+    }
   }),
   mutations: {
-    SELECT_PRINT: (state, print) => { state.selected.push(print) },
+    SELECT_PRINT: (state, { print, side }) => { state.selected[side].push(print) },
     SELECT_RESET: (state) => { state.selected = [] }
   },
   actions: {
@@ -11,7 +14,7 @@ export default {
       if (!printId) return
 
       const print = getters.printById(printId)
-      commit('SELECT_PRINT', print)
+      commit('SELECT_PRINT', { print, side: print.side })
       dispatch('prints/setPrint', '', { root: true })
     },
     selectedReset ({ commit }) {
@@ -19,7 +22,25 @@ export default {
     }
   },
   getters: {
-    haveSelected: (state) => !!state.selected.length,
-    isSelectedById: (state) => id => state.selected.some(print => print.id === id)
+    haveSelected: (state) => !!(state.selected.front.length || state.selected.rear.length),
+    isSelectedById: (state) => id => {
+      let isSelected = false
+      for (let side in state.selected) {
+        for (let print of state.selected[side]) {
+          if (print.id === id) isSelected = true
+        }
+      }
+      return isSelected
+    },
+    selectedPrints: (state) => {
+      let selectedPrints = []
+      for (let side in state.selected) {
+        for (let print of state.selected[side]) {
+          selectedPrints = [...selectedPrints, print]
+        }
+      }
+
+      return selectedPrints
+    }
   }
 }
