@@ -6,6 +6,7 @@
     </div>
     <button class="menu-prints__choose" @click="showModal">Выбрать</button>
     <BaseSelect
+      v-if="curPrint"
       v-model="side"
       :options="sides"
       placeholder="Выберите сторону"
