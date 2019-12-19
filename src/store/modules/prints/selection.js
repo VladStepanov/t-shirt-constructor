@@ -7,7 +7,7 @@ export default {
   }),
   mutations: {
     SELECT_PRINT: (state, { print, side }) => { state.selected[side].push(print) },
-    SELECT_RESET: (state) => { state.selected = [] }
+    SELECT_RESET: (state) => { state.selected = { front: [], rear: [] } }
   },
   actions: {
     selectPrint ({ commit, dispatch, getters }, printId) {
