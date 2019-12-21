@@ -33,10 +33,6 @@ export default {
   },
   actions: {
     setPrint ({ commit, dispatch, rootGetters }, printId) {
-      const isAlreadySelected = rootGetters['prints/isSelectedById'](printId)
-
-      if (isAlreadySelected) return
-
       commit('SET_PRINT', printId)
       if (printId) dispatch('setSide', { side: rootGetters.curView })
     },

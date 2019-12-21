@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default {
   state: () => ({
     selected: {
@@ -13,7 +15,7 @@ export default {
     selectPrint ({ commit, dispatch, getters }, printId) {
       if (!printId) return
 
-      const print = getters.printById(printId)
+      const print = _.cloneDeep(getters.printById(printId))
       commit('SELECT_PRINT', { print, side: print.side })
       dispatch('prints/setPrint', '', { root: true })
     },

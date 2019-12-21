@@ -37,8 +37,7 @@ export default {
   computed: {
     classes () {
       return {
-        'select-print--active': this.activeId === this.id,
-        'select-print--selected': this.$store.getters['prints/isSelectedById'](this.id)
+        'select-print--active': this.activeId === this.id
       }
     },
     listeners () {
@@ -65,9 +64,6 @@ export default {
   }
   &--active {
     box-shadow: 0 0 10px rgba(0, 0, 0, .3)
-  }
-  &--selected {
-    box-shadow: 0 0 10px rgba(255, 160, 122, .5) !important;
   }
 
   &:hover {
