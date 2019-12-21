@@ -12,18 +12,12 @@
       placeholder="Выберите сторону"
       class="menu-prints__side"
     />
-    <BaseSelect
-      v-if="!!curPrint && curPrint.colors.length"
-      v-model="color"
-      :options="curPrintColors"
-      placeholder="Выберите цвет"
-    />
   </div>
 </template>
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapGetters, mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'MenuPrintsFirstLine',
@@ -35,19 +29,12 @@ export default {
       sides: state => state.prints.sides
     }),
     ...mapGetters({
-      curPrint: ['prints/curPrint'],
-      curPrintColors: 'prints/curPrintColors'
+      curPrint: ['prints/curPrint']
     }),
     side: {
       get () { return this.$store.getters['prints/sideForCurPrint'] },
       set (side) {
         this.$store.dispatch('prints/setSide', { side })
-      }
-    },
-    color: {
-      get () { return this.$store.getters['prints/curPrintColor'] },
-      set (color) {
-        this.$store.dispatch('prints/setColor', { color })
       }
     }
   },

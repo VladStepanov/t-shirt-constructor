@@ -13,7 +13,7 @@ export default {
   },
   state: () => ({
     curPrint: '',
-    prints: [...prints.map(print => ({ ...print, side: '', color: '' }))],
+    prints: [...prints.map(print => ({ ...print, side: '', color: '', type: '' }))],
     sides
   }),
   mutations: {
@@ -25,6 +25,10 @@ export default {
     SET_COLOR: (state, { color, printId }) => {
       const print = state.prints.find(print => print.id === printId)
       print.color = color
+    },
+    SET_TYPE: (state, { type, printId }) => {
+      const print = state.prints.find(print => print.id === printId)
+      print.type = type
     }
   },
   actions: {
@@ -41,6 +45,9 @@ export default {
     },
     setColor ({ commit, state }, { color, printId = state.curPrint }) {
       commit('SET_COLOR', { color, printId })
+    },
+    setType ({ commit, state }, { type, printId = state.curPrint }) {
+      commit('SET_TYPE', { type, printId })
     }
   },
   getters: {
@@ -57,8 +64,12 @@ export default {
     havePrintsToRender: (state, { printsToRender }) => {
       return !!printsToRender.length
     },
-    sideForCurPrint: (state, { curPrint }) => (curPrint && curPrint.side),
-    curPrintColor: (state, { curPrint }) => (curPrint && curPrint.color),
-    curPrintColors: (state, { curPrint }) => (curPrint && curPrint.colors)
+    sideForCurPrint: (state, { curPrint }) => curPrint && curPrint.side,
+    curPrintColor: (state, { curPrint }) => curPrint && curPrint.color,
+    curPrintColors: (state, { curPrint }) => curPrint && curPrint.colors,
+    curPrintType: (state, { curPrint }) => curPrint && curPrint.type,
+    curPrintTypes: (state, { curPrint }) => {
+      return curPrint && curPrint.types
+    }
   }
 }
