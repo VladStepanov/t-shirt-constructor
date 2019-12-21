@@ -23,19 +23,22 @@
       <ToggleView v-if="haveRearSide" />
       <div class="main-screen__title">{{ curModel.name }}</div>
     </div>
+    <CountOfSuitableModels />
   </div>
 </template>
 
 <script>
 import ToggleView from '@/components/ToggleView'
 import ShirtPreview from '@/components/ShirtPreview'
+import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MainScreen',
   components: {
     ToggleView,
-    ShirtPreview
+    ShirtPreview,
+    CountOfSuitableModels
   },
   computed: {
     ...mapState({
