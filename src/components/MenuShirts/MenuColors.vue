@@ -1,10 +1,7 @@
 <template>
   <div class="menu-colors">
-    <label v-for='(rule, i) in rules' :key='i' class='menu-colors__rules'>
-      <input :value='rule.code' v-model='ruleController' type="radio">
-      {{ rule.title }}
-    </label>
-    <component :is='determineComponent(ruleController)' />
+    <RadioComponentSwitcher :list="rules" v-model="rule" />
+    <component :is='determineComponent(rules, rule)' />
     <button @click='resetColors'>Reset colors</button>
   </div>
 </template>
@@ -12,21 +9,25 @@
 <script>
 import MenuColorsSingle from '@/components/MenuShirts/MenuColorsSingle'
 import MenuColorsMixed from '@/components/MenuShirts/MenuColorsMixed'
+import RadioComponentSwitcher from '@/components/RadioComponentSwitcher'
+import RadioComponentSwitcherMixin from '@/mixins/RadioComponentSwitcher'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'MenuColors',
   components: {
     MenuColorsSingle,
-    MenuColorsMixed
+    MenuColorsMixed,
+    RadioComponentSwitcher
   },
+  mixins: [RadioComponentSwitcherMixin],
   computed: {
     ...mapGetters(['colorSchema']),
     ...mapState({
       rules: state => state.colors.rules,
       curRule: state => state.colors.curRule
     }),
-    ruleController: {
+    rule: {
       get () {
         return this.curRule
       },
@@ -36,9 +37,6 @@ export default {
     }
   },
   methods: {
-    determineComponent (ruleCode) {
-      return this.rules && this.rules.find(rule => rule.code === this.curRule).component
-    },
     resetColors () {
       this.$store.dispatch('resetColors')
     }
