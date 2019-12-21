@@ -19,7 +19,6 @@
           </g>
         </template>
       </ShirtPreview>
-      {{ printsToRender }}
       <ToggleView v-if="haveRearSide" />
       <div class="main-screen__title">{{ curModel.name }}</div>
     </div>

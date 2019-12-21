@@ -2,7 +2,6 @@
   <BaseMenu title="Футболка">
     <MenuFilters />
     <MenuColors />
-    <span>Suitable models: {{ $store.getters['filters/suitableModels'].map(model => model.name) }}</span>
   </BaseMenu>
 </template>
 
