@@ -36,10 +36,12 @@ export default {
     setPrint ({ commit, dispatch, getters, rootGetters }, printId) {
       commit('SET_PRINT', printId)
 
-      if (printId) dispatch('setSide', { side: rootGetters.curView })
+      if (printId) {
+        dispatch('setSide', { side: rootGetters.curView })
 
-      const firstType = Object.keys(getters.printById(printId).types)[0]
-      dispatch('setType', { type: firstType })
+        const [ firstType ] = Object.keys(getters.printById(printId).types)
+        dispatch('setType', { type: firstType })
+      }
     },
     setSide ({ commit, state }, { side, printId = state.curPrint }) {
       commit('SET_SIDE', { side, printId })
