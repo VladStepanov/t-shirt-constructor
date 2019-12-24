@@ -1,8 +1,8 @@
 <template>
   <div class="selected-prints">
     <MenuPrintsSelectedItem
-      v-for="print in selectedPrints"
-      :key="print.id"
+      v-for="(print, i) in selectedPrints"
+      :key="`${print.id}-${i}`"
       :id="print.id"
       :title="print.title"
       :type="print.type"

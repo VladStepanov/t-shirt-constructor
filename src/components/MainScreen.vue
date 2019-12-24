@@ -7,12 +7,12 @@
           #print
         >
           <g
-            v-for="print in printsToRender"
-            :key="`${print.id}-print`"
+            v-for="(print, i) in printsToRender"
+            :key="`${print.id}-${i}-print`"
           >
             <path
               v-for="(path, i) in print.paths"
-              :key="`${i}-path`"
+              :key="`${print.id}-${i}-path`"
               :d="path"
               :fill="print.types[print.type] && print.types[print.type].color"
             />
