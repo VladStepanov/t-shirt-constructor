@@ -36,7 +36,7 @@ export default {
   mixins: [RadioComponentSwitcherMixin],
   computed: {
     ...mapGetters({
-      haveSelected: 'prints/haveSelected',
+      haveSelected: 'prints/selection/haveSelected',
       curPrint: 'prints/curPrint',
       curType: 'prints/curPrintType',
       types: 'prints/curPrintTypes'
@@ -55,7 +55,7 @@ export default {
     selectPrint () {
       if (!this.curPrint) return
 
-      this.$store.dispatch('prints/selectPrint', this.curPrint.id)
+      this.$store.dispatch('prints/selection/selectPrint', this.curPrint.id)
     }
   }
 }

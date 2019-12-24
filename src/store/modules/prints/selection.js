@@ -1,6 +1,7 @@
 import _ from 'lodash'
 
 export default {
+  namespaced: true,
   state: () => ({
     selected: {
       front: [],
@@ -15,17 +16,17 @@ export default {
     SELECT_RESET: (state) => { state.selected = { front: [], rear: [] } }
   },
   actions: {
-    selectPrint ({ commit, dispatch, getters }, printId) {
+    selectPrint ({ commit, dispatch, rootGetters }, printId) {
       if (!printId) return
 
-      const print = _.cloneDeep(getters.printById(printId))
+      const print = _.cloneDeep(rootGetters['prints/printById'](printId))
       commit('SELECT_PRINT', { print, side: print.side })
       dispatch('prints/setPrint', '', { root: true })
     },
-    deleteSelectionPrint ({ commit, getters }, { printId }) {
-      commit('DELETE_PRINT', { printId, side: getters.printById(printId).side })
+    deletePrint ({ commit, rootGetters }, { printId }) {
+      commit('DELETE_PRINT', { printId, side: rootGetters['prints/printById'](printId).side })
     },
-    selectedReset ({ commit }) {
+    reset ({ commit }) {
       commit('SELECT_RESET')
     }
   },

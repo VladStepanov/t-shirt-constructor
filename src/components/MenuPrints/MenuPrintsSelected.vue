@@ -24,15 +24,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      selectedPrints: 'prints/selectedPrints'
+      selectedPrints: 'prints/selection/selectedPrints'
     })
   },
   methods: {
     resetSelected () {
-      this.$store.dispatch('prints/selectedReset')
+      this.$store.dispatch('prints/selection/reset')
     },
     handleDelete (printId) {
-      this.$store.dispatch('prints/deleteSelectionPrint', { printId })
+      this.$store.dispatch('prints/selection/deletePrint', { printId })
     }
   }
 }
