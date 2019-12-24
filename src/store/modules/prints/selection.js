@@ -9,6 +9,9 @@ export default {
   }),
   mutations: {
     SELECT_PRINT: (state, { print, side }) => { state.selected[side].push(print) },
+    DELETE_PRINT: (state, { printId, side }) => {
+      state.selected[side] = state.selected[side].filter(print => print.id !== printId)
+    },
     SELECT_RESET: (state) => { state.selected = { front: [], rear: [] } }
   },
   actions: {
@@ -18,6 +21,9 @@ export default {
       const print = _.cloneDeep(getters.printById(printId))
       commit('SELECT_PRINT', { print, side: print.side })
       dispatch('prints/setPrint', '', { root: true })
+    },
+    deleteSelectionPrint ({ commit, getters }, { printId }) {
+      commit('DELETE_PRINT', { printId, side: getters.printById(printId).side })
     },
     selectedReset ({ commit }) {
       commit('SELECT_RESET')

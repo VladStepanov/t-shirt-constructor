@@ -1,30 +1,63 @@
 <template>
   <div class="select-print" v-bind="$attrs" v-on="listeners">
-    {{ title }}
+    <span>Принт</span>
+    <span>{{ title }}</span>
+    <span>{{ translatedSide }}</span>
+    <span>{{ translatedType }}</span>
+    <span>Размер</span>
+    <span>{{ price }}</span>
+    <button @click="removeFromSelection">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg>
+    </button>
   </div>
 </template>
 
 <script>
+import sides from '@/models/sides'
+import types from '@/models/print-types'
+
 export default {
   name: 'MenuPrintsSelectedItem',
   props: {
     title: {
       type: String,
-      required: true
+      default: ''
     },
     id: {
       type: String,
       required: true
+    },
+    type: {
+      type: String,
+      default: ''
+    },
+    side: {
+      type: String,
+      default: ''
+    },
+    price: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
     listeners () {
       return { ...this.$listeners, click: this.clickHandler }
+    },
+    translatedSide () {
+      const side = sides.find(side => side.code === this.side)
+      return side && side.title
+    },
+    translatedType () {
+      return types[this.type]
     }
   },
   methods: {
     clickHandler () {
       this.$emit('click', this.id)
+    },
+    removeFromSelection () {
+      this.$emit('delete', this.id)
     }
   }
 }
@@ -33,5 +66,8 @@ export default {
 <style scoped lang="scss">
 .select-print {
   margin: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
