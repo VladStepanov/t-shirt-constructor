@@ -14,7 +14,7 @@
               v-for="(path, i) in print.paths"
               :key="`${i}-path`"
               :d="path"
-              :fill="print.color"
+              :fill="print.types[print.type] && print.types[print.type].color"
             />
           </g>
         </template>

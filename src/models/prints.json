@@ -12,16 +12,18 @@
     "paths": [
       "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
     ],
-    "types": [
-      {
-        "title": "Винил",
-        "code": "vinyl"
+    "types": {
+      "vinyl": {
+        "color": "",
+        "type": "",
+        "size": "",
+        "position": ""
       },
-      {
-        "title": "Принт",
-        "code": "print"
+      "print": {
+        "size": "",
+        "position": ""
       }
-    ],
+    },
     "colors": [
       {
         "title": "Серый",
@@ -46,12 +48,12 @@
     "paths": [
       "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
     ],
-    "types": [
-      {
-        "title": "Винил",
-        "code": "vinyl"
+    "types": {
+      "print": {
+        "size": "",
+        "position": ""
       }
-    ],
+    },
     "colors": [
       {
         "title": "Зеленый",

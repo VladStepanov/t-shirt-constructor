@@ -3,6 +3,7 @@ import color from '@/store/modules/prints/color'
 import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
+import printTypes from '@/models/print-types'
 
 export default {
   namespaced: true,
@@ -22,9 +23,9 @@ export default {
       const print = state.prints.find(print => print.id === printId)
       print.side = side
     },
-    SET_COLOR: (state, { color, printId }) => {
+    SET_COLOR: (state, { color, printType, printId }) => {
       const print = state.prints.find(print => print.id === printId)
-      print.color = color
+      print.types[printType].color = color
     },
     SET_TYPE: (state, { type, printId }) => {
       const print = state.prints.find(print => print.id === printId)
@@ -32,15 +33,23 @@ export default {
     }
   },
   actions: {
-    setPrint ({ commit, dispatch, rootGetters }, printId) {
+    setPrint ({ commit, dispatch, getters, rootGetters }, printId) {
       commit('SET_PRINT', printId)
+
       if (printId) dispatch('setSide', { side: rootGetters.curView })
+
+      const firstType = Object.keys(getters.printById(printId).types)[0]
+      dispatch('setType', { type: firstType })
     },
     setSide ({ commit, state }, { side, printId = state.curPrint }) {
       commit('SET_SIDE', { side, printId })
     },
-    setColor ({ commit, state }, { color, printId = state.curPrint }) {
-      commit('SET_COLOR', { color, printId })
+    setColor ({ commit, state, getters }, { color, printId = state.curPrint, printType = getters.curPrintType }) {
+      const print = getters.printById(printId)
+      if (print.types[printType].color === undefined) {
+        return
+      }
+      commit('SET_COLOR', { color, printId, printType })
     },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
@@ -61,11 +70,13 @@ export default {
       return !!printsToRender.length
     },
     sideForCurPrint: (state, { curPrint }) => curPrint && curPrint.side,
-    curPrintColor: (state, { curPrint }) => curPrint && curPrint.color,
+    curPrintColor: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].color,
     curPrintColors: (state, { curPrint }) => curPrint && curPrint.colors,
     curPrintType: (state, { curPrint }) => curPrint && curPrint.type,
     curPrintTypes: (state, { curPrint }) => {
-      return curPrint && curPrint.types
+      if (!curPrint) return
+
+      return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
     }
   }
 }
