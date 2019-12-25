@@ -2,13 +2,8 @@
   {
     "id": "0",
     "title": "Print_1",
-    "type": "vinyl",
     "price": 80,
     "category": "inscription",
-    "position": {
-      "x": 50,
-      "y": 80
-    },
     "paths": [
       "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
     ],
@@ -38,13 +33,8 @@
   {
     "id": "1",
     "title": "Print_2",
-    "type": "print",
     "price": 100,
     "category": "animals",
-    "position": {
-      "x": 30,
-      "y": 30
-    },
     "paths": [
       "M112 1C180.8 59.4 140.667 63.3333 112 58C54 43.6667 -44.6 13.6 25 8"
     ],
