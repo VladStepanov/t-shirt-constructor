@@ -1,5 +1,4 @@
 import prints from '@/models/prints/prints'
-import color from '@/store/modules/prints/color'
 import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
@@ -8,7 +7,6 @@ import printTypes from '@/models/prints/print-types'
 export default {
   namespaced: true,
   modules: {
-    color,
     filters,
     selection
   },
