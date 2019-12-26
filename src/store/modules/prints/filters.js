@@ -1,4 +1,4 @@
-import categories from '@/models/prints-categories'
+import categories from '@/models/prints/prints-categories'
 
 export default {
   namespaced: true,

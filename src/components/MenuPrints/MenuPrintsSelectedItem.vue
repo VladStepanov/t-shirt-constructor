@@ -14,7 +14,7 @@
 
 <script>
 import sides from '@/models/sides'
-import types from '@/models/print-types'
+import types from '@/models/prints/print-types'
 
 export default {
   name: 'MenuPrintsSelectedItem',
