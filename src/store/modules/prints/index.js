@@ -63,7 +63,8 @@ export default {
     },
     printById: ({ prints }) => id => prints.find(print => print.id === id),
     printsToRender: (state, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
-      const prints = [...rootState.prints.selection.selected[rootGetters.curView]]
+      const prints = rootState.prints.selection.selected.filter(item => item.side === rootGetters.curView)
+
       if (curPrint && rootGetters.curView === sideForCurPrint) prints.push(curPrint)
 
       return prints

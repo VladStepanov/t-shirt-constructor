@@ -8,7 +8,7 @@
       :type="print.type"
       :side="print.side"
       :price="print.price"
-      @delete="handleDelete"
+      @delete="(id) => handleDelete(id, i)"
     />
   </div>
 </template>
@@ -31,8 +31,8 @@ export default {
     resetSelected () {
       this.$store.dispatch('prints/selection/reset')
     },
-    handleDelete (printId) {
-      this.$store.dispatch('prints/selection/deletePrint', { printId })
+    handleDelete (printId, index) {
+      this.$store.dispatch('prints/selection/deletePrint', { index })
     }
   }
 }
