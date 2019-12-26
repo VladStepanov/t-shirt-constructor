@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Полный",
+    "code": "big"
+  },
+  {
+    "title": "Средний",
+    "code": "medium"
+  },
+  {
+    "title": "Небольшой",
+    "code": "small"
+  },
+  {
+    "title": "Мелкий",
+    "code": "tiny"
+  }
+]

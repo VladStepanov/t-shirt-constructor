@@ -3,6 +3,7 @@ import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
+import sizes from '@/models/prints/print-sizes'
 
 export default {
   namespaced: true,
@@ -12,8 +13,15 @@ export default {
   },
   state: () => ({
     curPrint: '',
-    prints: [...prints.map(print => ({ ...print, side: '', color: '', type: '' }))],
-    sides
+    prints: [...prints.map(print => ({
+      ...print,
+      side: '',
+      color: '',
+      type: '',
+      size: ''
+    }))],
+    sides,
+    sizes
   }),
   mutations: {
     SET_PRINT: (state, print) => { state.curPrint = print },
@@ -28,6 +36,10 @@ export default {
     SET_TYPE: (state, { type, printId }) => {
       const print = state.prints.find(print => print.id === printId)
       print.type = type
+    },
+    SET_SIZE: (state, { size, printId }) => {
+      const print = state.prints.find(print => print.id === printId)
+      print.size = size
     }
   },
   actions: {
@@ -53,6 +65,9 @@ export default {
     },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
+    },
+    setSize ({ commit, state }, { size, printId = state.curPrint }) {
+      commit('SET_SIZE', { size, printId })
     }
   },
   getters: {
@@ -78,6 +93,7 @@ export default {
       if (!curPrint) return
 
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
-    }
+    },
+    curPrintSize: (state, { curPrint }) => curPrint && curPrint.size
   }
 }
