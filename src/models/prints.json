@@ -54,5 +54,68 @@
         "code": "tomato"
       }
     ]
+  },
+  {
+    "id": "2",
+    "title": "Print_3",
+    "price": 300,
+    "category": "animals",
+    "paths": [
+      "M51 34C-64 108 55 45 51 113C63 117 105.6 127.6 180 138C254.4 148.4 259 73 252 34C223.333 9.33333 143 -25.2 51 34Z"
+    ],
+    "types": {
+      "vinyl": {
+        "color": "",
+        "type": "",
+        "size": "",
+        "position": ""
+      },
+      "print": {
+        "size": "",
+        "position": ""
+      }
+    },
+    "colors": [
+      {
+        "title": "Зеленый",
+        "code": "green"
+      },
+      {
+        "title": "Томатный",
+        "code": "tomato"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Print_4",
+    "price": 300,
+    "category": "animals",
+    "paths": [
+      "M72 84C66.4 -77.6 22.3333 33.3333 1 109V200C27 228.667 77.6 245.6 72 84Z",
+      "M31 55C-61.8 -28.2 82.3333 2.99999 166 29L152 145C150.333 149.667 123.8 138.2 31 55Z"
+    ],
+    "types": {
+      "vinyl": {
+        "color": "",
+        "type": "",
+        "size": "",
+        "position": ""
+      },
+      "print": {
+        "size": "",
+        "position": ""
+      }
+    },
+    "colors": [
+      {
+        "title": "Зеленый",
+        "code": "green"
+      },
+      {
+        "title": "Томатный",
+        "code": "tomato"
+      }
+    ]
   }
 ]
