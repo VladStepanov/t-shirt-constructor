@@ -1,12 +1,13 @@
 <template>
-  <div class="menu-vinyl">
+  <div class="main-menu" v-if="!!curPrint">
     <BaseSelect
-      v-if="!!curPrint && curPrint.colors.length"
+      v-if="curPrint.types[curPrint.type].color !== undefined"
       v-model="color"
       :options="curPrintColors"
       placeholder="Выберите цвет"
     />
     <BaseSelect
+      v-if="curPrint.types[curPrint.type].size !== undefined"
       v-model="size"
       :options="sizes"
     />
@@ -18,17 +19,17 @@ import BaseSelect from '@/components/BaseSelect'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
-  name: 'MenuPrintsVinyl',
+  name: 'MenuPrintsMain',
   components: {
     BaseSelect
   },
   computed: {
-    ...mapGetters({
-      curPrint: ['prints/curPrint'],
-      curPrintColors: 'prints/curPrintColors'
-    }),
     ...mapState({
       sizes: state => state.prints.sizes.sizes
+    }),
+    ...mapGetters({
+      curPrint: 'prints/curPrint',
+      curPrintColors: 'prints/curPrintColors'
     }),
     color: {
       get () { return this.$store.getters['prints/curPrintColor'] },
@@ -47,8 +48,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.menu-vinyl {
+.main-menu {
   display: flex;
+  margin: 12px 0;
   & > *:not(:last-child) {
     margin-right: 12px;
   }

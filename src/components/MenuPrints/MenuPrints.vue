@@ -1,8 +1,15 @@
 <template>
   <BaseMenu title="Принты">
     <MenuPrintsFirstLine />
-    <RadioComponentSwitcher v-if="curPrint" :list="typesWithComponent" v-model="type" />
-    <component :is="determineComponent(typesWithComponent, curType)" />
+    <label
+      class="menu-select"
+      v-for="type in types"
+      :key="type.code"
+    >
+      <input :value="type.code" v-model="typeController"  type="radio">
+      {{ type.title }}
+    </label>
+    <MenuPrintsMain />
     <button @click="selectPrint">Добавить</button>
     <MenuPrintsSelected v-if="haveSelected" />
   </BaseMenu>
@@ -11,41 +18,26 @@
 <script>
 import BaseMenu from '@/components/BaseMenu'
 import MenuPrintsFirstLine from '@/components/MenuPrints/MenuPrintsFirstLine'
+import MenuPrintsMain from '@/components/MenuPrints/MenuPrintsMain'
 import MenuPrintsSelected from '@/components/MenuPrints/MenuPrintsSelected'
-import MenuPrintsPrint from '@/components/MenuPrints/MenuPrintsPrint'
-import MenuPrintsVinyl from '@/components/MenuPrints/MenuPrintsVinyl'
-import RadioComponentSwitcher from '@/components/RadioComponentSwitcher'
-import RadioComponentSwitcherMixin from '@/mixins/RadioComponentSwitcher'
 import { mapGetters } from 'vuex'
-
-const typesToComponent = {
-  vinyl: 'MenuPrintsVinyl',
-  print: 'MenuPrintsPrint'
-}
 
 export default {
   name: 'MenuPrints',
   components: {
     BaseMenu,
     MenuPrintsFirstLine,
-    MenuPrintsSelected,
-    MenuPrintsPrint,
-    MenuPrintsVinyl,
-    RadioComponentSwitcher
+    MenuPrintsMain,
+    MenuPrintsSelected
   },
-  mixins: [RadioComponentSwitcherMixin],
   computed: {
     ...mapGetters({
       haveSelected: 'prints/selection/haveSelected',
       curPrint: 'prints/curPrint',
-      curType: 'prints/curPrintType',
       types: 'prints/curPrintTypes'
     }),
-    typesWithComponent () {
-      return this.types && this.types.map(type => ({ ...type, component: typesToComponent[type.code] }))
-    },
-    type: {
-      get () { return this.curType },
+    typeController: {
+      get () { return this.$store.getters['prints/curPrintType'] },
       set (type) {
         this.$store.dispatch('prints/setType', { type })
       }
@@ -62,5 +54,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 </style>
