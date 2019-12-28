@@ -1,18 +1,18 @@
 [
   {
     "title": "Полный",
-    "code": "big"
+    "code": "100%"
   },
   {
     "title": "Средний",
-    "code": "medium"
+    "code": "75%"
   },
   {
     "title": "Небольшой",
-    "code": "small"
+    "code": "50%"
   },
   {
     "title": "Мелкий",
-    "code": "tiny"
+    "code": "25%"
   }
 ]

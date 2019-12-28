@@ -55,9 +55,11 @@ export default {
 <style scoped lang="scss">
 .select-print {
   cursor: pointer;
+  height: 200px;
   margin: 0;
+  display: flex;
+  align-items: center;
   &__item {
-    width: 100%;
   }
   &__title {
     text-align: center;
