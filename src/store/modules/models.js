@@ -30,7 +30,7 @@ export default {
     },
     findModelById: (state) => id => state.entities.find(entity => entity.id === id),
     curModelPaths: (state, getters) => {
-      const modelPaths = _.cloneDeep(getters.curModel.paths)
+      const modelPaths = getters.haveCurModel && _.cloneDeep(getters.curModel.paths)
 
       for (let side in modelPaths) {
         for (let part in modelPaths[side]) {

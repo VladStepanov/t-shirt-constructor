@@ -1,27 +1,20 @@
 <template>
   <div class='main-screen'>
-    <div v-if='haveCurModel'>
-      <ShirtPreview :paths='curModelPathsWithView' colorized>
-        <template
-          v-if="havePrintsToRender"
-          #print
-        >
-          <g
-            v-for="(print, i) in printsToRender"
-            :key="`${print.id}-${i}-print`"
-          >
-            <path
-              v-for="(path, i) in print.paths"
-              :key="`${print.id}-${i}-path`"
-              :d="path"
-              :fill="print.types[print.type] && print.types[print.type].color"
-            />
-          </g>
-        </template>
-      </ShirtPreview>
-      <ToggleView v-if="haveRearSide" />
-      <div class="main-screen__title">{{ curModel.name }}</div>
+    <div class="main-screen__container" v-if='haveCurModel'>
+      <ShirtPreview :paths='curModelPathsWithView' colorized />
+      <template v-if="havePrintsToRender">
+        <PrintPreview
+          class="main-screen__print"
+          v-for="(print, i) in printsToRender"
+          :key="`${print.id}-${i}`"
+          :color="print.types[print.type].color"
+          :paths="print.paths"
+          colorized
+        />
+      </template>
     </div>
+    <ToggleView v-if="haveRearSide && haveCurModel" />
+    <div v-if="haveCurModel" class="main-screen__title">{{ curModel.name }}</div>
     <CountOfSuitableModels />
   </div>
 </template>
@@ -29,6 +22,7 @@
 <script>
 import ToggleView from '@/components/ToggleView'
 import ShirtPreview from '@/components/ShirtPreview'
+import PrintPreview from '@/components/PrintPreview'
 import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import { mapGetters, mapState } from 'vuex'
 
@@ -37,6 +31,7 @@ export default {
   components: {
     ToggleView,
     ShirtPreview,
+    PrintPreview,
     CountOfSuitableModels
   },
   computed: {
@@ -53,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style scoped lang='scss'>
 .main-screen {
   display: flex;
   justify-content: center;
@@ -64,6 +59,16 @@ export default {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+  }
+  &__container {
+    position: relative;
+  }
+  &__print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 </style>

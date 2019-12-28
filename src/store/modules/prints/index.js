@@ -16,9 +16,7 @@ export default {
     prints: [...prints.map(print => ({
       ...print,
       side: '',
-      color: '',
-      type: '',
-      size: ''
+      type: ''
     }))],
     sides,
     sizes
