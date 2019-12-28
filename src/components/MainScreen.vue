@@ -8,6 +8,8 @@
           v-for="(print, i) in printsToRender"
           :key="`${print.id}-${i}`"
           :color="print.types[print.type].color"
+          :aspect-ratio="print.aspectRatio"
+          :width="print.size"
           :paths="print.paths"
           colorized
         />

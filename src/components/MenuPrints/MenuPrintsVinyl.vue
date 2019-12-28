@@ -28,7 +28,7 @@ export default {
       curPrintColors: 'prints/curPrintColors'
     }),
     ...mapState({
-      sizes: state => state.prints.sizes
+      sizes: state => state.prints.sizes.sizes
     }),
     color: {
       get () { return this.$store.getters['prints/curPrintColor'] },

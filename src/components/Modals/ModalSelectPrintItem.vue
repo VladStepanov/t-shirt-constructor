@@ -2,6 +2,8 @@
   <figure class="select-print" :class="classes" v-bind="$attrs" v-on="listeners">
     <PrintPreview
       :paths="paths"
+      :aspect-ratio="aspectRatio"
+      :width="width"
       class="select-print__item"
     />
     <figcaption class="select-print__title">{{ title }}</figcaption>
@@ -19,6 +21,14 @@ export default {
   props: {
     paths: {
       type: Array,
+      required: true
+    },
+    aspectRatio: {
+      type: Number,
+      required: true
+    },
+    width: {
+      type: Number,
       required: true
     },
     title: {
@@ -58,6 +68,8 @@ export default {
   height: 200px;
   margin: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   &__item {
   }

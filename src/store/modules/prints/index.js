@@ -3,23 +3,25 @@ import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
+import sizesModule from './sizes'
 import sizes from '@/models/prints/print-sizes'
 
 export default {
   namespaced: true,
   modules: {
     filters,
-    selection
+    selection,
+    sizes: sizesModule
   },
   state: () => ({
     curPrint: '',
     prints: [...prints.map(print => ({
       ...print,
       side: '',
-      type: ''
+      type: '',
+      size: sizes[Math.round((sizes.length - 1) / 2)].code
     }))],
-    sides,
-    sizes
+    sides
   }),
   mutations: {
     SET_PRINT: (state, print) => { state.curPrint = print },
@@ -41,7 +43,7 @@ export default {
     }
   },
   actions: {
-    setPrint ({ commit, dispatch, getters, rootGetters }, printId) {
+    setPrint ({ commit, dispatch, state, getters, rootGetters }, printId) {
       commit('SET_PRINT', printId)
 
       if (printId) {
@@ -63,9 +65,6 @@ export default {
     },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
-    },
-    setSize ({ commit, state }, { size, printId = state.curPrint }) {
-      commit('SET_SIZE', { size, printId })
     }
   },
   getters: {
@@ -91,7 +90,6 @@ export default {
       if (!curPrint) return
 
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
-    },
-    curPrintSize: (state, { curPrint }) => curPrint && curPrint.size
+    }
   }
 }

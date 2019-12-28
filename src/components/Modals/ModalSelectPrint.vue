@@ -9,6 +9,8 @@
           :paths="print.paths"
           :title="print.title"
           :id="print.id"
+          :aspectRatio="print.aspectRatio"
+          :width="print.size"
           :active-id="curPrint"
           @click="selectPrint"
         />

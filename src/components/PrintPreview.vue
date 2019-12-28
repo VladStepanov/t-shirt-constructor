@@ -1,6 +1,9 @@
 <template>
-  <div class="svg-container">
-    <svg class="svg" preserveAspectRatio="xMidYMid meet" viewbox='0 0 100 200'>
+  <div
+    class="svg-container"
+    :style="{ width: `${calculatedSize.x}px`, paddingBottom: `${calculatedSize.y}px` }"
+  >
+      <svg class="svg" preserveAspectRatio="xMinYMin meet" viewbox="0 0 150 60">
       <path
         v-for="(path, i) in paths"
         :key="i"
@@ -12,6 +15,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'PrintPreview',
   props: {
@@ -26,10 +31,23 @@ export default {
     color: {
       type: String
     },
-    size: {
-      type: Object,
-      validator (size) {
-        return size.x && size.y
+    aspectRatio: {
+      type: Number,
+      required: true
+    },
+    width: {
+      type: Number,
+      required: true
+    }
+  },
+  computed: {
+    ...mapGetters({
+      curPrintSize: 'prints/curPrintSizeRender'
+    }),
+    calculatedSize () {
+      return {
+        x: this.width,
+        y: this.width / this.aspectRatio
       }
     }
   }
@@ -42,15 +60,11 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
+  background-color: rgba(0,0,0, .2);
   &-container {
     display: inline-block;
-    width: 100px;
-    height: 200px;
     position: relative;
-    background-color: rgba(0, 0, 0, .3);
+    overflow: hidden;
   }
 }
 </style>

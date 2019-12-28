@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     ...mapState({
-      sizes: state => state.prints.sizes
+      sizes: state => state.prints.sizes.sizes
     }),
     size: {
       get () { return this.$store.getters['prints/curPrintSize'] },
