@@ -1,9 +1,9 @@
 <template>
   <div
     class="svg-container"
-    :style="{ width: `${calculatedSize.x}px`, paddingBottom: `${calculatedSize.y}px` }"
+    :style="{ width: `${calculatedSize.x}px`, height: `${calculatedSize.y}px` }"
   >
-      <svg class="svg" preserveAspectRatio="xMinYMin meet" viewbox="0 0 150 60">
+      <svg class="svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 150 60">
       <path
         v-for="(path, i) in paths"
         :key="i"
@@ -57,14 +57,10 @@ export default {
 <style scoped lang="scss">
 .svg {
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0, .2);
+  width: 100%;
+  height: 100%;
   &-container {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
+
   }
 }
 </style>

@@ -2,9 +2,7 @@ import sizes from '@/models/prints/print-sizes'
 
 export default {
   state: () => ({
-    sizes,
-    // Selecting middle value of the sizes
-    defaultWidth: sizes[Math.round((sizes.length - 1) / 2)].code
+    sizes
   }),
   actions: {
     setSize ({ commit, state, rootState }, { size, printId = rootState.prints.curPrint }) {

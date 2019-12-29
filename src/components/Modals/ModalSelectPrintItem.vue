@@ -65,7 +65,6 @@ export default {
 <style scoped lang="scss">
 .select-print {
   cursor: pointer;
-  height: 200px;
   margin: 0;
   display: flex;
   flex-direction: column;
