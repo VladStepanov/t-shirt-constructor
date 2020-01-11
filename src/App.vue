@@ -14,7 +14,7 @@
 <script>
 import Menu from '@/components/Menu'
 import MainScreen from '@/components/MainScreen'
-import Modals from '@/components/Modals'
+import Modals from '@/components/Modals/Modals'
 
 export default {
   name: 'App',
