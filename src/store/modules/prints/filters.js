@@ -19,8 +19,9 @@ export default {
   },
   getters: {
     suitablePrints: ({ curCategory }, getters, rootState) => {
-      return rootState.prints.prints
-        .filter(print => curCategory ? print.category === curCategory : true)
+      return curCategory
+        ? rootState.prints.prints.filter(print => print.category === curCategory)
+        : rootState.prints.prints
     }
   }
 }
