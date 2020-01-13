@@ -5,6 +5,7 @@ import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
 import sizesModule from './sizes'
 import sizes from '@/models/prints/print-sizes'
+import { cloneDeep } from 'lodash'
 
 export default {
   namespaced: true,
@@ -15,36 +16,38 @@ export default {
   },
   state: () => ({
     curPrint: '',
+    curPrintDummy: {},
     prints: [...prints.map(print => ({
       ...print,
       side: '',
       type: '',
+      // Selecting the average size for print
       size: sizes[Math.round((sizes.length - 1) / 2)].code
     }))],
     sides
   }),
   mutations: {
-    SET_PRINT: (state, print) => { state.curPrint = print },
+    SET_PRINT: (state, { printId }) => { state.curPrint = printId },
+    SET_PRINT_DUMMY: (state, { printId }) => {
+      state.curPrintDummy = cloneDeep(state.prints.find(print => print.id === printId))
+    },
     SET_SIDE: (state, { side, printId }) => {
-      const print = state.prints.find(print => print.id === printId)
-      print.side = side
+      state.curPrintDummy.side = side
     },
     SET_COLOR: (state, { color, printType, printId }) => {
-      const print = state.prints.find(print => print.id === printId)
-      print.types[printType].color = color
+      state.curPrintDummy.types[printType].color = color
     },
     SET_TYPE: (state, { type, printId }) => {
-      const print = state.prints.find(print => print.id === printId)
-      print.type = type
+      state.curPrintDummy.type = type
     },
     SET_SIZE: (state, { size, printId }) => {
-      const print = state.prints.find(print => print.id === printId)
-      print.size = size
+      state.curPrintDummy.size = size
     }
   },
   actions: {
-    setPrint ({ commit, dispatch, state, getters, rootGetters }, printId) {
-      commit('SET_PRINT', printId)
+    setPrint ({ commit, dispatch, state, rootGetters, getters }, printId) {
+      commit('SET_PRINT_DUMMY', { printId })
+      commit('SET_PRINT', { printId })
 
       if (printId) {
         dispatch('setSide', { side: rootGetters.curView })
@@ -61,6 +64,7 @@ export default {
       if (print.types[printType].color === undefined) {
         return
       }
+
       commit('SET_COLOR', { color, printId, printType })
     },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
@@ -68,8 +72,11 @@ export default {
     }
   },
   getters: {
-    curPrint: ({ prints, curPrint }, getters) => {
-      return getters['filters/suitablePrints'].find(print => print.id === curPrint)
+    curPrint: ({ prints, curPrint, curPrintDummy }, getters) => {
+      const print = getters['filters/suitablePrints'].find(print => print.id === curPrint)
+      return curPrintDummy.id === (print && print.id)
+        ? curPrintDummy
+        : null
     },
     printById: ({ prints }) => id => prints.find(print => print.id === id),
     printsToRender: (state, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
@@ -87,7 +94,8 @@ export default {
     curPrintColors: (state, { curPrint }) => curPrint && curPrint.colors,
     curPrintType: (state, { curPrint }) => curPrint && curPrint.type,
     curPrintTypes: (state, { curPrint }) => {
-      if (!curPrint) return
+      // if curPrint exists and have fields
+      if (curPrint && !Object.keys(curPrint).length) return
 
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
     }

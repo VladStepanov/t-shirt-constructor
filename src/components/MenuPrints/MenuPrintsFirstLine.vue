@@ -2,11 +2,11 @@
   <div class="menu-prints">
     <div class="menu-prints__name">
       Название
-      <span v-if="curPrint">{{ curPrint.title }}</span>
+      <span v-if="curPrint">{{ curPrintDummy.title }}</span>
     </div>
     <button class="menu-prints__choose" @click="showModal">Выбрать</button>
     <BaseSelect
-      v-if="curPrint"
+      v-if="!!curPrint"
       v-model="side"
       :options="sides"
       placeholder="Выберите сторону"
@@ -17,7 +17,7 @@
 
 <script>
 import BaseSelect from '@/components/BaseSelect'
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'MenuPrintsFirstLine',
@@ -26,10 +26,9 @@ export default {
   },
   computed: {
     ...mapState({
-      sides: state => state.prints.sides
-    }),
-    ...mapGetters({
-      curPrint: ['prints/curPrint']
+      sides: state => state.prints.sides,
+      curPrint: state => state.prints.curPrint,
+      curPrintDummy: state => state.prints.curPrintDummy
     }),
     side: {
       get () { return this.$store.getters['prints/sideForCurPrint'] },

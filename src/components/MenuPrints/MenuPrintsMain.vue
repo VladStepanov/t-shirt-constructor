@@ -1,13 +1,13 @@
 <template>
-  <div class="main-menu" v-if="!!curPrint">
+  <div class="main-menu" v-if="!!Object.keys(curPrintDummy).length">
     <BaseSelect
-      v-if="curPrint.types[curPrint.type].color !== undefined"
+      v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].color !== undefined"
       v-model="color"
       :options="curPrintColors"
       placeholder="Выберите цвет"
     />
     <BaseSelect
-      v-if="curPrint.types[curPrint.type].size !== undefined"
+      v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].size !== undefined"
       v-model="size"
       :options="sizes"
     />
@@ -25,7 +25,8 @@ export default {
   },
   computed: {
     ...mapState({
-      sizes: state => state.prints.sizes.sizes
+      sizes: state => state.prints.sizes.sizes,
+      curPrintDummy: state => state.prints.curPrintDummy
     }),
     ...mapGetters({
       curPrint: 'prints/curPrint',

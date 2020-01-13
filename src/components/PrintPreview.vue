@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'PrintPreview',
   props: {
@@ -41,9 +39,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      curPrintSize: 'prints/curPrintSizeRender'
-    }),
     calculatedSize () {
       return {
         x: this.width,

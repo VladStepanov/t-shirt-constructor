@@ -3,7 +3,7 @@
     <MenuPrintsFirstLine />
     <label
       class="menu-select"
-      v-for="type in types"
+      v-for="type in curPrintTypes"
       :key="type.code"
     >
       <input :value="type.code" v-model="typeController"  type="radio">
@@ -34,7 +34,7 @@ export default {
     ...mapGetters({
       haveSelected: 'prints/selection/haveSelected',
       curPrint: 'prints/curPrint',
-      types: 'prints/curPrintTypes'
+      curPrintTypes: 'prints/curPrintTypes'
     }),
     typeController: {
       get () { return this.$store.getters['prints/curPrintType'] },
@@ -47,7 +47,7 @@ export default {
     selectPrint () {
       if (!this.curPrint) return
 
-      this.$store.dispatch('prints/selection/selectPrint', this.curPrint.id)
+      this.$store.dispatch('prints/selection/selectPrint', { printId: this.curPrint.id })
     }
   }
 }
