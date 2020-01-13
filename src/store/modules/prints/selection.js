@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { cloneDeep } from 'lodash'
 
 export default {
   namespaced: true,
@@ -13,10 +13,10 @@ export default {
     SELECT_RESET: (state) => { state.selected = { front: [], rear: [] } }
   },
   actions: {
-    selectPrint ({ commit, dispatch, rootGetters }, printId) {
+    selectPrint ({ commit, dispatch, rootState, rootGetters }, { printId }) {
       if (!printId) return
 
-      const print = _.cloneDeep(rootGetters['prints/printById'](printId))
+      const print = cloneDeep(rootState.prints.curPrintDummy)
       commit('SELECT_PRINT', { print })
       dispatch('prints/setPrint', '', { root: true })
     },

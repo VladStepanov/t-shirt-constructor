@@ -45,8 +45,6 @@ export default {
   },
   methods: {
     selectPrint () {
-      if (!this.curPrint) return
-
       this.$store.dispatch('prints/selection/selectPrint', { printId: this.curPrint.id })
     }
   }

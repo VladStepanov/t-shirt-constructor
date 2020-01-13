@@ -29,7 +29,7 @@ export default {
   mutations: {
     SET_PRINT: (state, { printId }) => { state.curPrint = printId },
     SET_PRINT_DUMMY: (state, { printId }) => {
-      state.curPrintDummy = cloneDeep(state.prints.find(print => print.id === printId))
+      state.curPrintDummy = cloneDeep(state.prints.find(print => print.id === printId) || {})
     },
     SET_SIDE: (state, { side, printId }) => {
       state.curPrintDummy.side = side
