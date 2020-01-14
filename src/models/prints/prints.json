@@ -11,11 +11,11 @@
     "types": {
       "vinyl": {
         "color": "",
-        "size": "",
+        "size": 300,
         "position": ""
       },
       "print": {
-        "size": "",
+        "size": 300,
         "position": ""
       }
     },
@@ -41,7 +41,7 @@
     ],
     "types": {
       "print": {
-        "size": "",
+        "size": 300,
         "position": ""
       }
     },

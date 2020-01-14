@@ -4,7 +4,6 @@ import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
 import sizesModule from './sizes'
-import sizes from '@/models/prints/print-sizes'
 import { cloneDeep } from 'lodash'
 
 export default {
@@ -17,13 +16,11 @@ export default {
   state: () => ({
     curPrint: '',
     curPrintDummy: {},
-    prints: [...prints.map(print => ({
+    prints: prints.map(print => ({
       ...print,
       side: '',
-      type: '',
-      // Selecting the average size for print
-      size: sizes[Math.round((sizes.length - 1) / 2)].code
-    }))],
+      type: ''
+    })),
     sides
   }),
   mutations: {
@@ -40,8 +37,9 @@ export default {
     SET_TYPE: (state, { type, printId }) => {
       state.curPrintDummy.type = type
     },
-    SET_SIZE: (state, { size, printId }) => {
-      state.curPrintDummy.size = size
+    SET_SIZE: (state, { size, printId, printType }) => {
+      const { curPrintDummy } = state
+      curPrintDummy.types[printType].size = size
     }
   },
   actions: {

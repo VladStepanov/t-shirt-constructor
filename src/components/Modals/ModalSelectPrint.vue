@@ -10,7 +10,7 @@
           :title="print.title"
           :id="print.id"
           :aspectRatio="print.aspectRatio"
-          :width="print.size"
+          :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
           :active-id="curPrint"
           @click="selectPrint"
         />
@@ -36,7 +36,8 @@ export default {
     ...mapState({
       categories: state => state.prints.filters.categories,
       curCategory: state => state.prints.filters.curCategory,
-      curPrint: state => state.prints.curPrint
+      curPrint: state => state.prints.curPrint,
+      defaultPrintSize: state => state.prints.sizes.defaultSize
     }),
     ...mapGetters({
       suitablePrints: 'prints/filters/suitablePrints'

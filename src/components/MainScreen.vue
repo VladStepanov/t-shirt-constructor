@@ -9,7 +9,7 @@
           :key="`${print.id}-${i}`"
           :color="print.types[print.type].color"
           :aspect-ratio="print.aspectRatio"
-          :width="print.size"
+          :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
           :paths="print.paths"
           colorized
         />
@@ -38,7 +38,8 @@ export default {
   },
   computed: {
     ...mapState({
-      curRule: state => state.colors.curRule
+      curRule: state => state.colors.curRule,
+      defaultPrintSize: state => state.prints.sizes.defaultSize
     }),
     ...mapGetters(['curModelPathsWithView', 'curModel', 'haveCurModel', 'haveRearSide']),
     ...mapGetters({
