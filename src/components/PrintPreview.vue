@@ -3,7 +3,7 @@
     class="svg-container"
     :style="{ width: `${calculatedSize.x}px`, height: `${calculatedSize.y}px` }"
   >
-      <svg class="svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 150 60">
+      <svg class="svg" preserveAspectRatio="xMidYMid meet" :viewBox="`0 0 ${initSize.x} ${initSize.y}`">
       <path
         v-for="(path, i) in paths"
         :key="i"
@@ -36,6 +36,12 @@ export default {
     width: {
       type: Number,
       required: true
+    },
+    initSize: {
+      type: Object,
+      validator (size) {
+        return size.x && size.y
+      }
     }
   },
   computed: {

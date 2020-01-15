@@ -4,6 +4,7 @@
       :paths="paths"
       :aspect-ratio="aspectRatio"
       :width="width"
+      :init-size="initSize"
       class="select-print__item"
     />
     <figcaption class="select-print__title">{{ title }}</figcaption>
@@ -42,6 +43,12 @@ export default {
     activeId: {
       type: String,
       required: true
+    },
+    initSize: {
+      type: Object,
+      validator (size) {
+        return size.x && size.y
+      }
     }
   },
   computed: {

@@ -19,6 +19,10 @@
         "position": ""
       }
     },
+    "exportSize": {
+      "x": 151,
+      "y": 61
+    },
     "colors": [
       {
         "title": "Серый",
@@ -45,6 +49,10 @@
         "position": ""
       }
     },
+    "exportSize": {
+      "x": 151,
+      "y": 61
+    },
     "colors": [
       {
         "title": "Зеленый",
@@ -53,6 +61,45 @@
       {
         "title": "Томатный",
         "code": "tomato"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Print_3",
+    "price": 200,
+    "category": "animals",
+    "aspectRatio": 1.82,
+    "paths": [
+      "M51 34C-64 108 55 45 51 113C63 117 105.6 127.6 180 138C254.4 148.4 259 73 252 34C223.333 9.33333 143 -25.2 51 34Z"
+    ],
+    "types": {
+      "vinyl": {
+        "color": "",
+        "size": 300,
+        "position": ""
+      },
+      "print": {
+        "size": 300,
+        "position": ""
+      }
+    },
+    "exportSize": {
+      "x": 255,
+      "y": 140
+    },
+    "colors": [
+      {
+        "title": "Томатный",
+        "code": "tomato"
+      },
+      {
+        "title": "Голубой",
+        "code": "steelblue"
+      },
+      {
+        "title": "Фиолетовый",
+        "code": "magenta"
       }
     ]
   }

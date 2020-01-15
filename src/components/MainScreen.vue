@@ -10,6 +10,7 @@
           :color="print.types[print.type].color"
           :aspect-ratio="print.aspectRatio"
           :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
+          :init-size="print.exportSize"
           :paths="print.paths"
           colorized
         />
