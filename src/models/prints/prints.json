@@ -10,11 +10,13 @@
     ],
     "types": {
       "vinyl": {
-        "color": "",
+        "texture": "reflect",
+        "color": "blue",
         "size": 300,
         "position": ""
       },
       "print": {
+        "texture": "reflect",
         "size": 300,
         "position": ""
       }
@@ -25,12 +27,18 @@
     },
     "colors": [
       {
-        "title": "Серый",
-        "code": "#eee"
+        "title": "Синий",
+        "code": "blue"
       },
       {
         "title": "Желтый",
         "code": "yellow"
+      }
+    ],
+    "textures": [
+      {
+        "title": "Светоотражающий",
+        "code": "reflect"
       }
     ]
   },
@@ -45,6 +53,7 @@
     ],
     "types": {
       "print": {
+        "texture": "reflect",
         "size": 300,
         "position": ""
       }
@@ -57,10 +66,12 @@
       {
         "title": "Зеленый",
         "code": "green"
-      },
+      }
+    ],
+    "textures": [
       {
-        "title": "Томатный",
-        "code": "tomato"
+        "title": "Светоотражающий",
+        "code": "reflect"
       }
     ]
   },
@@ -75,11 +86,13 @@
     ],
     "types": {
       "vinyl": {
-        "color": "",
+        "texture": "reflect",
+        "color": "yellow",
         "size": 300,
         "position": ""
       },
       "print": {
+        "texture": "reflect",
         "size": 300,
         "position": ""
       }
@@ -90,16 +103,22 @@
     },
     "colors": [
       {
-        "title": "Томатный",
-        "code": "tomato"
+        "title": "Желтый",
+        "code": "yellow"
       },
       {
-        "title": "Голубой",
-        "code": "steelblue"
+        "title": "Синий",
+        "code": "blue"
       },
       {
-        "title": "Фиолетовый",
-        "code": "magenta"
+        "title": "Зеленый",
+        "code": "green"
+      }
+    ],
+    "textures": [
+      {
+        "title": "Светоотражающий",
+        "code": "reflect"
       }
     ]
   }

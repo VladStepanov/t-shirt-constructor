@@ -9,6 +9,8 @@
           :paths="print.paths"
           :title="print.title"
           :id="print.id"
+          color=""
+          texture="reflect"
           :aspectRatio="print.aspectRatio"
           :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
           :init-size="print.exportSize"

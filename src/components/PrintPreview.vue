@@ -4,17 +4,26 @@
     :style="{ width: `${calculatedSize.x}px`, height: `${calculatedSize.y}px` }"
   >
       <svg class="svg" preserveAspectRatio="xMidYMid meet" :viewBox="`0 0 ${initSize.x} ${initSize.y}`">
-      <path
-        v-for="(path, i) in paths"
-        :key="i"
-        :d="path"
-        :fill="color"
-      />
+        <defs>
+          <pattern :id="id" patternUnits="userSpaceOnUse" width="100" height="100">
+            <image
+              v-bind="{ 'xlink:href': pathToPattern }"
+            />
+          </pattern>
+        </defs>
+        <path
+          v-for="(path, i) in paths"
+          :key="i"
+          :d="path"
+          :fill="`url(#${id})`"
+        />
     </svg>
   </div>
 </template>
 
 <script>
+// import { mapGetters } from 'vuex'
+
 export default {
   name: 'PrintPreview',
   props: {
@@ -27,6 +36,9 @@ export default {
       default: false
     },
     color: {
+      type: String
+    },
+    texture: {
       type: String
     },
     aspectRatio: {
@@ -42,6 +54,10 @@ export default {
       validator (size) {
         return size.x && size.y
       }
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -50,6 +66,13 @@ export default {
         x: this.width,
         y: this.width / this.aspectRatio
       }
+    },
+    pathToPattern () {
+      if (!this.color) {
+        return require(`@/assets/templates/${this.texture}.jpg`)
+      }
+      // return require(`@/assets/templates/reflect-yellow.jpg`)
+      return require(`@/assets/templates/${this.texture}-${this.color}.jpg`)
     }
   }
 }

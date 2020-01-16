@@ -4,7 +4,10 @@
       :paths="paths"
       :aspect-ratio="aspectRatio"
       :width="width"
+      :texture="texture"
+      :color="color"
       :init-size="initSize"
+      :id="`modal-${id}`"
       class="select-print__item"
     />
     <figcaption class="select-print__title">{{ title }}</figcaption>
@@ -28,6 +31,8 @@ export default {
       type: Number,
       required: true
     },
+    color: { type: String },
+    texture: { type: String },
     width: {
       type: Number,
       required: true

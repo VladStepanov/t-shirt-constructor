@@ -11,6 +11,11 @@
       v-model="size"
       :options="sizes"
     />
+    <BaseSelect
+      v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].texture !== undefined"
+      v-model="texture"
+      :options="curPrintTextures"
+    />
   </div>
 </template>
 
@@ -30,7 +35,8 @@ export default {
     }),
     ...mapGetters({
       curPrint: 'prints/curPrint',
-      curPrintColors: 'prints/curPrintColors'
+      curPrintColors: 'prints/curPrintColors',
+      curPrintTextures: 'prints/curPrintTextures'
     }),
     color: {
       get () { return this.$store.getters['prints/curPrintColor'] },
@@ -42,6 +48,12 @@ export default {
       get () { return this.$store.getters['prints/curPrintSize'] },
       set (size) {
         this.$store.dispatch('prints/setSize', { size })
+      }
+    },
+    texture: {
+      get () { return this.$store.getters['prints/curPrintTexture'] },
+      set (texture) {
+        this.$store.dispatch('print/setTexture', { texture })
       }
     }
   }

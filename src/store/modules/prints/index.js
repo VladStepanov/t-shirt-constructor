@@ -4,6 +4,7 @@ import sides from '@/models/sides'
 import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
 import sizesModule from './sizes'
+import colors from '@/store/modules/prints/colors'
 import { cloneDeep } from 'lodash'
 
 export default {
@@ -11,7 +12,8 @@ export default {
   modules: {
     filters,
     selection,
-    sizes: sizesModule
+    sizes: sizesModule,
+    colors
   },
   state: () => ({
     curPrint: '',
@@ -57,14 +59,6 @@ export default {
     setSide ({ commit, state }, { side, printId = state.curPrint }) {
       commit('SET_SIDE', { side, printId })
     },
-    setColor ({ commit, state, getters }, { color, printId = state.curPrint, printType = getters.curPrintType }) {
-      const print = getters.printById(printId)
-      if (print.types[printType].color === undefined) {
-        return
-      }
-
-      commit('SET_COLOR', { color, printId, printType })
-    },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
     }
@@ -88,8 +82,6 @@ export default {
       return !!printsToRender.length
     },
     sideForCurPrint: (state, { curPrint }) => curPrint && curPrint.side,
-    curPrintColor: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].color,
-    curPrintColors: (state, { curPrint }) => curPrint && curPrint.colors,
     curPrintType: (state, { curPrint }) => curPrint && curPrint.type,
     curPrintTypes: (state, { curPrint }) => {
       // if curPrint exists and have fields
