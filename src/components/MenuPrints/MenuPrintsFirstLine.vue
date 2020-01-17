@@ -5,13 +5,15 @@
       <span v-if="curPrint">{{ curPrintDummy.title }}</span>
     </div>
     <button class="menu-prints__choose" @click="showModal">Выбрать</button>
-    <BaseSelect
-      v-if="!!curPrint"
-      v-model="side"
-      :options="sides"
-      placeholder="Выберите сторону"
-      class="menu-prints__side"
-    />
+    <template v-if="!!curPrint">
+      <span>Сторона:</span>
+      <BaseSelect
+        v-model="side"
+        :options="sides"
+        placeholder="Выберите сторону"
+        class="menu-prints__side"
+      />
+    </template>
   </div>
 </template>
 
