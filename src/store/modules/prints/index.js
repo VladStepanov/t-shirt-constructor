@@ -1,18 +1,20 @@
 import prints from '@/models/prints/prints'
-import filters from '@/store/modules/prints/filters'
 import sides from '@/models/sides'
-import selection from '@/store/modules/prints/selection'
 import printTypes from '@/models/prints/print-types'
-import sizesModule from './sizes'
+
+import filters from '@/store/modules/prints/filters'
 import colors from '@/store/modules/prints/colors'
-import { cloneDeep } from 'lodash'
+import sizes from '@/store/modules/prints/sizes'
+import selection from '@/store/modules/prints/selection'
+
+import cloneDeep from 'lodash/cloneDeep'
 
 export default {
   namespaced: true,
   modules: {
     filters,
     selection,
-    sizes: sizesModule,
+    sizes,
     colors
   },
   state: () => ({
