@@ -11,7 +11,7 @@
           :texture="print.types[print.type].texture"
           :position="print.types[print.type].position"
           :aspect-ratio="print.aspectRatio"
-          :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
+          :width="print.types[print.type] && print.types[print.type].size"
           :init-size="print.exportSize"
           :paths="print.paths"
           :id="`main-${print.id}-${i}`"
@@ -42,8 +42,7 @@ export default {
   },
   computed: {
     ...mapState({
-      curRule: state => state.colors.curRule,
-      defaultPrintSize: state => state.prints.sizes.defaultSize
+      curRule: state => state.colors.curRule
     }),
     ...mapGetters(['curModelPathsWithView', 'curModel', 'haveCurModel', 'haveRearSide']),
     ...mapGetters({

@@ -3,7 +3,8 @@ import sizes from '@/models/prints/print-sizes'
 export default {
   state: () => ({
     sizes,
-    defaultSize: 300
+    // Choosing the biggest size
+    previewSize: sizes[0].code
   }),
   actions: {
     setSize ({ commit, state, rootState }, { size, printId = rootState.prints.curPrint }) {

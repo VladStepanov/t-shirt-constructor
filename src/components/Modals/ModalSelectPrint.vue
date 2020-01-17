@@ -12,7 +12,7 @@
           color=""
           texture="reflect"
           :aspectRatio="print.aspectRatio"
-          :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
+          :width="(print.types[print.type] && print.types[print.type].size) || previewPrintSize"
           :init-size="print.exportSize"
           :active-id="curPrint"
           @click="selectPrint"
@@ -40,7 +40,7 @@ export default {
       categories: state => state.prints.filters.categories,
       curCategory: state => state.prints.filters.curCategory,
       curPrint: state => state.prints.curPrint,
-      defaultPrintSize: state => state.prints.sizes.defaultSize
+      previewPrintSize: state => state.prints.sizes.previewSize
     }),
     ...mapGetters({
       suitablePrints: 'prints/filters/suitablePrints'
