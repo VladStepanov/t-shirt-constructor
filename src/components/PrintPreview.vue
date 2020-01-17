@@ -1,7 +1,7 @@
 <template>
   <div
     class="svg-container"
-    :style="{ width: `${calculatedSize.x}px`, height: `${calculatedSize.y}px` }"
+    :style="styles"
   >
       <svg class="svg" preserveAspectRatio="xMidYMid meet" :viewBox="`0 0 ${initSize.x} ${initSize.y}`">
         <defs>
@@ -58,6 +58,10 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    position: {
+      type: String,
+      required: false
     }
   },
   computed: {
@@ -65,6 +69,20 @@ export default {
       return {
         x: this.width,
         y: this.width / this.aspectRatio
+      }
+    },
+    calculatePos () {
+      if (!this.position) return {}
+      const curDetailedPosition = this.$store.state.prints.positions.find(position => position.code === this.position)
+
+      return { x: curDetailedPosition.pos.x, y: curDetailedPosition.pos.y }
+    },
+    styles () {
+      return {
+        width: `${this.calculatedSize.x}px`,
+        height: `${this.calculatedSize.y}px`,
+        top: `${this.calculatePos.y}px`,
+        left: `${this.calculatePos.x}px`
       }
     },
     pathToPattern () {

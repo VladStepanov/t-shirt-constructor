@@ -1,6 +1,7 @@
 import prints from '@/models/prints/prints'
 import sides from '@/models/sides'
 import printTypes from '@/models/prints/print-types'
+import positions from '@/models/prints/print-pos'
 
 import filters from '@/store/modules/prints/filters'
 import colors from '@/store/modules/prints/colors'
@@ -25,7 +26,8 @@ export default {
       side: '',
       type: ''
     })),
-    sides
+    sides,
+    positions
   }),
   mutations: {
     SET_PRINT: (state, { printId }) => { state.curPrint = printId },
@@ -44,6 +46,10 @@ export default {
     SET_SIZE: (state, { size, printId, printType }) => {
       const { curPrintDummy } = state
       curPrintDummy.types[printType].size = size
+    },
+    SET_POSITION: (state, { position, printId, printType }) => {
+      const { curPrintDummy } = state
+      curPrintDummy.types[printType].position = position
     }
   },
   actions: {
@@ -63,6 +69,9 @@ export default {
     },
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
+    },
+    setPosition ({ commit, state, getters }, { position, printId = state.curPrint, printType = getters.curPrintType }) {
+      commit('SET_POSITION', { position, printId, printType })
     }
   },
   getters: {
@@ -90,6 +99,7 @@ export default {
       if (curPrint && !Object.keys(curPrint).length) return
 
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
-    }
+    },
+    curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position
   }
 }

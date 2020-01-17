@@ -9,6 +9,7 @@
           :key="`${print.id}-${i}`"
           :color="print.types[print.type].color"
           :texture="print.types[print.type].texture"
+          :position="print.types[print.type].position"
           :aspect-ratio="print.aspectRatio"
           :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
           :init-size="print.exportSize"

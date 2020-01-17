@@ -16,6 +16,11 @@
       v-model="texture"
       :options="curPrintTextures"
     />
+    <BaseSelect
+      v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined"
+      v-model="position"
+      :options="positions"
+    />
   </div>
 </template>
 
@@ -31,6 +36,7 @@ export default {
   computed: {
     ...mapState({
       sizes: state => state.prints.sizes.sizes,
+      positions: state => state.prints.positions,
       curPrintDummy: state => state.prints.curPrintDummy
     }),
     ...mapGetters({
@@ -54,6 +60,12 @@ export default {
       get () { return this.$store.getters['prints/curPrintTexture'] },
       set (texture) {
         this.$store.dispatch('print/setTexture', { texture })
+      }
+    },
+    position: {
+      get () { return this.$store.getters['prints/curPrintPosition'] },
+      set (position) {
+        this.$store.dispatch('prints/setPosition', { position })
       }
     }
   }

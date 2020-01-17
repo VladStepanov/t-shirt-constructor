@@ -14,7 +14,6 @@ export default {
     curPrintSize: (state, getters, rootState, rootGetters) => {
       const curPrint = rootGetters['prints/curPrint']
       return curPrint && curPrint.types[curPrint.type].size
-    },
-    sizeByRatio: (state) => (printId, ratio) => {}
+    }
   }
 }
