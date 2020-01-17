@@ -1,34 +1,30 @@
 <template>
   <div class="main-menu" v-if="!!Object.keys(curPrintDummy).length">
-    <div class="main-menu__item">
+    <div class="main-menu__item" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].texture !== undefined">
       <span class="main-menu__item__title">Тип:</span>
       <BaseSelect
-        v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].texture !== undefined"
         v-model="texture"
         :options="curPrintTextures"
       />
     </div>
-    <div class="main-menu__item">
+    <div class="main-menu__item" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].color !== undefined">
       <span class="main-menu__item__title">Цвет:</span>
       <BaseSelect
-        v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].color !== undefined"
         v-model="color"
         :options="curPrintColors"
         placeholder="Выберите цвет"
       />
     </div>
-    <div class="main-menu__item main-menu__item-size">
+    <div class="main-menu__item main-menu__item-size" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].size !== undefined">
       <span class="main-menu__item__title">Размер:</span>
       <BaseSelect
-        v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].size !== undefined"
         v-model="size"
         :options="sizes"
       />
     </div>
-    <div class="main-menu__item main-menu__item-pos">
+    <div class="main-menu__item  main-menu__item-pos" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined">
       <span class="main-menu__item__title">Позиция:</span>
       <BaseSelect
-        v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined"
         v-model="position"
         :options="positions"
       />
