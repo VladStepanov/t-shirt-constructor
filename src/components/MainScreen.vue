@@ -13,7 +13,7 @@
           :width="(print.types[print.type] && print.types[print.type].size) || defaultPrintSize"
           :init-size="print.exportSize"
           :paths="print.paths"
-          :id="`main-${print.id}`"
+          :id="`main-${print.id}-${i}`"
           colorized
         />
       </template>
