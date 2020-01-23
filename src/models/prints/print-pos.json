@@ -1,18 +1,30 @@
-[
-  {
-    "title": "Горизонтальный",
-    "code": "horizontal",
-    "pos": {
-      "x": 100,
-      "y": 0
+{
+  "horizontal": [
+    {
+      "title": "Середина",
+      "code": "centerX"
+    },
+    {
+      "title": "Слева",
+      "code": "left"
+    },
+    {
+      "title": "Справа",
+      "code": "right"
     }
-  },
-  {
-    "title": "Вертикальный",
-    "code": "vertical",
-    "pos": {
-      "x": 50,
-      "y": 50
+  ],
+  "vertical": [
+    {
+      "title": "Середина",
+      "code": "centerY"
+    },
+    {
+      "title": "Верх",
+      "code": "top"
+    },
+    {
+      "title": "Низ",
+      "code": "bottom"
     }
-  }
-]
+  ]
+}

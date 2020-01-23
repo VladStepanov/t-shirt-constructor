@@ -25,8 +25,12 @@
     <div class="main-menu__item  main-menu__item-pos" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined">
       <span class="main-menu__item__title">Позиция:</span>
       <BaseSelect
-        v-model="position"
-        :options="positions"
+        v-model="positionX"
+        :options="positions.horizontal"
+      />
+      <BaseSelect
+        v-model="positionY"
+        :options="positions.vertical"
       />
     </div>
   </div>
@@ -70,10 +74,16 @@ export default {
         this.$store.dispatch('print/setTexture', { texture })
       }
     },
-    position: {
-      get () { return this.$store.getters['prints/curPrintPosition'] },
+    positionX: {
+      get () { return this.$store.getters['prints/curPrintPosition'].x },
       set (position) {
-        this.$store.dispatch('prints/setPosition', { position })
+        this.$store.dispatch('prints/setPositionX', { position })
+      }
+    },
+    positionY: {
+      get () { return this.$store.getters['prints/curPrintPosition'].y },
+      set (position) {
+        this.$store.dispatch('prints/setPositionY', { position })
       }
     }
   }

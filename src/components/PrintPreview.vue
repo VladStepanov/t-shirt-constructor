@@ -2,6 +2,7 @@
   <div
     class="svg-container"
     :style="styles"
+    :class="classes"
   >
       <svg class="svg" preserveAspectRatio="xMidYMid meet" :viewBox="`0 0 ${initSize.x} ${initSize.y}`">
         <defs>
@@ -22,8 +23,6 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
-
 export default {
   name: 'PrintPreview',
   props: {
@@ -51,38 +50,35 @@ export default {
     },
     initSize: {
       type: Object,
-      validator (size) {
-        return size.x && size.y
-      }
+      validator: (size) => size.x && size.y
     },
     id: {
       type: String,
       required: true
     },
     position: {
-      type: String,
-      required: false
+      type: Object,
+      default: () => ({})
     }
   },
   computed: {
+    styles () {
+      return {
+        width: `${this.calculatedSize.x}px`,
+        height: `${this.calculatedSize.y}px`
+      }
+    },
+    classes () {
+      const { x, y } = this.position
+
+      return {
+        [[x, y].filter(Boolean).join(' ')]: x || y
+      }
+    },
     calculatedSize () {
       return {
         x: this.width,
         y: this.width / this.aspectRatio
-      }
-    },
-    calculatePos () {
-      if (!this.position) return {}
-      const curDetailedPosition = this.$store.state.prints.positions.find(position => position.code === this.position)
-
-      return { x: curDetailedPosition.pos.x, y: curDetailedPosition.pos.y }
-    },
-    styles () {
-      return {
-        width: `${this.calculatedSize.x}px`,
-        height: `${this.calculatedSize.y}px`,
-        top: `${this.calculatePos.y}px`,
-        left: `${this.calculatePos.x}px`
       }
     },
     pathToPattern () {
@@ -102,7 +98,33 @@ export default {
   width: 100%;
   height: 100%;
   &-container {
-
   }
+}
+.centerX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.centerY {
+  top: 50%;
+  transform: translateY(-50%)
+}
+.centerX.centerY {
+  @extend .centerX;
+  @extend .centerY;
+  transform: translate(-50%, -50%);
+}
+
+.top {
+  top: 0;
+}
+.bottom {
+  bottom: 0;
+}
+
+.right {
+  right: 0;
+}
+.left {
+  left: 0;
 }
 </style>

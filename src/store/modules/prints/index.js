@@ -47,9 +47,13 @@ export default {
       const { curPrintDummy } = state
       curPrintDummy.types[printType].size = size
     },
-    SET_POSITION: (state, { position, printId, printType }) => {
+    SET_POSITION_X: (state, { position, printId, printType }) => {
       const { curPrintDummy } = state
-      curPrintDummy.types[printType].position = position
+      curPrintDummy.types[printType].position.x = position
+    },
+    SET_POSITION_Y: (state, { position, printId, printType }) => {
+      const { curPrintDummy } = state
+      curPrintDummy.types[printType].position.y = position
     }
   },
   actions: {
@@ -70,8 +74,11 @@ export default {
     setType ({ commit, state }, { type, printId = state.curPrint }) {
       commit('SET_TYPE', { type, printId })
     },
-    setPosition ({ commit, state, getters }, { position, printId = state.curPrint, printType = getters.curPrintType }) {
-      commit('SET_POSITION', { position, printId, printType })
+    setPositionX ({ commit, state, getters }, { position, printId = state.curPrint, printType = getters.curPrintType }) {
+      commit('SET_POSITION_X', { position, printId, printType })
+    },
+    setPositionY ({ commit, state, getters }, { position, printId = state.curPrint, printType = getters.curPrintType }) {
+      commit('SET_POSITION_Y', { position, printId, printType })
     }
   },
   getters: {
