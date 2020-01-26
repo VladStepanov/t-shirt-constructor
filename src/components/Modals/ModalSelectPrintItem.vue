@@ -1,27 +1,24 @@
 <template>
   <figure class="select-print" :class="classes" v-bind="$attrs" v-on="listeners">
-    <PrintPreview
+    <BasePrint
+      class="select-print__item"
       :paths="paths"
       :aspect-ratio="aspectRatio"
       :width="width"
       :texture="texture"
       :color="color"
       :init-size="initSize"
-      :id="`modal-${id}`"
-      class="select-print__item"
     />
     <figcaption class="select-print__title">{{ title }}</figcaption>
   </figure>
 </template>
 
 <script>
-import PrintPreview from '@/components/PrintPreview'
+import BasePrint from '@/components/BasePrint'
 
 export default {
   name: 'ModalSelectPrintItem',
-  components: {
-    PrintPreview
-  },
+  components: { BasePrint },
   props: {
     paths: {
       type: Array,

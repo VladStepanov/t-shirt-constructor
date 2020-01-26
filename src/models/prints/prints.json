@@ -14,16 +14,16 @@
         "color": "blue",
         "size": 300,
         "position": {
-          "x": "",
-          "y": ""
+          "x": "centerX",
+          "y": "centerY"
         }
       },
       "print": {
         "texture": "reflect",
         "size": 300,
         "position": {
-          "x": "",
-          "y": ""
+          "x": "centerX",
+          "y": "centerY"
         }
       }
     },
@@ -62,8 +62,8 @@
         "texture": "reflect",
         "size": 300,
         "position": {
-          "x": "",
-          "y": ""
+          "x": "centerX",
+          "y": "centerY"
         }
       }
     },
@@ -99,16 +99,16 @@
         "color": "yellow",
         "size": 300,
         "position": {
-          "x": "",
-          "y": ""
+          "x": "centerX",
+          "y": "centerY"
         }
       },
       "print": {
         "texture": "reflect",
         "size": 300,
         "position": {
-          "x": "",
-          "y": ""
+          "x": "centerX",
+          "y": "centerY"
         }
       }
     },

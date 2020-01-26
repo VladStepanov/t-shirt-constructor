@@ -3,19 +3,30 @@
     <div class="main-screen__container" v-if='haveCurModel'>
       <ShirtPreview :paths='curModelPathsWithView' colorized />
       <template v-if="havePrintsToRender">
-        <PrintPreview
-          class="main-screen__print"
+<!--        <PrintPreview-->
+<!--          class="main-screen__print"-->
+<!--          v-for="(print, i) in printsToRender"-->
+<!--          :key="`${print.id}-${i}`"-->
+<!--          :color="print.types[print.type].color"-->
+<!--          :texture="print.types[print.type].texture"-->
+<!--          :position="print.types[print.type].position"-->
+<!--          :aspect-ratio="print.aspectRatio"-->
+<!--          :width="print.types[print.type] && print.types[print.type].size"-->
+<!--          :init-size="print.exportSize"-->
+<!--          :paths="print.paths"-->
+<!--          :id="`main-${print.id}-${i}`"-->
+<!--          colorized-->
+<!--        />-->
+        <BasePrintCustomizable
           v-for="(print, i) in printsToRender"
           :key="`${print.id}-${i}`"
-          :color="print.types[print.type].color"
-          :texture="print.types[print.type].texture"
-          :position="print.types[print.type].position"
-          :aspect-ratio="print.aspectRatio"
-          :width="print.types[print.type] && print.types[print.type].size"
-          :init-size="print.exportSize"
           :paths="print.paths"
-          :id="`main-${print.id}-${i}`"
-          colorized
+          :init-size="print.exportSize"
+          :texture="print.types[print.type].texture"
+          :color="print.types[print.type].color"
+          :width="print.types[print.type].size"
+          :aspect-ratio="print.aspectRatio"
+          :position="print.types[print.type].position"
         />
       </template>
     </div>
@@ -28,8 +39,8 @@
 <script>
 import ToggleView from '@/components/ToggleView'
 import ShirtPreview from '@/components/ShirtPreview'
-import PrintPreview from '@/components/PrintPreview'
 import CountOfSuitableModels from '@/components/CountOfSuitableModels'
+import BasePrintCustomizable from '@/components/BasePrintCustomizable'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
@@ -37,7 +48,7 @@ export default {
   components: {
     ToggleView,
     ShirtPreview,
-    PrintPreview,
+    BasePrintCustomizable,
     CountOfSuitableModels
   },
   computed: {
