@@ -136,5 +136,111 @@
         "code": "reflect"
       }
     ]
+  },
+  {
+    "id": "3",
+    "title": "Print_4",
+    "price": 1000,
+    "category": "animals",
+    "aspectRatio": 0.627,
+    "paths": [
+      "M1 77C1 33 32.3333 8 48 1C63.6667 8.66667 95 34.6 95 77C95 119.4 63.6667 144.667 48 152C32.3333 145.333 1 121 1 77Z"
+    ],
+    "types": {
+      "vinyl": {
+        "texture": "reflect",
+        "color": "yellow",
+        "size": 300,
+        "position": {
+          "x": "centerX",
+          "y": "centerY"
+        }
+      },
+      "print": {
+        "texture": "reflect",
+        "size": 300,
+        "position": {
+          "x": "centerX",
+          "y": "centerY"
+        }
+      }
+    },
+    "exportSize": {
+      "x": 94,
+      "y": 151
+    },
+    "colors": [
+      {
+        "title": "Желтый",
+        "code": "yellow"
+      },
+      {
+        "title": "Синий",
+        "code": "blue"
+      },
+      {
+        "title": "Зеленый",
+        "code": "green"
+      }
+    ],
+    "textures": [
+      {
+        "title": "Светоотражающий",
+        "code": "reflect"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Print_5",
+    "price": 8000,
+    "category": "animals",
+    "aspectRatio": 0.627,
+    "paths": [
+      "M83 1C44.6 1.8 12.3333 28 1 41C9.33333 54.3333 37.4 80.8 83 80C128.6 79.2 155.333 53.6667 163 41C152.333 27.3333 121.4 0.200004 83 1Z"
+    ],
+    "types": {
+      "vinyl": {
+        "texture": "reflect",
+        "color": "yellow",
+        "size": 300,
+        "position": {
+          "x": "centerX",
+          "y": "centerY"
+        }
+      },
+      "print": {
+        "texture": "reflect",
+        "size": 300,
+        "position": {
+          "x": "centerX",
+          "y": "centerY"
+        }
+      }
+    },
+    "exportSize": {
+      "x": 164,
+      "y": 81
+    },
+    "colors": [
+      {
+        "title": "Желтый",
+        "code": "yellow"
+      },
+      {
+        "title": "Синий",
+        "code": "blue"
+      },
+      {
+        "title": "Зеленый",
+        "code": "green"
+      }
+    ],
+    "textures": [
+      {
+        "title": "Светоотражающий",
+        "code": "reflect"
+      }
+    ]
   }
 ]

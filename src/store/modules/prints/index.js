@@ -24,7 +24,8 @@ export default {
     prints: prints.map(print => ({
       ...print,
       side: '',
-      type: ''
+      type: '',
+      aspectRatio: print.exportSize.x / print.exportSize.y
     })),
     sides,
     positions
