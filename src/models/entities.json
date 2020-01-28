@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "T_Shirt_1",
-    "price": 300,
+    "realSize": 0.3,
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
@@ -35,7 +35,7 @@
   {
     "id": "2",
     "name": "T_Shirt_2",
-    "price": 200,
+    "realSize": 0.4,
     "gender": "female",
     "collection": "puma",
     "type": "t-shirt",
@@ -60,7 +60,7 @@
   {
     "id": "3",
     "name": "T_Shirt_3",
-    "price": 300,
+    "realSize": 0.1,
     "gender": "male",
     "collection": "adidas",
     "type": "shirt",
@@ -85,7 +85,7 @@
   {
     "id": "4",
     "name": "T_Shirt_4",
-    "price": 300,
+    "realSize": 0.5,
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
@@ -118,7 +118,7 @@
   {
     "id": "5",
     "name": "T_Shirt_5",
-    "price": 300,
+    "realSize": 0.2,
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
@@ -148,7 +148,7 @@
   {
     "id": "6",
     "name": "T_Shirt_6",
-    "price": 300,
+    "realSize": 0.3,
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",

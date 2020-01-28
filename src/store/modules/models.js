@@ -49,6 +49,12 @@ export default {
       return { ...getters.curModelPaths.front, ...getters.curModelPaths.rear }
     },
     haveCurModel: (state, getters) => !!getters.curModel,
-    haveRearSide: (state, getters) => !!getters.curModelPaths.rear
+    haveRearSide: (state, getters) => !!getters.curModelPaths.rear,
+    curModelPrice: (state, { haveCurModel, curModel, haveCurMaterial, curMaterial }) => {
+      if (haveCurModel && haveCurMaterial) {
+        const curMaterialPrice = require('@/models/materials-list').find(material => curMaterial === material.code).price
+        return curModel.realSize * curMaterialPrice
+      }
+    }
   }
 }

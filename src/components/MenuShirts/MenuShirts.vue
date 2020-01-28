@@ -2,6 +2,7 @@
   <BaseMenu title="Футболка">
     <MenuFilters />
     <MenuColors />
+    <div>{{ this.$store.getters.curModelPrice }}</div>
   </BaseMenu>
 </template>
 

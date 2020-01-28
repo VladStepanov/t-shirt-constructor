@@ -1,14 +1,17 @@
 [
   {
     "title": "Пике",
-    "code": "pique"
+    "code": "pique",
+    "price": 100
   },
   {
     "title": "Рибана",
-    "code": "ribana"
+    "code": "ribana",
+    "price": 200
   },
   {
     "title": "Кулирка",
-    "code": "cooler"
+    "code": "cooler",
+    "price": 300
   }
 ]
