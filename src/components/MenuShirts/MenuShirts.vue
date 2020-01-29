@@ -2,7 +2,7 @@
   <BaseMenu title="Футболка">
     <MenuFilters />
     <MenuColors />
-    <div>{{ this.$store.getters.curModelPrice }}</div>
+    <MenuPrice />
   </BaseMenu>
 </template>
 
@@ -10,13 +10,15 @@
 import BaseMenu from '@/components/BaseMenu'
 import MenuFilters from '@/components/MenuShirts/MenuShirtsFilters'
 import MenuColors from '@/components/MenuShirts/MenuColors'
+import MenuPrice from '@/components/MenuShirts/MenuShirtPrice'
 
 export default {
   name: 'MenuShirts',
   components: {
     BaseMenu,
     MenuFilters,
-    MenuColors
+    MenuColors,
+    MenuPrice
   }
 }
 </script>

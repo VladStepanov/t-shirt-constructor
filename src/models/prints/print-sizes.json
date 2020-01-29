@@ -1,18 +1,22 @@
 [
   {
     "title": "Полный",
-    "code": 300
+    "code": 300,
+    "realSize": 0.4
   },
   {
     "title": "Средний",
-    "code": 200
+    "code": 200,
+    "realSize": 0.3
   },
   {
     "title": "Небольшой",
-    "code": 100
+    "code": 100,
+    "realSize": 0.2
   },
   {
     "title": "Мелкий",
-    "code": 50
+    "code": 50,
+    "realSize": 0.1
   }
 ]

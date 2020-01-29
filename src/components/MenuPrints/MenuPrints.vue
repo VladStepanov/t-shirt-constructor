@@ -10,6 +10,7 @@
       {{ type.title }}
     </label>
     <MenuPrintsMain />
+    <MenuPrintsPrice v-if="haveCurPrint" />
     <button @click="selectPrint">Добавить</button>
     <MenuPrintsSelected v-if="haveSelected" />
   </BaseMenu>
@@ -20,6 +21,7 @@ import BaseMenu from '@/components/BaseMenu'
 import MenuPrintsFirstLine from '@/components/MenuPrints/MenuPrintsFirstLine'
 import MenuPrintsMain from '@/components/MenuPrints/MenuPrintsMain'
 import MenuPrintsSelected from '@/components/MenuPrints/MenuPrintsSelected'
+import MenuPrintsPrice from '@/components/MenuPrints/MenuPrintsPrice'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -28,12 +30,14 @@ export default {
     BaseMenu,
     MenuPrintsFirstLine,
     MenuPrintsMain,
-    MenuPrintsSelected
+    MenuPrintsSelected,
+    MenuPrintsPrice
   },
   computed: {
     ...mapGetters({
       haveSelected: 'prints/selection/haveSelected',
       curPrint: 'prints/curPrint',
+      haveCurPrint: 'prints/haveCurPrint',
       curPrintTypes: 'prints/curPrintTypes'
     }),
     typeController: {

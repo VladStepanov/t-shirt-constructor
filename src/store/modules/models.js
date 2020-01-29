@@ -58,7 +58,7 @@ export default {
     curModelPrice: (state, { haveCurModel, curModel, haveCurMaterial, curMaterial }) => {
       if (haveCurModel && haveCurMaterial) {
         const curMaterialPrice = require('@/models/materials-list').find(material => curMaterial === material.code).price
-        return curModel.realSize * curMaterialPrice
+        return parseFloat((curModel.realSize * curMaterialPrice).toFixed(2))
       }
     }
   }

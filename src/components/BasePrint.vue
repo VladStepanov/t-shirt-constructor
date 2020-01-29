@@ -54,19 +54,7 @@ export default {
       }
     },
     calculatedSize () {
-      // If print is vertical
-      if (this.aspectRatio < 1) {
-        return {
-          width: this.width * this.aspectRatio,
-          height: this.width
-        }
-      }
-
-      // If print is horizontal
-      return {
-        width: this.width,
-        height: this.width / this.aspectRatio
-      }
+      return this.$store.getters['prints/calcSize'](this.aspectRatio, this.width)
     }
   }
 }

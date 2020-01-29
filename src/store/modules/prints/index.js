@@ -91,6 +91,7 @@ export default {
         ? curPrintDummy
         : null
     },
+    haveCurPrint: (state, { curPrint }) => Object.keys(curPrint).length,
     printById: ({ prints }) => id => prints.find(print => print.id === id),
     printsToRender: (state, { curPrint, sideForCurPrint }, rootState, rootGetters) => {
       const prints = rootState.prints.selection.selected.filter(item => item.side === rootGetters.curView)
@@ -110,6 +111,16 @@ export default {
 
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
     },
-    curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position
+    curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position,
+    curPrintPrice: (state, { calcSize, curPrintSize, curPrint, curPrintTexture }) => {
+      if (curPrint) {
+        console.log(state.sizes)
+
+        const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize).realSize
+        const { width, height } = calcSize(curPrint.aspectRatio, realWidth)
+        const priceForTexture = require('@/models/prints/print-textures').find(texture => texture.code === curPrintTexture).price
+        return parseFloat((width * height * priceForTexture).toFixed(2))
+      }
+    }
   }
 }
