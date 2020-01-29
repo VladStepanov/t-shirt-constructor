@@ -42,6 +42,7 @@ export default {
   methods: {
     selectModel (model) {
       this.$store.dispatch('setModel', model)
+      this.$modal.hide('select-model')
     }
   }
 }
