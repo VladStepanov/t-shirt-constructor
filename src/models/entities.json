@@ -1,6 +1,5 @@
 [
   {
-    "id": "1",
     "name": "T_Shirt_1",
     "realSize": 0.3,
     "gender": "male",
@@ -33,7 +32,6 @@
     }
   },
   {
-    "id": "2",
     "name": "T_Shirt_2",
     "realSize": 0.4,
     "gender": "female",
@@ -58,7 +56,6 @@
     }
   },
   {
-    "id": "3",
     "name": "T_Shirt_3",
     "realSize": 0.1,
     "gender": "male",
@@ -83,7 +80,6 @@
     }
   },
   {
-    "id": "4",
     "name": "T_Shirt_4",
     "realSize": 0.5,
     "gender": "male",
@@ -116,7 +112,6 @@
     }
   },
   {
-    "id": "5",
     "name": "T_Shirt_5",
     "realSize": 0.2,
     "gender": "male",
@@ -146,7 +141,6 @@
     }
   },
   {
-    "id": "6",
     "name": "T_Shirt_6",
     "realSize": 0.3,
     "gender": "male",

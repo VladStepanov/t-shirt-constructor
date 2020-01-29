@@ -1,10 +1,15 @@
 import entities from '@/models/entities.json'
+
 import cloneDeep from 'lodash/cloneDeep'
+import uuid from 'uuid/v4'
 
 export default {
   state: () => ({
     curModel: '',
-    entities
+    entities: entities.map(entity => ({
+      id: uuid(),
+      ...entity
+    }))
   }),
   mutations: {
     SET_MODEL: (state, modelId) => { state.curModel = modelId },

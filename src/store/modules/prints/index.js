@@ -9,6 +9,7 @@ import sizes from '@/store/modules/prints/sizes'
 import selection from '@/store/modules/prints/selection'
 
 import cloneDeep from 'lodash/cloneDeep'
+import uuid from 'uuid/v4'
 
 export default {
   namespaced: true,
@@ -23,6 +24,7 @@ export default {
     curPrintDummy: {},
     prints: prints.map(print => ({
       ...print,
+      id: uuid(),
       side: '',
       type: '',
       aspectRatio: print.exportSize.x / print.exportSize.y
