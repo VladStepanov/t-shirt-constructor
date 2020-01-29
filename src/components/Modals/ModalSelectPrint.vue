@@ -55,6 +55,7 @@ export default {
   methods: {
     selectPrint (print) {
       this.$store.dispatch('prints/setPrint', print)
+      this.$modal.hide('select-print')
     }
   }
 }
