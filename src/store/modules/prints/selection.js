@@ -3,7 +3,8 @@ import cloneDeep from 'lodash/cloneDeep'
 export default {
   namespaced: true,
   state: () => ({
-    selected: []
+    selected: [],
+    prices: {}
   }),
   mutations: {
     SELECT_PRINT: (state, { print }) => { state.selected.push(print) },
@@ -17,6 +18,9 @@ export default {
       if (!printId) return
 
       const print = cloneDeep(rootState.prints.curPrintDummy)
+
+      print.price = rootGetters['prints/curPrintPrice']
+
       commit('SELECT_PRINT', { print })
       dispatch('prints/setPrint', '', { root: true })
     },

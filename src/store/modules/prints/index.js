@@ -113,14 +113,15 @@ export default {
     },
     curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position,
     curPrintPrice: (state, { calcSize, curPrintSize, curPrint, curPrintTexture }) => {
-      if (curPrint) {
-        console.log(state.sizes)
+      if (!curPrint) return
 
-        const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize).realSize
-        const { width, height } = calcSize(curPrint.aspectRatio, realWidth)
-        const priceForTexture = require('@/models/prints/print-textures').find(texture => texture.code === curPrintTexture).price
-        return parseFloat((width * height * priceForTexture).toFixed(2))
-      }
+      const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize).realSize
+      const { width, height } = calcSize(curPrint.aspectRatio, realWidth)
+      const priceForTexture = require('@/models/prints/print-textures').find(texture => texture.code === curPrintTexture).price
+      // @TODO: price for print type
+      console.log('Type' + curPrint.type)
+      console.log(curPrintTexture)
+      return parseFloat((width * height * priceForTexture).toFixed(1))
     }
   }
 }
