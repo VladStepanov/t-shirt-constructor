@@ -5,7 +5,8 @@
     v-bind="$attrs"
     :style="styles"
   >
-    <svg preserveAspectRatio="xMidYMid meet" :viewBox="`0 0 ${initSize.x} ${initSize.y}`">
+  <!-- :viewBox="`0 0 ${initSize.x} ${initSize.y}`" -->
+    <svg preserveAspectRatio="xMidYMid meet" :viewBox="viewBox">
       <defs>
         <pattern :id="id" patternUnits="userSpaceOnUse" width="100" height="100">
           <image v-bind="{ 'xlink:href': pathToPattern }" />
@@ -27,6 +28,7 @@ import uuid from 'uuid/v4'
 export const props = {
   paths: { type: Array, required: true },
   initSize: { type: Object, validator: size => size.x && size.y },
+  viewBoxSize: { type: Object, validator: size => size.x && size.y },
   color: { type: String },
   texture: { type: String },
   width: { type: Number, required: true },
@@ -52,6 +54,10 @@ export default {
         width: `${this.calculatedSize.width}px`,
         height: `${this.calculatedSize.height}px`
       }
+    },
+    viewBox () {
+      const { viewBoxSize, initSize } = this
+      return `0 0 ${viewBoxSize?.x ?? initSize.x} ${viewBoxSize?.y ?? initSize.y}`
     },
     calculatedSize () {
       return this.$store.getters['prints/calcSize'](this.aspectRatio, this.width)

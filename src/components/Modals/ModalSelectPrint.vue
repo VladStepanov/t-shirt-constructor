@@ -14,6 +14,7 @@
           :aspectRatio="print.aspectRatio"
           :width="(print.types[print.type] && print.types[print.type].size) || previewPrintSize"
           :init-size="print.exportSize"
+          :viewBoxSize="print.viewBox"
           :active-id="curPrint"
           @click="selectPrint"
         />
