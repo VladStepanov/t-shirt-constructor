@@ -1,22 +1,11 @@
 <template>
   <div class='main-screen'>
+    <ToggleView v-if="haveRearSide && haveCurModel" />
+    <div v-if="haveCurModel" class="main-screen__title">{{ curModel.name }}</div>
+    <CountOfSuitableModels />
     <div class="main-screen__container" v-if='haveCurModel'>
       <ShirtPreview :paths='curModelPathsWithView' colorized />
       <template v-if="havePrintsToRender">
-<!--        <PrintPreview-->
-<!--          class="main-screen__print"-->
-<!--          v-for="(print, i) in printsToRender"-->
-<!--          :key="`${print.id}-${i}`"-->
-<!--          :color="print.types[print.type].color"-->
-<!--          :texture="print.types[print.type].texture"-->
-<!--          :position="print.types[print.type].position"-->
-<!--          :aspect-ratio="print.aspectRatio"-->
-<!--          :width="print.types[print.type] && print.types[print.type].size"-->
-<!--          :init-size="print.exportSize"-->
-<!--          :paths="print.paths"-->
-<!--          :id="`main-${print.id}-${i}`"-->
-<!--          colorized-->
-<!--        />-->
         <BasePrintCustomizable
           v-for="(print, i) in printsToRender"
           :key="`${print.id}-${i}`"
@@ -31,9 +20,7 @@
         />
       </template>
     </div>
-    <ToggleView v-if="haveRearSide && haveCurModel" />
-    <div v-if="haveCurModel" class="main-screen__title">{{ curModel.name }}</div>
-    <CountOfSuitableModels />
+    <MainScreenPrice />
   </div>
 </template>
 
@@ -42,6 +29,7 @@ import ToggleView from '@/components/ToggleView'
 import ShirtPreview from '@/components/ShirtPreview'
 import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import BasePrintCustomizable from '@/components/BasePrintCustomizable'
+import MainScreenPrice from '@/components/MainScreenPrice'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
@@ -50,7 +38,8 @@ export default {
     ToggleView,
     ShirtPreview,
     BasePrintCustomizable,
-    CountOfSuitableModels
+    CountOfSuitableModels,
+    MainScreenPrice
   },
   computed: {
     ...mapState({

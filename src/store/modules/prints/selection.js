@@ -3,8 +3,7 @@ import cloneDeep from 'lodash/cloneDeep'
 export default {
   namespaced: true,
   state: () => ({
-    selected: [],
-    prices: {}
+    selected: []
   }),
   mutations: {
     SELECT_PRINT: (state, { print }) => { state.selected.push(print) },
@@ -34,17 +33,13 @@ export default {
   getters: {
     haveSelected: (state) => !!state.selected.length,
     isSelectedById: (state) => id => {
-      // let isSelected = false
-      // for (let side in state.selected) {
-      //   for (let print of state.selected[side]) {
-      //     if (print.id === id) isSelected = true
-      //   }
-      // }
-      // return isSelected
       return state.selected.some(print => print.id === id)
     },
     selectedPrints: (state) => {
       return state.selected
+    },
+    selectedPrintsPrices: (state) => {
+      return state.selected.reduce((total, print) => total + print.price, 0)
     }
   }
 }

@@ -56,10 +56,12 @@ export default {
     haveCurModel: (state, getters) => !!getters.curModel,
     haveRearSide: (state, getters) => !!getters.curModelPaths.rear,
     curModelPrice: (state, { haveCurModel, curModel, haveCurMaterial, curMaterial }) => {
-      if (haveCurModel && haveCurMaterial) {
-        const curMaterialPrice = require('@/models/materials-list').find(material => curMaterial === material.code).price
-        return parseFloat((curModel.realSize * curMaterialPrice).toFixed(2))
-      }
+      if (!haveCurModel && !haveCurMaterial) return 0
+
+      const curMaterialPrice = require('@/models/materials-list').find(material => material.code === curMaterial)?.price
+      const price = curModel.realSize * (curMaterialPrice ?? 0)
+
+      return parseFloat((price).toFixed(1))
     }
   }
 }

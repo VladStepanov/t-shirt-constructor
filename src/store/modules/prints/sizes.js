@@ -13,8 +13,10 @@ export default {
   },
   getters: {
     curPrintSize: (state, getters, rootState, rootGetters) => {
+      if (!getters.haveCurPrint) return
+
       const curPrint = rootGetters['prints/curPrint']
-      return curPrint && curPrint.types[curPrint.type] && curPrint.types[curPrint.type].size
+      return curPrint.types[curPrint.type]?.size
     },
     calcSize: () => (aspectRatio, width) => {
       // If print is vertical

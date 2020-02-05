@@ -113,8 +113,8 @@ export default {
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
     },
     curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position,
-    curPrintPrice: ({ printForPrintType }, { calcSize, curPrintSize, curPrint, curPrintTexture }) => {
-      if (!curPrint) return
+    curPrintPrice: ({ printForPrintType }, { calcSize, curPrintSize, curPrint, haveCurPrint, curPrintTexture }) => {
+      if (!haveCurPrint) return 0
 
       const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize)?.realSize
       const { width, height } = calcSize(curPrint.aspectRatio, realWidth)
@@ -124,7 +124,7 @@ export default {
         ? width * height * printForPrintType
         : width * height * priceForTexture
 
-      return parseFloat(price.toFixed(1))
+      return parseFloat((price ?? 0).toFixed(1))
     }
   }
 }
