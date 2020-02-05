@@ -30,7 +30,8 @@ export default {
       aspectRatio: print.exportSize.x / print.exportSize.y
     })),
     sides,
-    positions
+    positions,
+    printForPrintType: 5000
   }),
   mutations: {
     SET_PRINT: (state, { printId }) => { state.curPrint = printId },
@@ -112,16 +113,18 @@ export default {
       return Object.keys(curPrint.types).map(print => ({ code: print, title: printTypes[print] }))
     },
     curPrintPosition: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].position,
-    curPrintPrice: (state, { calcSize, curPrintSize, curPrint, curPrintTexture }) => {
+    curPrintPrice: ({ printForPrintType }, { calcSize, curPrintSize, curPrint, curPrintTexture }) => {
       if (!curPrint) return
 
-      const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize).realSize
+      const realWidth = require('@/models/prints/print-sizes').find(size => size.code === curPrintSize)?.realSize
       const { width, height } = calcSize(curPrint.aspectRatio, realWidth)
-      const priceForTexture = require('@/models/prints/print-textures').find(texture => texture.code === curPrintTexture).price
-      // @TODO: price for print type
-      console.log('Type' + curPrint.type)
-      console.log(curPrintTexture)
-      return parseFloat((width * height * priceForTexture).toFixed(1))
+      const priceForTexture = require('@/models/prints/print-textures').find(texture => texture.code === curPrintTexture)?.price
+
+      const price = curPrint.type === 'print'
+        ? width * height * printForPrintType
+        : width * height * priceForTexture
+
+      return parseFloat(price.toFixed(1))
     }
   }
 }
