@@ -13,9 +13,9 @@ export default {
     }
   },
   getters: {
-    curPrintTextures: (state, { curPrint }) => curPrint && curPrint.textures,
-    curPrintTexture: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].texture,
-    curPrintColor: (state, { curPrint, curPrintType }) => curPrint && curPrint.types[curPrintType].color,
-    curPrintColors: (state, { curPrint }) => curPrint && curPrint.colors
+    curPrintTextures: (state, { curPrint, haveCurPrint }) => haveCurPrint && curPrint.textures,
+    curPrintTexture: (state, { curPrint, haveCurPrint, curPrintType }) => haveCurPrint && curPrint.types[curPrintType].texture,
+    curPrintColor: (state, { curPrint, haveCurPrint, curPrintType }) => haveCurPrint && curPrint.types[curPrintType].color,
+    curPrintColors: (state, { curPrint, haveCurPrint }) => haveCurPrint && curPrint.colors
   }
 }
