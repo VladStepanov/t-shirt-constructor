@@ -34,10 +34,11 @@ export default {
       return getters['filters/suitableModels'].find(entity => entity.id === state.curModel)
     },
     findModelById: (state) => id => state.entities.find(entity => entity.id === id),
-    curModelPaths: (state, getters) => {
-      const modelPaths = getters.haveCurModel && cloneDeep(getters.curModel.paths)
+    curModelPaths: (state, { haveCurModel, curModel }) => {
+      if (!haveCurModel) return
 
-      for (let side in modelPaths) {
+      const modelPaths = cloneDeep(curModel)
+      for (let side in modelPaths.paths) {
         for (let part in modelPaths[side]) {
           if (!modelPaths[side][part]) {
             delete modelPaths[side][part]
@@ -47,14 +48,23 @@ export default {
 
       return modelPaths
     },
-    curModelPathsWithView: (state, getters) => {
-      return getters.curModelPaths[getters.curView]
+    curModelPathsWithView: (state, { curView, curModelPaths, haveCurModel }) => {
+      if (!haveCurModel) return
+
+      const haveRenderToCurView = Object.keys(curModelPaths.paths).some((view) => view === curView)
+      return haveRenderToCurView
+        ? curModelPaths
+        : null
     },
     curModelPathsWithAllViews: (state, getters) => {
-      return { ...getters.curModelPaths.front, ...getters.curModelPaths.rear }
+      return { ...getters.curModelPaths.paths.front, ...getters.curModelPaths.paths.rear }
     },
     haveCurModel: (state, getters) => !!getters.curModel,
-    haveRearSide: (state, getters) => !!getters.curModelPaths.rear,
+    haveRearSide: (state, { curModelPaths, haveCurModel }) => {
+      if (!haveCurModel) return
+
+      return !!curModelPaths.paths.rear
+    },
     curModelPrice: (state, { haveCurModel, curModel, haveCurMaterial, curMaterial }) => {
       if (!haveCurModel && !haveCurMaterial) return 0
 

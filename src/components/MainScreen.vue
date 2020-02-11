@@ -4,7 +4,12 @@
     <div v-if="haveCurModel" class="main-screen__title">{{ curModel.name }}</div>
     <CountOfSuitableModels />
     <div class="main-screen__container" v-if='haveCurModel'>
-      <ShirtPreview :paths='curModelPathsWithView' colorized />
+      <BaseShirt
+        :paths="curModelPathsWithView && curModelPathsWithView.paths[curView]"
+        :side="curView"
+        :view-box="curModelPathsWithView && curModelPathsWithView.viewBox"
+        colorized
+      />
       <template v-if="havePrintsToRender">
         <BasePrintCustomizable
           v-for="(print, i) in printsToRender"
@@ -26,7 +31,7 @@
 
 <script>
 import ToggleView from '@/components/ToggleView'
-import ShirtPreview from '@/components/ShirtPreview'
+import BaseShirt from '@/components/BaseShirt'
 import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import BasePrintCustomizable from '@/components/BasePrintCustomizable'
 import MainScreenPrice from '@/components/MainScreenPrice'
@@ -36,7 +41,7 @@ export default {
   name: 'MainScreen',
   components: {
     ToggleView,
-    ShirtPreview,
+    BaseShirt,
     BasePrintCustomizable,
     CountOfSuitableModels,
     MainScreenPrice
@@ -45,7 +50,7 @@ export default {
     ...mapState({
       curRule: state => state.colors.curRule
     }),
-    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveCurModel', 'haveRearSide']),
+    ...mapGetters(['curModelPathsWithView', 'curModel', 'haveCurModel', 'haveRearSide', 'curView']),
     ...mapGetters({
       curPrint: 'prints/curPrint',
       printsToRender: 'prints/printsToRender',

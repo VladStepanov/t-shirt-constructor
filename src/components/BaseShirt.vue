@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <svg :viewBox="`0 0 ${viewBox[side].x} ${viewBox[side].y}`">
+  <div class="base-shirt">
+    <svg class="base-shirt__svg" :viewBox="`0 0 ${viewBox[side].x} ${viewBox[side].y}`">
       <path
         v-for="(path, role, i) in paths"
         :key="`${role}-${i}`"
@@ -24,8 +24,8 @@ export default {
       type: Object,
       validator: (viewBox) => {
         return (
-          Object.entries(viewBox.front).every(([, axis]) => axis !== undefined) &&
-          Object.entries(viewBox.rear).every(([, axis]) => axis !== undefined)
+          Object.values(viewBox.front).every((axis) => axis !== undefined) &&
+          Object.values(viewBox.rear).every((axis) => axis !== undefined)
         )
       }
     }
@@ -39,6 +39,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.base-shirt {
+  &__svg {
+    width: 100%;
+  }
+}
 </style>
