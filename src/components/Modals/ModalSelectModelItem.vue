@@ -1,20 +1,29 @@
 <template>
   <div class='model-item' :class='classes' v-bind='$attrs' v-on='listeners'>
-    <ShirtPreview class='model-item__preview' :paths='paths.front' />
+    <BaseShirt
+      class="model-item__preview"
+      :paths="paths.front"
+      :view-box="viewBox"
+      side="front"
+    />
     <div class="model-item__title">{{ name }}</div>
   </div>
 </template>
 
 <script>
-import ShirtPreview from '@/components/ShirtPreview'
+import BaseShirt from '@/components/BaseShirt'
 
 export default {
   name: 'ModalSelectModelItem',
   components: {
-    ShirtPreview
+    BaseShirt
   },
   props: {
     paths: {
+      type: Object,
+      required: true
+    },
+    viewBox: {
       type: Object,
       required: true
     },

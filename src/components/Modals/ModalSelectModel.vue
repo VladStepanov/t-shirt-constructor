@@ -6,6 +6,7 @@
           v-for='(model, i) in suitableModels'
           :key='i'
           :paths='model.paths'
+          :view-box="model.viewBox"
           :name='model.name'
           :id='model.id'
           :activeId='curModel && curModel.id'
