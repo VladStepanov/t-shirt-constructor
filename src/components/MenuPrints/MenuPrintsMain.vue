@@ -22,16 +22,22 @@
         :options="sizes"
       />
     </div>
-    <div class="main-menu__item  main-menu__item-pos" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined">
+    <div class="main-menu__item  main-menu__item__pos" v-if="curPrintDummy.types[curPrintDummy.type] && curPrintDummy.types[curPrintDummy.type].position !== undefined">
       <span class="main-menu__item__title">Позиция:</span>
-      <BaseSelect
-        v-model="positionX"
-        :options="positions.horizontal"
-      />
-      <BaseSelect
-        v-model="positionY"
-        :options="positions.vertical"
-      />
+      <div class="main-menu__item__pos__item">
+        <span class="main-menu__item__pos__title">Горизонтальная</span>
+        <BaseSelect
+          v-model="positionX"
+          :options="positions.horizontal"
+        />
+      </div>
+      <div class="main-menu__item__pos__item">
+        <span class="main-menu__item__pos__title">Вертикальная</span>
+        <BaseSelect
+          v-model="positionY"
+          :options="positions.vertical"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -96,18 +102,22 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin: 12px 0;
-  /*& > *:not(:last-child) {*/
-  /*  margin-right: 12px;*/
-  /*}*/
   &__item {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     &__title {
       margin-right: 12px;
     }
-    &-pos {
+    &__pos {
       grid-column: 2;
       grid-row: 2;
+      &__item:not(:last-child) {
+        margin-right: 12px;
+      }
+      &__title {
+        margin-bottom: 6px;
+        display: inline-block;
+      }
     }
     &-size {
       grid-column: 1;

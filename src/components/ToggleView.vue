@@ -26,9 +26,6 @@ export default {
 
 <style lang='scss'>
 .toggle-view {
-  position: absolute;
-  top: 0;
-  left: 0;
   cursor: pointer;
   user-select: none;
 }

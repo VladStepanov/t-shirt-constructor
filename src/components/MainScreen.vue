@@ -25,7 +25,7 @@
         />
       </template>
     </div>
-    <MainScreenPrice />
+    <MainScreenPrice v-if="haveCurModel" />
   </div>
 </template>
 
@@ -62,9 +62,6 @@ export default {
 
 <style scoped lang='scss'>
 .main-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   &__title {
     position: absolute;
@@ -74,6 +71,8 @@ export default {
   }
   &__container {
     position: relative;
+    width: 50%;
+    margin: 24px auto;
   }
   &__print {
     position: absolute;
