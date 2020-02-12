@@ -38,10 +38,12 @@ export default {
       if (!haveCurModel) return
 
       const modelPaths = cloneDeep(curModel)
-      for (let side in modelPaths.paths) {
-        for (let part in modelPaths[side]) {
-          if (!modelPaths[side][part]) {
-            delete modelPaths[side][part]
+
+      const { paths } = modelPaths
+      for (let side in paths) {
+        for (let part in paths[side]) {
+          if (!paths[side][part]) {
+            delete paths[side][part]
           }
         }
       }
