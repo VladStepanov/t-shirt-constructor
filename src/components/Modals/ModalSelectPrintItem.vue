@@ -8,7 +8,7 @@
       :texture="texture"
       :color="color"
       :init-size="initSize"
-      :viewBoxSize="viewBoxSize"
+      :viewBox="viewBox"
     />
     <figcaption class="select-print__title">{{ title }}</figcaption>
   </figure>
@@ -51,7 +51,7 @@ export default {
       type: Object,
       validator: (size) => size.x && size.y
     },
-    viewBoxSize: { type: Object, validator: (size) => size.x && size.y }
+    viewBox: { type: Object, validator: (size) => size.x && size.y }
   },
   computed: {
     classes () {

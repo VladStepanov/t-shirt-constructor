@@ -16,7 +16,7 @@
           :key="`${print.id}-${i}`"
           :paths="print.paths"
           :init-size="print.exportSize"
-          :viewBoxSize="print.viewBox"
+          :viewBox="print.viewBox"
           :texture="print.types[print.type].texture"
           :color="print.types[print.type].color"
           :width="print.types[print.type].size"
