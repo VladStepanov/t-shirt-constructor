@@ -34,7 +34,7 @@ export default {
 <style scoped lang="scss">
 .t-shirt-constructor {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 45% 55%;
   column-gap: 12px;
 }
 .t-shirt-constructor--dev {
