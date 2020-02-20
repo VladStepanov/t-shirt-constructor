@@ -16,9 +16,11 @@ export const actions = {
     const order = {
       model: getters.curModel,
       prints: [
-        ...getters['prints/curPrint'],
         ...getters['prints/selection/selectedPrints']]
     }
+
+    if (getters['prints/haveCurPrint']) order.prints.push(getters['prints/curPrint'])
+
     console.log(order)
   }
 }
