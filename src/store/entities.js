@@ -12,5 +12,13 @@ export const getters = {
 }
 
 export const actions = {
-
+  makeOrder ({ getters }) {
+    const order = {
+      model: getters.curModel,
+      prints: [
+        ...getters['prints/curPrint'],
+        ...getters['prints/selection/selectedPrints']]
+    }
+    console.log(order)
+  }
 }

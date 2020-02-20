@@ -28,6 +28,9 @@
       </template>
     </div>
     <MainScreenPrice v-if="haveCurModel" />
+    <div class="main-screen__order" v-if="haveCurModel">
+      <button class="main-screen__order__btn" @click="makeOrder">Заказать</button>
+    </div>
   </div>
 </template>
 
@@ -38,7 +41,7 @@ import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import BasePrintCustomizable from '@/components/BasePrintCustomizable'
 import PrintCollision from '@/components/PrintCollision'
 import MainScreenPrice from '@/components/MainScreenPrice'
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState, mapActions } from 'vuex'
 
 export default {
   name: 'MainScreen',
@@ -60,6 +63,9 @@ export default {
       printsToRender: 'prints/printsToRender',
       havePrintsToRender: 'prints/havePrintsToRender'
     })
+  },
+  methods: {
+    ...mapActions(['makeOrder'])
   }
 }
 </script>
@@ -77,6 +83,19 @@ export default {
     position: relative;
     width: 50%;
     margin: 24px auto;
+  }
+  &__order {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    &__btn {
+      background-color: transparent;
+      border: none;
+      padding: 12px 24px;
+      border: 1px solid tomato;
+      color: tomato;
+      cursor: pointer;
+    }
   }
 }
 </style>
