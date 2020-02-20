@@ -19,6 +19,7 @@ export default {
     setModel ({ commit, dispatch, getters: { curMaterial, findModelById } }, model) {
       const newModel = findModelById(model)
 
+      // If new model have material of previous model, choose material on the new model
       const haveNewModelOldMaterial = newModel.materials.some(({ code }) => code === curMaterial)
       if (curMaterial && haveNewModelOldMaterial) {
         commit('SET_MODEL', model)
@@ -37,10 +38,10 @@ export default {
     curModelPaths: (state, { haveCurModel, curModel }) => {
       if (!haveCurModel) return
 
-      const modelPaths = cloneDeep(curModel)
+      const modelCopy = cloneDeep(curModel)
 
-      const { paths } = modelPaths
-      for (let side in paths) {
+      const { paths } = modelCopy
+      for (let side in modelCopy.paths) {
         for (let part in paths[side]) {
           if (!paths[side][part]) {
             delete paths[side][part]
@@ -48,7 +49,7 @@ export default {
         }
       }
 
-      return modelPaths
+      return modelCopy
     },
     curModelPathsWithView: (state, { curView, curModelPaths, haveCurModel }) => {
       if (!haveCurModel) return
@@ -74,6 +75,11 @@ export default {
       const price = curModel.realSize * (curMaterialPrice ?? 0)
 
       return parseFloat((price).toFixed(1))
+    },
+    curModelCollision: (state, { haveCurModel, curModel }) => {
+      if (!haveCurModel) return
+
+      return curModel.collisionSize || { width: 200, height: 200 }
     }
   }
 }

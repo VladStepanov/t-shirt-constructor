@@ -2,6 +2,10 @@
   {
     "name": "Real shirt 1",
     "realSize": 0.5,
+    "collisionSize": {
+      "width": 200,
+      "height": 200
+    },
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",
@@ -44,6 +48,10 @@
   {
     "name": "Real shirt 1",
     "realSize": 0.5,
+    "collisionSize": {
+      "width": 200,
+      "height": 200
+    },
     "gender": "male",
     "collection": "adidas",
     "type": "t-shirt",

@@ -11,18 +11,20 @@
         colorized
       />
       <template v-if="havePrintsToRender">
-        <BasePrintCustomizable
-          v-for="(print, i) in printsToRender"
-          :key="`${print.id}-${i}`"
-          :paths="print.paths"
-          :init-size="print.exportSize"
-          :viewBox="print.viewBox"
-          :texture="print.types[print.type].texture"
-          :color="print.types[print.type].color"
-          :width="print.types[print.type].size"
-          :aspect-ratio="print.aspectRatio"
-          :position="print.types[print.type].position"
-        />
+        <PrintCollision>
+          <BasePrintCustomizable
+            v-for="(print, i) in printsToRender"
+            :key="`${print.id}-${i}`"
+            :paths="print.paths"
+            :init-size="print.exportSize"
+            :viewBox="print.viewBox"
+            :texture="print.types[print.type].texture"
+            :color="print.types[print.type].color"
+            :width="print.types[print.type].size"
+            :aspect-ratio="print.aspectRatio"
+            :position="print.types[print.type].position"
+          />
+        </PrintCollision>
       </template>
     </div>
     <MainScreenPrice v-if="haveCurModel" />
@@ -34,6 +36,7 @@ import ToggleView from '@/components/ToggleView'
 import BaseShirt from '@/components/BaseShirt'
 import CountOfSuitableModels from '@/components/CountOfSuitableModels'
 import BasePrintCustomizable from '@/components/BasePrintCustomizable'
+import PrintCollision from '@/components/PrintCollision'
 import MainScreenPrice from '@/components/MainScreenPrice'
 import { mapGetters, mapState } from 'vuex'
 
@@ -44,7 +47,8 @@ export default {
     BaseShirt,
     BasePrintCustomizable,
     CountOfSuitableModels,
-    MainScreenPrice
+    MainScreenPrice,
+    PrintCollision
   },
   computed: {
     ...mapState({
@@ -73,9 +77,6 @@ export default {
     position: relative;
     width: 50%;
     margin: 24px auto;
-  }
-  &__print {
-    position: absolute;
   }
 }
 </style>

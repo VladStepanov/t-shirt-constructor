@@ -9,7 +9,7 @@
       "vinyl": {
         "texture": "reflect",
         "color": "blue",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
@@ -17,7 +17,7 @@
       },
       "print": {
         "texture": "reflect",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
@@ -59,7 +59,7 @@
       "vinyl": {
         "texture": "reflect",
         "color": "blue",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
@@ -67,7 +67,7 @@
       },
       "print": {
         "texture": "reflect",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
@@ -109,7 +109,7 @@
       "vinyl": {
         "texture": "reflect",
         "color": "blue",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
@@ -117,7 +117,7 @@
       },
       "print": {
         "texture": "reflect",
-        "size": 300,
+        "size": 200,
         "position": {
           "x": "centerX",
           "y": "centerY"
