@@ -20,7 +20,5 @@ export const actions = {
     }
 
     if (getters['prints/haveCurPrint']) order.prints.push(getters['prints/curPrint'])
-
-    console.log(order)
   }
 }

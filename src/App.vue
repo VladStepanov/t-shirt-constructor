@@ -1,10 +1,10 @@
 <template>
-  <div v-if='isProduction' class='t-shirt-constructor'>
+  <!-- <div v-if='isProduction' class='t-shirt-constructor'>
     <MainScreen />
     <Menu />
     <Modals />
-  </div>
-  <div v-else class="t-shirt-constructor--dev t-shirt-constructor">
+  </div> -->
+  <div class="t-shirt-constructor--dev t-shirt-constructor">
     <MainScreen />
     <Menu />
     <Modals />
