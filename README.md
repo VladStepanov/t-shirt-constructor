@@ -1,5 +1,5 @@
 # T-shirt-constructor
-[##Demo](https://vladstepanov.github.io/t-shirt-constructor)
+[Demo](https://vladstepanov.github.io/t-shirt-constructor)
 
 ## Project setup
 ```
